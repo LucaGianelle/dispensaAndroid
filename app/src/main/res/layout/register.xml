@@ -5,7 +5,7 @@
     android:id="@+id/registrazione"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/provabg2"
+    android:background="@drawable/andbg"
     >
 
 
@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:hint="Nome"
         android:text="Registrazione"
-        android:textColor="@color/white"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
