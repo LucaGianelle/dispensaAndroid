@@ -10,8 +10,7 @@
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Nome"
-        android:text="Login"
+        android:hint="@string/login"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +31,7 @@
         android:drawableLeft="@drawable/ic_mail"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="E-mail"
+        android:hint="@string/inputEmail"
         android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -51,7 +50,7 @@
         android:drawableLeft="@drawable/ic_security"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/InputPassword"
         android:inputType="textPassword"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -67,17 +66,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/botton_bg"
-        android:text="accedi"
+        android:text="@string/buttonAccesso"
         app:layout_constraintEnd_toEndOf="@+id/inputPassword"
         app:layout_constraintStart_toStartOf="@+id/inputPassword"
         app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/noProfilo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:hint="SE NON HAI UN PROFILO"
+        android:hint="@string/noProfilo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAccesso" />
@@ -88,10 +87,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/botton_bg"
-        android:text="registrazione"
+        android:text="@string/buttonRegistrazione"
         app:layout_constraintEnd_toEndOf="@+id/buttonAccesso"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="@+id/buttonAccesso"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/noProfilo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
