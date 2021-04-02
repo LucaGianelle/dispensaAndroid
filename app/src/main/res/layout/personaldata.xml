@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/andbg">
 
     <TextView
         android:id="@+id/title"
@@ -21,6 +22,8 @@
         android:id="@+id/nickname"
         android:layout_width="347dp"
         android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_account"
+        android:drawablePadding="10dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,6 +35,8 @@
         android:id="@+id/email"
         android:layout_width="347dp"
         android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_mail"
+        android:drawablePadding="10dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/height"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,20 +49,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/height"
+        app:layout_constraintBottom_toTopOf="@+id/buttonModifica"
         app:layout_constraintEnd_toStartOf="@+id/height"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <TextView
         android:id="@+id/height"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonModifica"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/weight"
         app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <Button
+        android:id="@+id/buttonModifica"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/botton_bg"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weight" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

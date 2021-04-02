@@ -19,5 +19,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(reg)
         }
 
+        button.setOnClickListener {
+            val data = Intent (this, PersonaldataActivity::class.java)
+            startActivity(data)
+        }
+
     }
 }
