@@ -1,22 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Dispensa</string>
-    <string name="textview1" tools:ignore="DuplicateDefinition">TextView</string>
-    <string name="textview">TextView</string>
+    <string name="textview1" tools:ignore="DuplicateDefinition" translatable="false">TextView</string>
+    <string name="textview" translatable="false">TextView</string>
 
-    <string name="inputName">Nome</string>
-    <string name="inputEmail">E-mail</string>
-    <string name="InputPassword">Password</string>
-    <string name="registrazione">Registrazione</string>
-    <string name="buttonConferma">Conferma</string>
+    <string name="inputName" translatable="false">Nome</string>
+    <string name="inputEmail" translatable="false">E-mail</string>
+    <string name="InputPassword" translatable="false">Password</string>
+    <string name="registrazione" translatable="false">Registrazione</string>
+    <string name="buttonConferma" translatable="false">Conferma</string>
 
-    <string name="homeProfile">Home</string>
-    <string name="buttonDispensa">Dispensa</string>
-    <string name="buttonMappa">Mappa</string>
-    <string name="buttonDatiPersonali">Dati personali</string>
+    <string name="homeProfile" translatable="false">Home</string>
+    <string name="buttonDispensa" translatable="false">Dispensa</string>
+    <string name="buttonMappa" translatable="false">Mappa</string>
+    <string name="buttonDatiPersonali" translatable="false">Dati personali</string>
 
-    <string name="login">Login</string>
-    <string name="buttonAccesso">Accedi</string>
-    <string name="buttonRegistrazione">Registrazione</string>
-    <string name="noProfilo">SE NON HAI UN PROFILO</string>
+    <string name="login" translatable="false">Login</string>
+    <string name="buttonAccesso" translatable="false">Accedi</string>
+    <string name="buttonRegistrazione" translatable="false">Registrazione</string>
+    <string name="noProfilo" translatable="false">SE NON HAI UN PROFILO</string>
+    <string name="buttonModifica" translatable="false">modifica</string>
 
 </resources>
