@@ -11,8 +11,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.login)
 
         buttonAccesso.setOnClickListener {
-            val intent = Intent (this, HomeActivity::class.java)
-            startActivity(intent)
+            val acc = Intent (this, HomeActivity::class.java)
+            startActivity(acc)
+        }
+        button.setOnClickListener {
+            val reg = Intent (this, RegisterActivity::class.java)
+            startActivity(reg)
         }
 
     }
