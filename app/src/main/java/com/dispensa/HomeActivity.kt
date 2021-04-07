@@ -1,9 +1,16 @@
 package com.dispensa
 
+import android.Manifest
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.home.*
 import java.util.*
 
@@ -12,7 +19,33 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
 
-        buttonMappa.setOnClickListener {
+        fun openMaps (activity: Activity, context: Context) {
+            val REQUEST_POSITION_PERMISSION_ID = 1
+            lateinit var fusedLocationClient: FusedLocationProviderClient
+
+            val permissionAccessCoarseLocationApproved = ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+
+            if(permissionAccessCoarseLocationApproved){
+                fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity)
+                fusedLocationClient.lastLocation.addOnSuccessListener {
+                    val intent = Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse(context.getString(R.string.query_location))
+                    )
+                    intent.setPackage("com.google.android.apps.maps")
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    context.startActivity(intent)
+                }
+            }else{
+                ActivityCompat.requestPermissions(
+                        activity,
+                        arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION),
+                        REQUEST_POSITION_PERMISSION_ID
+                )
+            }
+        }
+
+        /*buttonMappa.setOnClickListener {
 
             /*val latitude: Double = location.getLatitude()
             val longitude: Double = location.getLongitude()
@@ -27,11 +60,11 @@ class HomeActivity : AppCompatActivity() {
             *
             */
 
-            val intent = Intent(Intent.ACTION_VIEW,
+           /* val intent = Intent(Intent.ACTION_VIEW,
                     /*Uri.parse("http://maps.google.com/maps?saddr=20.344,34.34&daddr=20.5666,45.345"))*/
                     Uri.parse("google.navigation:q=an+address+city"))
-            startActivity(intent)
-        }
+            startActivity(intent)*/
+        }*/
     }
 
 

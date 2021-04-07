@@ -27,6 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/botton_bg"
+        android:onClick="openMaps"
         android:text="@string/buttonMappa"
         app:layout_constraintBottom_toTopOf="@+id/buttonDatiPersonali"
         app:layout_constraintEnd_toEndOf="@+id/buttonDispensa"

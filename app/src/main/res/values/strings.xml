@@ -20,4 +20,6 @@
     <string name="noProfilo" translatable="false">SE NON HAI UN PROFILO</string>
     <string name="buttonModifica" translatable="false">modifica</string>
 
+    <string name="query_location">https://www.google.com/maps/search/?api=1&amp;query=farmacie</string>
+
 </resources>
