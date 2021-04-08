@@ -10,7 +10,8 @@
 
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorSecondary">#FF03DAC5</color>
-    <color name="colorSecondaryDark">#FF018786</color>
+    <color name="colorSecondary">#e53935</color>
+    <color name="colorSecondaryDark">#b71c1c</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorPanna">#fafafa</color>
 </resources>
