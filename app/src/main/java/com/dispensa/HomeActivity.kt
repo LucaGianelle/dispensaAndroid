@@ -21,6 +21,10 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.home)
 
 
+        buttonDatiPersonali.setOnClickListener {
+            val data = Intent (this, PersonaldataActivity::class.java)
+            startActivity(data)
+        }
 
         /*buttonMappa.setOnClickListener {
 
