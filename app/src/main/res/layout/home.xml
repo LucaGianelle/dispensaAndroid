@@ -7,13 +7,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/andbg">
 
-    <Button
+    <android.widget.Button
         android:id="@+id/buttonDispensa"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/botton_bg"
+        android:background="@drawable/two_state_button"
         android:text="@string/buttonDispensa"
         app:layout_constraintBottom_toTopOf="@+id/buttonMappa"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,11 +22,11 @@
         app:layout_constraintTop_toBottomOf="@+id/homeProfile"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/buttonMappa"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/botton_bg"
+        android:background="@drawable/two_state_button"
         android:onClick="openMaps"
         android:text="@string/buttonMappa"
         app:layout_constraintBottom_toTopOf="@+id/buttonDatiPersonali"
@@ -36,11 +36,11 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonDispensa"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/buttonDatiPersonali"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/botton_bg"
+        android:background="@drawable/two_state_button"
         android:text="@string/buttonDatiPersonali"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/buttonMappa"

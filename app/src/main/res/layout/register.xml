@@ -84,12 +84,11 @@
         app:layout_constraintStart_toStartOf="@+id/inputEmail"
         app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/buttonConferma"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/botton_bg"
-        android:hint="@string/buttonConferma"
+        android:background="@drawable/two_state_button"
         android:text="@string/buttonConferma"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/inputPassword"

@@ -64,12 +64,12 @@
         app:layout_constraintStart_toStartOf="@+id/inputEmail"
         app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/buttonAccesso"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/botton_bg"
+        android:background="@drawable/two_state_button"
         android:text="@string/buttonAccesso"
         app:layout_constraintBottom_toTopOf="@+id/noProfilo"
         app:layout_constraintEnd_toEndOf="@+id/inputPassword"
@@ -89,12 +89,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAccesso" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/botton_bg"
+        android:background="@drawable/two_state_button"
         android:text="@string/buttonRegistrazione"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/buttonAccesso"
