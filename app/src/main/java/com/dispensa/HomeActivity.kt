@@ -74,7 +74,9 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    fun callmap(view: View) {}
+    fun callmap(view: View) {
+
+    }
 
 
 }
