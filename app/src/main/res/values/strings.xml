@@ -21,5 +21,6 @@
     <string name="buttonModifica" translatable="false">modifica</string>
 
     <string name="query_location" translatable="false">https://www.google.com/maps/search/?api=1&amp;query=farmacie</string>
+    <string name="datiPersonali" translatable="false">Dati Personali</string>
 
 </resources>
