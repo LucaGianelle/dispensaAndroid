@@ -14,9 +14,13 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.register)
 
 
-        numberPicker.setMinValue(40);
-        numberPicker.setMaxValue(120);
-        numberPicker.wrapSelectorWheel = true
+        pickerPeso.setMinValue(40);
+        pickerPeso.setMaxValue(120);
+        pickerPeso.wrapSelectorWheel = true
+
+        pickerAltezza.setMinValue(100);
+        pickerAltezza.setMaxValue(210);
+        pickerAltezza.wrapSelectorWheel = true
 
         buttonConferma.setOnClickListener {
             val acc = Intent (this, MainActivity::class.java)

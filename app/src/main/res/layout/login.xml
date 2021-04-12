@@ -23,8 +23,10 @@
 
     <EditText
         android:id="@+id/inputEmail"
-        android:layout_width="347dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_mail"
         android:drawablePadding="10dp"
@@ -46,8 +48,10 @@
 
     <EditText
         android:id="@+id/inputPassword"
-        android:layout_width="347dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_security"
         android:drawablePadding="10dp"
@@ -69,8 +73,10 @@
 
     <android.widget.Button
         android:id="@+id/buttonAccesso"
-        android:layout_width="347dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
         android:background="@drawable/two_state_button"
         android:text="@string/buttonAccesso"
         android:textColor="@color/primaryText"
@@ -95,8 +101,10 @@
 
     <android.widget.Button
         android:id="@+id/button"
-        android:layout_width="347dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
         android:background="@drawable/two_state_button"
         android:text="@string/buttonRegistrazione"
         android:textColor="@color/primaryText"

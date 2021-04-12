@@ -22,5 +22,7 @@
 
     <string name="query_location" translatable="false">https://www.google.com/maps/search/?api=1&amp;query=farmacie</string>
     <string name="datiPersonali" translatable="false">Dati Personali</string>
+    <string name="textPeso" translatable="false">Peso</string>
+    <string name="textAltezza" translatable="false">Altezza</string>
 
 </resources>
