@@ -13,6 +13,7 @@
     <string name="buttonDispensa" translatable="false">Dispensa</string>
     <string name="buttonMappa" translatable="false">Mappa</string>
     <string name="buttonDatiPersonali" translatable="false">Dati personali</string>
+    <string name="buttonValoriNutrizionali" translatable="false">valori nutrizionali</string>
 
     <string name="login" translatable="false">Login</string>
     <string name="buttonAccesso" translatable="false">Accedi</string>
@@ -24,5 +25,9 @@
     <string name="datiPersonali" translatable="false">Dati Personali</string>
     <string name="textPeso" translatable="false">Peso</string>
     <string name="textAltezza" translatable="false">Altezza</string>
+    <string name="idProteine" translatable="false">Proteine</string>
+    <string name="idGrassi" translatable="false">Grassi</string>
+    <string name="idCarboidrati" translatable="false">Carboidrati</string>
+
 
 </resources>

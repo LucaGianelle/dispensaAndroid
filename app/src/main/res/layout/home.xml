@@ -9,10 +9,8 @@
 
     <android.widget.Button
         android:id="@+id/buttonDispensa"
-        android:layout_width="0dp"
+        android:layout_width="347dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:background="@drawable/two_state_button"
         android:text="@string/buttonDispensa"
         android:textColor="@color/primaryText"
@@ -20,37 +18,47 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeProfile"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/homeProfile" />
 
     <android.widget.Button
         android:id="@+id/buttonMappa"
-        android:layout_width="0dp"
+        android:layout_width="347dp"
         android:layout_height="wrap_content"
         android:background="@drawable/two_state_button"
         android:onClick="callmap"
         android:text="@string/buttonMappa"
         android:textColor="@color/primaryText"
         app:layout_constraintBottom_toTopOf="@+id/buttonDatiPersonali"
-        app:layout_constraintEnd_toEndOf="@+id/buttonDispensa"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/buttonDispensa"
-        app:layout_constraintTop_toBottomOf="@+id/buttonDispensa"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDispensa" />
 
     <android.widget.Button
         android:id="@+id/buttonDatiPersonali"
-        android:layout_width="0dp"
+        android:layout_width="347dp"
         android:layout_height="wrap_content"
         android:background="@drawable/two_state_button"
         android:text="@string/buttonDatiPersonali"
         android:textColor="@color/primaryText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/buttonMappa"
+        app:layout_constraintBottom_toTopOf="@+id/buttonValoriNutrizionali"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/buttonMappa"
-        app:layout_constraintTop_toBottomOf="@+id/buttonMappa"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMappa" />
+
+    <android.widget.Button
+        android:id="@+id/buttonValoriNutrizionali"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/two_state_button"
+        android:text="@string/buttonValoriNutrizionali"
+        android:textColor="@color/primaryText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDatiPersonali" />
 
     <TextView
         android:id="@+id/homeProfile"
@@ -65,6 +73,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,8 +21,9 @@
         android:textSize="36sp"
         android:textStyle="bold" />
 
+
     <EditText
-        android:id="@+id/inputPassword"
+        android:id="@+id/inputNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -30,12 +31,12 @@
         android:layout_marginLeft="26dp"
         android:layout_marginRight="26dp"
         android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_security"
+        android:drawableLeft="@drawable/ic_account"
         android:drawablePadding="10dp"
         android:drawableTint="@color/primaryText"
         android:ems="10"
-        android:hint="@string/InputPassword"
-        android:inputType="textPassword"
+        android:hint="@string/inputName"
+        android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -65,8 +66,9 @@
         android:textColor="@color/primaryText"
         android:textColorHint="@color/primaryText" />
 
+
     <EditText
-        android:id="@+id/inputNome"
+        android:id="@+id/inputPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -74,12 +76,12 @@
         android:layout_marginLeft="26dp"
         android:layout_marginRight="26dp"
         android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_account"
+        android:drawableLeft="@drawable/ic_security"
         android:drawablePadding="10dp"
         android:drawableTint="@color/primaryText"
         android:ems="10"
-        android:hint="@string/inputName"
-        android:inputType="textPersonName"
+        android:hint="@string/InputPassword"
+        android:inputType="textPassword"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -88,60 +90,67 @@
         android:textColorHint="@color/primaryText" />
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="275dp"
-        android:layout_marginBottom="30dp">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="36dp">
 
         <TextView
             android:id="@+id/viewPeso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="102dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/textPeso"
             android:textColor="@color/primaryText"
             android:textColorHint="@color/primaryText"
             android:textSize="18sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/viewAltezza"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <NumberPicker
-            android:id="@+id/pickerPeso"
-            android:layout_width="wrap_content"
-            android:layout_height="106dp"
-            android:layout_marginBottom="84dp"
-            android:foregroundTint="@color/primaryText"
-            android:theme="@style/AppTheme.Picker"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/pickerAltezza"
-            app:layout_constraintHorizontal_bias="0.466"
-            app:layout_constraintStart_toStartOf="parent" />
+            />
 
         <TextView
             android:id="@+id/viewAltezza"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="89dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/textAltezza"
             android:textColor="@color/primaryText"
             android:textColorHint="@color/primaryText"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/pickerAltezza"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="36dp">
+
+        <NumberPicker
+            android:id="@+id/pickerPeso"
+            android:layout_width="wrap_content"
+            android:layout_height="106dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="36dp"
+            android:gravity="center"
+            android:foregroundTint="@color/primaryText"
+            android:theme="@style/AppTheme.Picker" />
+
+
 
         <NumberPicker
             android:id="@+id/pickerAltezza"
             android:layout_width="wrap_content"
             android:layout_height="106dp"
-            android:layout_marginEnd="86dp"
-            android:layout_marginBottom="84dp"
-            android:theme="@style/AppTheme.Picker"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_weight="1"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="36dp"
+            android:gravity="center"
+            android:theme="@style/AppTheme.Picker" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 
     <android.widget.Button
@@ -155,6 +164,7 @@
         android:text="@string/buttonConferma"
         android:textColor="@color/primaryText"
         android:textColorHint="@color/primaryText" />
+
 
 
 

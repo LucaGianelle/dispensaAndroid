@@ -13,7 +13,6 @@ import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.home.*
-import java.util.*
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +23,11 @@ class HomeActivity : AppCompatActivity() {
         buttonDatiPersonali.setOnClickListener {
             val data = Intent (this, PersonaldataActivity::class.java)
             startActivity(data)
+        }
+
+        buttonValoriNutrizionali.setOnClickListener {
+            val valNut = Intent (this, NutritionalValuesActivity::class.java)
+            startActivity(valNut)
         }
 
         /*buttonMappa.setOnClickListener {

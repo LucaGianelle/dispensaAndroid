@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sfondo"
+    tools:context=".MainActivity">
+
+    <ProgressBar
+        android:id="@+id/progressBarProteine"
+        style="@style/CircularDeterminateProgressBar"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarGrassi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBarCarboidrati"
+        tools:progress="60" />
+
+    <ProgressBar
+        android:id="@+id/progressBarCarboidrati"
+        style="@style/CircularDeterminateProgressBar"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarProteine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:progress="60" />
+
+    <ProgressBar
+        android:id="@+id/progressBarGrassi"
+        style="@style/CircularDeterminateProgressBar"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBarProteine"
+        tools:progress="60" />
+
+    <TextView
+        android:id="@+id/viewGrassi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/idGrassi"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/progressBarGrassi"
+        app:layout_constraintStart_toStartOf="@+id/viewCarboidrati"
+        app:layout_constraintTop_toTopOf="@+id/progressBarGrassi" />
+
+    <TextView
+        android:id="@+id/viewCarboidrati"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/idCarboidrati"
+        android:textColor="@color/primaryText"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/progressBarProteine"
+        app:layout_constraintTop_toTopOf="@+id/progressBarProteine" />
+
+    <TextView
+        android:id="@+id/viewProteine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/idProteine"
+        android:textColor="@color/primaryText"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/progressBarCarboidrati"
+        app:layout_constraintStart_toStartOf="@+id/viewCarboidrati"
+        app:layout_constraintTop_toTopOf="@+id/progressBarCarboidrati" />
+
+    <TextView
+        android:id="@+id/textViewProgressCarboidrati"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBarProteine"
+        app:layout_constraintEnd_toEndOf="@+id/progressBarProteine"
+        app:layout_constraintStart_toStartOf="@+id/progressBarProteine"
+        app:layout_constraintTop_toTopOf="@+id/progressBarProteine"
+        tools:text="60%" />
+
+    <TextView
+        android:id="@+id/textViewProgressProteine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBarCarboidrati"
+        app:layout_constraintEnd_toEndOf="@+id/progressBarCarboidrati"
+        app:layout_constraintStart_toStartOf="@+id/progressBarCarboidrati"
+        app:layout_constraintTop_toTopOf="@+id/progressBarCarboidrati"
+        tools:text="60%" />
+
+    <TextView
+        android:id="@+id/textViewProgressGrassi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBarGrassi"
+        app:layout_constraintEnd_toEndOf="@+id/progressBarGrassi"
+        app:layout_constraintStart_toStartOf="@+id/progressBarGrassi"
+        app:layout_constraintTop_toTopOf="@+id/progressBarGrassi"
+        tools:text="60%" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
