@@ -26,6 +26,8 @@
         <activity android:name=".HomeActivity"/>
         <activity android:name=".RegisterActivity"/>
         <activity android:name=".PersonaldataActivity"/>
+        <activity android:name=".MapActivity"/>
+        <activity android:name=".NutritionalValuesActivity"/>
     </application>
 
 </manifest>
