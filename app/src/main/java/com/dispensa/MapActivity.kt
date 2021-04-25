@@ -1,10 +1,7 @@
 package com.dispensa
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -23,7 +20,7 @@ class  MapActivity : AppCompatActivity() {
 
         //carichiamo il fragment della mappa
 
-        mapFragment = supportFragmentManager.findFragmentById(R.id.map_frame) as SupportMapFragment
+        mapFragment = supportFragmentManager.findFragmentById(R.id.framemap) as SupportMapFragment
         mapFragment.getMapAsync(OnMapReadyCallback {
             googleMap = it
 
