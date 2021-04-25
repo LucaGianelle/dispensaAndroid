@@ -8,6 +8,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -19,13 +20,15 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
 
+        val datib = findViewById<Button>(R.id.buttonDatiPersonali)
+        val valnb = findViewById<Button>(R.id.buttonValoriNutrizionali)
 
-        buttonDatiPersonali.setOnClickListener {
+        datib.setOnClickListener {
             val data = Intent (this, PersonaldataActivity::class.java)
             startActivity(data)
         }
 
-        buttonValoriNutrizionali.setOnClickListener {
+        valnb.setOnClickListener {
             val valNut = Intent (this, NutritionalValuesActivity::class.java)
             startActivity(valNut)
         }
