@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.login.*
 import kotlinx.android.synthetic.main.register.*
-import kotlinx.android.synthetic.main.login.inputEmail as inputEmail1
-import kotlinx.android.synthetic.main.login.inputPassword as inputPassword1
+import kotlinx.android.synthetic.main.register.inputEmail as inputEmail1
+import kotlinx.android.synthetic.main.register.inputPassword as inputPassword1
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -30,51 +30,51 @@ class RegisterActivity : AppCompatActivity() {
         pickerAltezza.setMaxValue(210);
         pickerAltezza.wrapSelectorWheel = true
 
-        buttonConferma.setOnClickListener {
-            signUpUser()
-            /*val acc = Intent (this, MainActivity::class.java)
-            startActivity(acc)*/
-        }
+buttonConferma.setOnClickListener {
+    signUpUser()
+    val acc = Intent (this, MainActivity::class.java)
+    startActivity(acc)
+}
 
+}
+
+private fun signUpUser () {
+
+if (inputNome.text.toString().isEmpty()) {
+    inputNome.error = "Inserire un nome"
+    inputNome.requestFocus()
+    return
+}
+
+if (inputEmail1.text.toString().isEmpty()) {
+    inputEmail1.error = "Inserire un indirizzo e-mail"
+    inputEmail1.requestFocus()
+    return
+}
+
+if(!Patterns.EMAIL_ADDRESS.matcher(inputEmail1.text.toString()).matches()) {
+    inputEmail1.error = "Inserire un indirizzo e-mail valido"
+    inputEmail1.requestFocus()
+    return
+}
+
+
+if (inputPassword1.text.toString().isEmpty()) {
+    inputPassword1.error = "Inserire una password"
+    inputPassword1.requestFocus()
+    return
+}
+
+auth.createUserWithEmailAndPassword(inputEmail1.text.toString(), inputPassword1.text.toString())
+    .addOnCompleteListener(this) { task ->
+        if (task.isSuccessful) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        } else {
+            Toast.makeText(baseContext, "Registrazione fallita. Riprova più tardi",
+                Toast.LENGTH_SHORT).show()
+        }
     }
-
-    private fun signUpUser () {
-
-        if (inputNome.text.toString().isEmpty()) {
-            inputNome.error = "Inserire un nome"
-            inputNome.requestFocus()
-            return
-        }
-
-        if (inputEmail.text.toString().isEmpty()) {
-            inputEmail.error = "Inserire un indirizzo e-mail"
-            inputEmail.requestFocus()
-            return
-        }
-
-        if(!Patterns.EMAIL_ADDRESS.matcher(inputEmail.text.toString()).matches()) {
-            inputEmail.error = "Inserire un indirizzo e-mail valido"
-            inputEmail.requestFocus()
-            return
-        }
-
-
-        if (inputPassword.text.toString().isEmpty()) {
-            inputPassword.error = "Inserire una password"
-            inputPassword.requestFocus()
-            return
-        }
-
-        auth.createUserWithEmailAndPassword(inputEmail.text.toString(), inputPassword.text.toString())
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
-                } else {
-                    Toast.makeText(baseContext, "Registrazione fallita. Riprova più tardi",
-                        Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
+}
 
 }

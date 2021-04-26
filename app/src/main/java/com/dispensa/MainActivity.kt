@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         //vediamo se funziona --------------------------
         buttonStart.setOnClickListener{
-        val intent = Intent(this, HomeActivity::class.java)
+        val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
         }
         //-------------------------------------------------------
