@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RealtimeDatabase.RealTimeActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/et_name"
+        android:hint="name"
+        android:singleLine="true"
+        android:layout_marginHorizontal="30sp"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/et_email"
+        android:singleLine="true"
+        android:layout_marginHorizontal="30sp"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/btm_send"
+        android:textAllCaps="false"
+        android:layout_marginHorizontal="50sp"
+        android:layout_marginTop="20dp"
+        android:text="Add To Database"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
