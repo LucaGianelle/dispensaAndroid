@@ -24,11 +24,19 @@
         android:layout_height="wrap_content"/>
     <Button
         android:layout_width="match_parent"
-        android:id="@+id/btm_send"
+        android:id="@+id/btn_send"
         android:textAllCaps="false"
         android:layout_marginHorizontal="50sp"
         android:layout_marginTop="20dp"
         android:text="Add To Database"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/btn_getdata"
+        android:textAllCaps="false"
+        android:layout_marginHorizontal="50sp"
+        android:layout_marginTop="20dp"
+        android:text="Get data"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>
