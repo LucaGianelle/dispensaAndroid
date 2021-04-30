@@ -15,8 +15,8 @@ class RealTimeActivity : AppCompatActivity() {
     private lateinit var database:FirebaseDatabase
     private lateinit var reference: DatabaseReference
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_real_time)
 
         database= FirebaseDatabase.getInstance()

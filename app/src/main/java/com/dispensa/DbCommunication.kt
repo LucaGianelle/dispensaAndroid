@@ -12,4 +12,5 @@ class DbCommunication {
     fun getDbReference(){
         database = Firebase.database.reference
     }
+
 }

@@ -30,15 +30,17 @@ class RegisterActivity : AppCompatActivity() {
         pickerAltezza.setMaxValue(210);
         pickerAltezza.wrapSelectorWheel = true
 
+
+
 buttonConferma.setOnClickListener {
-    signUpUser()
+    //signUpUser()
     val acc = Intent (this, MainActivity::class.java)
     startActivity(acc)
 }
 
 }
 
-private fun signUpUser () {
+/*private fun signUpUser () {
 
 if (inputNome.text.toString().isEmpty()) {
     inputNome.error = "Inserire un nome"
@@ -75,6 +77,6 @@ auth.createUserWithEmailAndPassword(inputEmail1.text.toString(), inputPassword1.
                 Toast.LENGTH_SHORT).show()
         }
     }
-}
+}*/
 
 }
