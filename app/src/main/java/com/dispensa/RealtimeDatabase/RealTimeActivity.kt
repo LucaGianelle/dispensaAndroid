@@ -2,8 +2,6 @@ package com.dispensa.RealtimeDatabase
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.dispensa.R
 import com.google.firebase.database.DatabaseReference
@@ -22,20 +20,20 @@ class RealTimeActivity : AppCompatActivity() {
         database= FirebaseDatabase.getInstance()
         reference=database.getReference("User")
         btn_send.setOnClickListener{
-            sendData()
+            //sendData()
         }
         btn_getdata.setOnClickListener {
-            startActivity(Intent(applicationContext,Getdata::class.java))
+            startActivity(Intent(applicationContext, Getdata::class.java))
         }
     }
 
-    private fun sendData(){
+    /*private fun sendData(){
         var name = et_name.text.toString().trim()
         var email = et_email.text.toString().trim()
 
         if(name.isNotEmpty() && email.isNotEmpty()){
 
-            var model=DatabaseModel(name, email)
+            var model= DatabaseModel(name, email)
             var id=reference.push().key
 
             //Qui si inviano i dati a firebase
@@ -49,5 +47,5 @@ class RealTimeActivity : AppCompatActivity() {
         }else{
             Toast.makeText(applicationContext, "All field required",Toast.LENGTH_LONG).show()
         }
-    }
+    }*/
 }

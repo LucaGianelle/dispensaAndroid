@@ -3,6 +3,7 @@ package com.dispensa
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import com.dispensa.RealtimeDatabase.RealTimeActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         //vediamo se funziona --------------------------
         buttonStart.setOnClickListener{
-        val intent = Intent(this, RealTimeActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         }
         //-------------------------------------------------------

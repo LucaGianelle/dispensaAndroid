@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.dispensa.R
+import com.dispensa.DatabaseModel
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_getdata.*
 
@@ -34,7 +35,7 @@ class Getdata : AppCompatActivity() {
                     list.add(model as DatabaseModel)
                 }
                 if(list.size>0){
-                    val adapter=DataAdapter(list)
+                    val adapter= DataAdapter(list)
                     recyclereview.adapter = adapter
                 }
             }
