@@ -1,10 +1,13 @@
 package com.dispensa
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.register.*
@@ -15,12 +18,12 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
 
-    //private lateinit var auth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register)
-        //auth = FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
 
 
         pickerPeso.setMinValue(40);
@@ -58,7 +61,10 @@ class RegisterActivity : AppCompatActivity() {
         reference=database.getReference("User")
         buttonConf.setOnClickListener{
             Log.d("TAG", "prova1")
-            sendData(valAlt, valPeso)
+            //sendData(valAlt, valPeso)
+            signUpUser(valAlt, valPeso)
+           // val acc = Intent (this, HomeActivity::class.java)
+            //startActivity(acc)
            //startActivity(Intent(applicationContext, LoginActivity::class.java))
         }
 
@@ -67,7 +73,7 @@ class RegisterActivity : AppCompatActivity() {
 
 /*buttonConferma.setOnClickListener {
     //signUpUser()
-    val acc = Intent (this, MainActivity::class.java)
+    val acc = Intent (this, HomeActivity::class.java)
     startActivity(acc)
 }*/
 
@@ -83,7 +89,7 @@ class RegisterActivity : AppCompatActivity() {
 
         if(name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()){
 
-            var model= DatabaseModel(name, email , password, peso, altezza)
+            var model= DatabaseModel(name, email , password, altezza, peso)
             var id=reference.push().key
 
             //Qui si inviano i dati a firebase
@@ -99,7 +105,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-/*private fun signUpUser () {
+private fun signUpUser(valAlt: String, valPeso: String) {
 
 if (inputNome.text.toString().isEmpty()) {
     inputNome.error = "Inserire un nome"
@@ -107,35 +113,36 @@ if (inputNome.text.toString().isEmpty()) {
     return
 }
 
-if (inputEmail1.text.toString().isEmpty()) {
-    inputEmail1.error = "Inserire un indirizzo e-mail"
-    inputEmail1.requestFocus()
+if (inputEmail.text.toString().isEmpty()) {
+    inputEmail.error = "Inserire un indirizzo e-mail"
+    inputEmail.requestFocus()
     return
 }
 
-if(!Patterns.EMAIL_ADDRESS.matcher(inputEmail1.text.toString()).matches()) {
-    inputEmail1.error = "Inserire un indirizzo e-mail valido"
-    inputEmail1.requestFocus()
+if(!Patterns.EMAIL_ADDRESS.matcher(inputEmail.text.toString()).matches()) {
+    inputEmail.error = "Inserire un indirizzo e-mail valido"
+    inputEmail.requestFocus()
     return
 }
 
 
-if (inputPassword1.text.toString().isEmpty()) {
-    inputPassword1.error = "Inserire una password"
-    inputPassword1.requestFocus()
+if (inputPassword.text.toString().isEmpty()) {
+    inputPassword.error = "Inserire una password"
+    inputPassword.requestFocus()
     return
 }
 
-auth.createUserWithEmailAndPassword(inputEmail1.text.toString(), inputPassword1.text.toString())
+auth.createUserWithEmailAndPassword(inputEmail.text.toString(), inputPassword.text.toString())
     .addOnCompleteListener(this) { task ->
         if (task.isSuccessful) {
-            startActivity(Intent(this, MainActivity::class.java))
+            sendData(valAlt, valPeso)
+            startActivity(Intent(this, HomeActivity::class.java))
             finish()
         } else {
             Toast.makeText(baseContext, "Registrazione fallita. Riprova più tardi",
                 Toast.LENGTH_SHORT).show()
         }
     }
-}*/
+}
 
 }
