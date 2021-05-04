@@ -23,7 +23,7 @@ class RealTimeActivity : AppCompatActivity() {
             //sendData()
         }
         btn_getdata.setOnClickListener {
-            startActivity(Intent(applicationContext, Getdata::class.java))
+            //startActivity(Intent(applicationContext, Getdata::class.java))
         }
     }
 
