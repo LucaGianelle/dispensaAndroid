@@ -83,8 +83,8 @@ class RegisterActivity : AppCompatActivity() {
         var name = inputNome.text.toString().trim()
         var email = inputEmail.text.toString().trim()
         var password = inputPassword.text.toString().trim()
-        var altezza = valAlt
-        var peso =  valPeso
+        var altezza = pickerAltezza.value.toString()
+        var peso =  pickerPeso.value.toString()
 
         Log.d("TAG", "prova2")
 
@@ -134,7 +134,6 @@ if (inputPassword.text.toString().isEmpty()) {
     return
 }
     var lunghezzaPassword : Int = inputPassword.text.toString().length
-    Log.e("TAG", "$lunghezzaPassword")
     if (lunghezzaPassword <= 5 ) {
         inputPassword.error = "Inserire una password di almeno 6 caratteri"
         inputPassword.requestFocus()
@@ -142,13 +141,13 @@ if (inputPassword.text.toString().isEmpty()) {
     }
 
 
-    if (pickerAltezza == null) {
+    if (pickerAltezza.value.toString().isEmpty()) {
         Toast.makeText(baseContext, "Inserire l'altezza", Toast.LENGTH_SHORT).show()
         pickerAltezza.requestFocus()
         return
     }
 
-    if (pickerPeso == null) {
+    if (pickerPeso.value.toString().isEmpty()) {
         Toast.makeText(baseContext, "Inserire il peso", Toast.LENGTH_SHORT).show()
         pickerPeso.requestFocus()
         return
