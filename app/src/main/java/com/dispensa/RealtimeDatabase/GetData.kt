@@ -17,31 +17,29 @@ class Getdata : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_getdata)
 
-        database= FirebaseDatabase.getInstance()
-        reference=database.getReference("User")
+        database = FirebaseDatabase.getInstance()
+        reference = database.getReference("User")
         getData()
     }
 
-    private fun getData(){
-        reference.addValueEventListener(object :ValueEventListener{
+    private fun getData() {
+        reference.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
                 Log.e("cancel", error.toString())
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                var list=ArrayList<DatabaseModel>()
-                for (data in snapshot.children){
-                    val model=data.getValue(DatabaseModel::class.java)
+                var list = ArrayList<DatabaseModel>()
+                for (data in snapshot.children) {
+                    val model = data.getValue(DatabaseModel::class.java)
                     list.add(model as DatabaseModel)
                 }
-                if(list.size>0){
-                    val adapter= DataAdapter(list)
+                if (list.size > 0) {
+                    val adapter = DataAdapter(list)
                     recyclereview.adapter = adapter
                 }
             }
 
         })
-
-
     }
 }
