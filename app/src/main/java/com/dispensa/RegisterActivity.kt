@@ -134,7 +134,7 @@ if (inputPassword.text.toString().isEmpty()) {
 
     var lunghezzaPassword : Int = inputPassword.text.toString().length
     Log.e("TAG", "$lunghezzaPassword")
-    if (lunghezzaPassword < 5 ) {
+    if (lunghezzaPassword <= 5 ) {
         inputPassword.error = "Inserire una password di almeno 5 caratteri"
         inputPassword.requestFocus()
         return
