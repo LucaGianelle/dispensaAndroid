@@ -7,6 +7,7 @@ import android.util.Patterns
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isEmpty
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -107,6 +108,7 @@ class RegisterActivity : AppCompatActivity() {
 
 private fun signUpUser(valAlt: String, valPeso: String) {
 
+
 if (inputNome.text.toString().isEmpty()) {
     inputNome.error = "Inserire un nome"
     inputNome.requestFocus()
@@ -131,7 +133,6 @@ if (inputPassword.text.toString().isEmpty()) {
     inputPassword.requestFocus()
     return
 }
-
     var lunghezzaPassword : Int = inputPassword.text.toString().length
     Log.e("TAG", "$lunghezzaPassword")
     if (lunghezzaPassword <= 5 ) {
@@ -140,7 +141,20 @@ if (inputPassword.text.toString().isEmpty()) {
         return
     }
 
-auth.createUserWithEmailAndPassword(inputEmail.text.toString(), inputPassword.text.toString())
+
+    if (pickerAltezza.isEmpty()) {
+        Toast.makeText(baseContext, "Inserire l'altezza", Toast.LENGTH_SHORT).show()
+        pickerAltezza.requestFocus()
+        return
+    }
+
+    if (pickerPeso.isEmpty()) {
+        Toast.makeText(baseContext, "Inserire il peso", Toast.LENGTH_SHORT).show()
+        pickerPeso.requestFocus()
+        return
+    }
+
+    auth.createUserWithEmailAndPassword(inputEmail.text.toString(), inputPassword.text.toString())
     .addOnCompleteListener(this) { task ->
         if (task.isSuccessful) {
             sendData(valAlt, valPeso)
