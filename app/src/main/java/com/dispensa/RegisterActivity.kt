@@ -142,13 +142,13 @@ if (inputPassword.text.toString().isEmpty()) {
     }
 
 
-    if (pickerAltezza.isEmpty()) {
+    if (pickerAltezza == null) {
         Toast.makeText(baseContext, "Inserire l'altezza", Toast.LENGTH_SHORT).show()
         pickerAltezza.requestFocus()
         return
     }
 
-    if (pickerPeso.isEmpty()) {
+    if (pickerPeso == null) {
         Toast.makeText(baseContext, "Inserire il peso", Toast.LENGTH_SHORT).show()
         pickerPeso.requestFocus()
         return
