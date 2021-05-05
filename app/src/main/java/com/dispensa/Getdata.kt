@@ -1,15 +1,12 @@
-package com.dispensa.RealtimeDatabase
-
+package com.dispensa
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.dispensa.R
-import com.dispensa.DatabaseModel
+import com.dispensa.Aliment
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_getdata.*
-
-class Getdata : AppCompatActivity() {
-
+class Getdata: AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
 
@@ -18,7 +15,7 @@ class Getdata : AppCompatActivity() {
         setContentView(R.layout.activity_getdata)
 
         database = FirebaseDatabase.getInstance()
-        reference = database.getReference("User")
+        reference = database.getReference("Aliment")
         getData()
     }
 
@@ -29,10 +26,10 @@ class Getdata : AppCompatActivity() {
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                var list = ArrayList<DatabaseModel>()
+                var list = ArrayList<Aliment>()
                 for (data in snapshot.children) {
-                    val model = data.getValue(DatabaseModel::class.java)
-                    list.add(model as DatabaseModel)
+                    val model = data.getValue(Aliment::class.java)
+                    list.add(model as Aliment)
                 }
                 if (list.size > 0) {
                     val adapter = DataAdapter(list)
@@ -43,3 +40,8 @@ class Getdata : AppCompatActivity() {
         })
     }
 }
+
+
+
+
+

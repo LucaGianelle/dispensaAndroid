@@ -7,7 +7,6 @@ import android.util.Patterns
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isEmpty
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -54,29 +53,15 @@ class RegisterActivity : AppCompatActivity() {
         }
 
 
-
-
-
         val buttonConf = findViewById<Button>(R.id.buttonConferma)
         database= FirebaseDatabase.getInstance()
         reference=database.getReference("User")
         buttonConf.setOnClickListener{
             Log.d("TAG", "prova1")
-            //sendData(valAlt, valPeso)
             signUpUser(valAlt, valPeso)
-           // val acc = Intent (this, HomeActivity::class.java)
-            //startActivity(acc)
-           //startActivity(Intent(applicationContext, LoginActivity::class.java))
         }
 
 
-
-
-/*buttonConferma.setOnClickListener {
-    //signUpUser()
-    val acc = Intent (this, HomeActivity::class.java)
-    startActivity(acc)
-}*/
 
 }
     private fun sendData(valAlt: String, valPeso: String){
@@ -90,7 +75,7 @@ class RegisterActivity : AppCompatActivity() {
 
         if(name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()){
 
-            var model= DatabaseModel(name, email , password, altezza, peso)
+            var model= User(name, email , password, altezza, peso)
             var id=reference.push().key
 
             //Qui si inviano i dati a firebase
