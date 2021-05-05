@@ -6,6 +6,7 @@ import com.dispensa.R
 import com.dispensa.Aliment
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_getdata.*
+
 class Getdata: AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
