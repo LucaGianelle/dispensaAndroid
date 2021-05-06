@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.register.*
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private var check: Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,11 +23,6 @@ class LoginActivity : AppCompatActivity() {
 
         buttonAccesso.setOnClickListener {
             doLogin()
-
-            if(check == true){
-                val acc = Intent (this, HomeActivity::class.java)
-                startActivity(acc)
-            }
         }
         button.setOnClickListener {
             val reg = Intent (this, RegisterActivity::class.java)
@@ -63,9 +58,10 @@ class LoginActivity : AppCompatActivity() {
 
                     if (prova) {
                         val user = auth.currentUser
-                        updateUI(user)
+                        //updateUI(user)
 
-                        check = true
+                        val acc = Intent (this, HomeActivity::class.java)
+                        startActivity(acc)
 
 
                         Log.e("TAG", "ok")
@@ -73,9 +69,9 @@ class LoginActivity : AppCompatActivity() {
                         //errore, fa loggare con profilo non loggato se se è entrati prima, bloccare undo nella home
                         Log.e("TAG", "ok2")
 
-                        check = false
 
-                       updateUI(null)
+
+                       //updateUI(null)
                     }
 
 
@@ -83,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    public override fun onStart() {
+    /*public override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
         updateUI(currentUser)
@@ -109,7 +105,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-    }
+    }*/
 
 
 }
