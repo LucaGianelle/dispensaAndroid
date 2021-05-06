@@ -1,13 +1,13 @@
 package com.dispensa
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import android.util.Log
-import com.dispensa.R
-import com.dispensa.Aliment
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_getdata.*
 
-class Getdata: AppCompatActivity() {
+class PrendiDati: AppCompatActivity() {
+
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
 
@@ -25,9 +25,8 @@ class Getdata: AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
                 Log.e("cancel", error.toString())
             }
-
             override fun onDataChange(snapshot: DataSnapshot) {
-                var list = ArrayList<Aliment>()
+                val list = ArrayList<Aliment>()
                 for (data in snapshot.children) {
                     val model = data.getValue(Aliment::class.java)
                     list.add(model as Aliment)
@@ -37,12 +36,6 @@ class Getdata: AppCompatActivity() {
                     recyclereview.adapter = adapter
                 }
             }
-
         })
     }
 }
-
-
-
-
-

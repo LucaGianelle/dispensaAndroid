@@ -29,7 +29,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         valnb.setOnClickListener {
-            val valNut = Intent (this, NutritionalValuesActivity::class.java)
+            val valNut = Intent (this, PrendiDati::class.java)
             startActivity(valNut)
         }
 
