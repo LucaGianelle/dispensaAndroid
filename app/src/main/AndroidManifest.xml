@@ -32,7 +32,6 @@
         <activity android:name=".MapActivity" />
         <activity android:name=".NutritionalValuesActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".Getdata" />
         <activity android:name=".RealtimeDatabase.RealTimeActivity" />
     </application>
 
