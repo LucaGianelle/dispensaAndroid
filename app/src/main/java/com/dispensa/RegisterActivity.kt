@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.register.*
 
 
@@ -141,12 +142,20 @@ if (inputPassword.text.toString().isEmpty()) {
     auth.createUserWithEmailAndPassword(inputEmail.text.toString(), inputPassword.text.toString())
     .addOnCompleteListener(this) { task ->
         if (task.isSuccessful) {
-            sendData(valAlt, valPeso)
-            startActivity(Intent(this, HomeActivity::class.java))
-            finish()
+            val user = auth.currentUser
+            user!!.sendEmailVerification()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        sendData(valAlt, valPeso)
+                        startActivity(Intent(this, HomeActivity::class.java))
+                        finish()
+                    }
+                }
         } else {
-            Toast.makeText(baseContext, "Registrazione fallita. Riprova più tardi",
-                Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                baseContext, "Registrazione fallita. Riprova più tardi",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }
