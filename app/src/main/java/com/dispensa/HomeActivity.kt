@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -39,6 +40,8 @@ class HomeActivity : AppCompatActivity() {
         }
 
         btnLogout.setOnClickListener {
+
+            Toast.makeText(this,"Logout...",Toast.LENGTH_LONG).show()
             signOut()
             val back = Intent(this, LoginActivity::class.java)
             startActivity(back)
