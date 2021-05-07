@@ -13,9 +13,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.home.*
 
 class HomeActivity : AppCompatActivity() {
+
+    var myAuth = FirebaseAuth.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
@@ -31,6 +36,12 @@ class HomeActivity : AppCompatActivity() {
         valnb.setOnClickListener {
             val valNut = Intent (this, PrendiDati::class.java)
             startActivity(valNut)
+        }
+
+        btnLogout.setOnClickListener {
+            signOut()
+            val back = Intent(this, LoginActivity::class.java)
+            startActivity(back)
         }
 
         /*buttonMappa.setOnClickListener {
@@ -53,6 +64,10 @@ class HomeActivity : AppCompatActivity() {
                     Uri.parse("google.navigation:q=an+address+city"))
             startActivity(intent)*/
         }*/
+    }
+
+    private fun signOut() {
+        myAuth.signOut()
     }
 
     fun openMaps (activity: Activity, context: Context) {
