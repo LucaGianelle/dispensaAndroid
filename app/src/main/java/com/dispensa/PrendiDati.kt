@@ -8,6 +8,8 @@ import kotlinx.android.synthetic.main.activity_getdata.*
 
 class PrendiDati: AppCompatActivity() {
 
+    //singleton di java, cambiarlo in oggetto
+
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
 

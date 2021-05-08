@@ -47,6 +47,10 @@ class HomeActivity : AppCompatActivity() {
             startActivity(back)
         }
 
+        buttonMappa.setOnClickListener{
+            this.openMaps(this,this.applicationContext)
+        }
+
         /*buttonMappa.setOnClickListener {
 
             /*val latitude: Double = location.getLatitude()
