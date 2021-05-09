@@ -10,5 +10,5 @@ fun Context.showToast(text: String, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this,text,duration).show()
 }
 
-/*fun DataSnapshot.asUser(): User? =
+/* fun DataSnapshot.asUser(): User? =
         getValue(User::class.java)?.copy(uid = key)*/

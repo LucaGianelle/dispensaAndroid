@@ -1,10 +1,13 @@
 package com.dispensa
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.dispensa.utils.ValueListenerAdapter
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.personaldata.*
 
 class PersonaldataActivity : AppCompatActivity() {
@@ -14,31 +17,29 @@ class PersonaldataActivity : AppCompatActivity() {
     private var weightValue: Int = 0
     private var heightValue: Int = 0*/
 
-
-    private val TAG = "Profileactivity"
-    private lateinit var mUser: User
-    private lateinit var mAuth: FirebaseAuth
-    private lateinit var mDatabase: DatabaseReference
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.personaldata)
 
-        mAuth = FirebaseAuth.getInstance()
-        mDatabase = FirebaseDatabase.getInstance().reference
+        var user_id:String = auth.currentUser.uid
 
+        firestore.collection("User").document(user_id).get().addOnCompleteListener { task ->
+            if (task.isSuccessful){
+                if(task.result.exists()){
+                    var name: String? = task.getResult().getString("name")
+                    var mail:String? = task.getResult().getString("email")
 
-        fun currentUserReference(): DatabaseReference =
-                mDatabase.child("user").child(mAuth.currentUser!!.uid)
-
-        currentUserReference().addListenerForSingleValueEvent(
-                ValueListenerAdapter{
-                    //mUser = it.asUser()!!
-                    nickname.setText(mUser.name)
+                    nickname.text = name
+                    email.text = mail
 
                 }
-        )
+            }
+        }
+
     }
 
    /* fun readProfile(nome: String, mail: String, peso: Int, altezza: Int){
