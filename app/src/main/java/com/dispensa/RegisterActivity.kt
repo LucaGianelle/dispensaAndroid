@@ -159,5 +159,4 @@ if (inputPassword.text.toString().isEmpty()) {
         }
     }
 }
-
 }

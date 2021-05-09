@@ -1,4 +1,4 @@
-package com.dispensa.utils
+package com.dispensa
 
 import android.content.Context
 import android.widget.Toast
@@ -10,5 +10,5 @@ fun Context.showToast(text: String, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this,text,duration).show()
 }
 
-fun DataSnapshot.asUser(): User? =
-        getValue(User::class.java)?.copy(uid = key)
+/*fun DataSnapshot.asUser(): User? =
+        getValue(User::class.java)?.copy(uid = key)*/

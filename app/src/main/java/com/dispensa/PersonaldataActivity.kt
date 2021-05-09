@@ -28,12 +28,14 @@ class PersonaldataActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         mDatabase = FirebaseDatabase.getInstance().reference
 
+
         fun currentUserReference(): DatabaseReference =
                 mDatabase.child("user").child(mAuth.currentUser!!.uid)
 
         currentUserReference().addListenerForSingleValueEvent(
                 ValueListenerAdapter{
-
+                    //mUser = it.asUser()!!
+                    nickname.setText(mUser.name)
 
                 }
         )
