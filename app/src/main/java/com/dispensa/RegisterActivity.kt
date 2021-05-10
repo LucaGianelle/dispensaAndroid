@@ -66,18 +66,18 @@ class RegisterActivity : AppCompatActivity() {
 
 }
     private fun sendData(valAlt: String, valPeso: String){
-        var name = inputNome.text.toString().trim()
-        var email = inputEmail.text.toString().trim()
-        var password = inputPassword.text.toString().trim()
-        var altezza = pickerAltezza.value.toString()
-        var peso =  pickerPeso.value.toString()
+        val name = inputNome.text.toString().trim()
+        val email = inputEmail.text.toString().trim()
+        val password = inputPassword.text.toString().trim()
+        val altezza = pickerAltezza.value.toString()
+        val peso =  pickerPeso.value.toString()
 
         Log.d("TAG", "prova2")
 
         if(name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()){
 
-            var model= User(name, email , password, altezza, peso)
-            var id=reference.push().key
+            val model= User(name, email , password, altezza, peso)
+            val id=reference.push().key
 
             //Qui si inviano i dati a firebase
             reference.child(id!!).setValue(model)

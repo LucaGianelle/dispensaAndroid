@@ -7,14 +7,14 @@ import com.google.firebase.ktx.Firebase
 
 object DbCommunication {
 
-    private lateinit var database: DatabaseReference
     private lateinit var reference: DatabaseReference
+    private lateinit var database: FirebaseDatabase
 
     fun getDbReference(){
-        database = Firebase.database.reference
+        reference = Firebase.database.reference
     }
 
     fun getDbInstance(){
-
+        reference = database.getReference()
     }
 }

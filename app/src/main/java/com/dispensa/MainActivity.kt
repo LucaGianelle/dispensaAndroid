@@ -27,29 +27,10 @@ class MainActivity : AppCompatActivity() {
 
         val buttonStart = findViewById<Button>(R.id.startb)
 
-
-
-        //vediamo se funziona --------------------------
         buttonStart.setOnClickListener{
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         }
-        //-------------------------------------------------------
-
-
-       /* buttonAccesso.setOnClickListener {
-            val acc = Intent (this, HomeActivity::class.java)
-            startActivity(acc)
-        }
-        button.setOnClickListener {
-            val reg = Intent (this, RegisterActivity::class.java)
-            startActivity(reg)
-        }*/
-
-        /*button.setOnClickListener {
-            val data = Intent (this, PersonaldataActivity::class.java)
-            startActivity(data)
-        }*/
 
     }
 
