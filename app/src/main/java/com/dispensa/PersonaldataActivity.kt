@@ -16,11 +16,6 @@ import kotlinx.android.synthetic.main.personaldata.*
 
 class PersonaldataActivity : AppCompatActivity() {
 
-   /* private lateinit var nameValue: String
-    private lateinit var emailValue: String
-    private var weightValue: Int = 0
-    private var heightValue: Int = 0*/
-
     //private lateinit var auth: FirebaseAuth
     //private lateinit var firestore: FirebaseFirestore
 
@@ -77,25 +72,4 @@ class PersonaldataActivity : AppCompatActivity() {
         }*/
 
     }
-
-
-
-
-   /* fun readProfile(nome: String, mail: String, peso: Int, altezza: Int){
-        nameValue = nome
-        emailValue = mail
-        weightValue = peso
-        heightValue = altezza
-    }
-
-    fun writeProfile(){
-
-        val pes = "$weightValue kg"
-        val alt = "$heightValue cm"
-
-        nickname.text = nameValue
-        email.text = emailValue
-        weight.text = pes
-        height.text = alt
-    }*/
 }

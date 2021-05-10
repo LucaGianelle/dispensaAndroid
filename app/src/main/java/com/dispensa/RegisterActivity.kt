@@ -65,6 +65,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
 }
+
     private fun sendData(valAlt: String, valPeso: String){
         val name = inputNome.text.toString().trim()
         val email = inputEmail.text.toString().trim()
@@ -78,6 +79,8 @@ class RegisterActivity : AppCompatActivity() {
 
             val model= User(name, email , password, altezza, peso)
             val id=reference.push().key
+
+            Log.e("TAG", "$id" )
 
             //Qui si inviano i dati a firebase
             reference.child(id!!).setValue(model)
@@ -146,6 +149,15 @@ if (inputPassword.text.toString().isEmpty()) {
             user!!.sendEmailVerification()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
+
+                        //cambio id
+
+                        /*val user = FirebaseAuth.getInstance().currentUser
+                        val id : String = user.uid
+                        Log.e("TAG",id )
+                        database = FirebaseDatabase.getInstance()
+                        reference = database.getReference(id)*/
+
                         sendData(valAlt, valPeso)
                         startActivity(Intent(this, HomeActivity::class.java))
                         finish()
