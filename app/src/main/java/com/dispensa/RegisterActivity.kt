@@ -78,12 +78,17 @@ class RegisterActivity : AppCompatActivity() {
         if(name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()){
 
             val model= User(name, email , password, altezza, peso)
-            val id=reference.push().key
 
-            Log.e("TAG", "$id" )
+            val utente = FirebaseAuth.getInstance().currentUser
+                        val id : String = utente.uid
+                        Log.e("TAG",id )
+
+            //val id=reference.push().key
+
+            Log.e("TAG", id)
 
             //Qui si inviano i dati a firebase
-            reference.child(id!!).setValue(model)
+            reference.child(id).setValue(model)
             inputNome.setText("")
             inputEmail.setText("")
             inputPassword.setText("")

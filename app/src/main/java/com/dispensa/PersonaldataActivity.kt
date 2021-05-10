@@ -29,11 +29,14 @@ class PersonaldataActivity : AppCompatActivity() {
         database = Firebase.database.reference
 
 
-        /*val user = FirebaseAuth.getInstance().currentUser
+        val user = FirebaseAuth.getInstance().currentUser
         val id : String = user.uid
-        Log.e("TAG",id )
-        database = FirebaseDatabase.getInstance()
-        reference = database.getReference(id)*/
+
+        database.child("users").child(id).child("nickname").get().addOnSuccessListener {
+            Log.i("firebase", "Got value ${it.value}")
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
 
 
 

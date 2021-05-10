@@ -18,7 +18,7 @@ class PrendiDati: AppCompatActivity() {
         setContentView(R.layout.activity_getdata)
 
         database = FirebaseDatabase.getInstance()
-        reference = database.getReference("Aliment")
+        reference = database.getReference("User")
         getData()
     }
 
@@ -28,10 +28,10 @@ class PrendiDati: AppCompatActivity() {
                 Log.e("cancel", error.toString())
             }
             override fun onDataChange(snapshot: DataSnapshot) {
-                val list = ArrayList<Aliment>()
+                val list = ArrayList<User>()
                 for (data in snapshot.children) {
                     val model = data.getValue(Aliment::class.java)
-                    list.add(model as Aliment)
+                    list.add(model as User)
                 }
                 if (list.size > 0) {
                     val adapter = DataAdapter(list)
