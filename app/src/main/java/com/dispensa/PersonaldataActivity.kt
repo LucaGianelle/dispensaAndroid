@@ -33,11 +33,11 @@ class PersonaldataActivity : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser
         val id : String = user.uid
 
-        database.child("User").child(id).get().addOnSuccessListener {
+       /* database.child("User").child(id).get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value}")
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
-        }
+        }*/
 
         //per il cibo
         database.child("aliment").get().addOnSuccessListener {
@@ -63,7 +63,8 @@ class PersonaldataActivity : AppCompatActivity() {
         }
 
 
-        Log.d("TAG", "$userarray")
+        var nameprova :String = userarray.get(2)
+        Log.d("TAG", "$nameprova")
         //Queste cose non si possono fare
         /*var actName = userarray.get(2)
         nickname.text = actName
