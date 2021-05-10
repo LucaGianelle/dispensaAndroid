@@ -20,6 +20,7 @@ class PersonaldataActivity : AppCompatActivity() {
     //private lateinit var firestore: FirebaseFirestore
 
     private lateinit var database: DatabaseReference
+    private lateinit var userarray : ArrayList<String>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,9 +52,12 @@ class PersonaldataActivity : AppCompatActivity() {
 
         //per gli utenti
         database.child("User").child(id).get().addOnSuccessListener {
-            val result2 = it.value as ArrayList<String>
+
+            userarray = it.value as ArrayList<String>
+
+            //val result2 = it.value as ArrayList<String>
             Log.i("firebase", "Got value ${it.value}")
-            Log.i("firebase","${result2}")
+            Log.i("firebase","${userarray}")
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
         }
