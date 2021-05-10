@@ -32,8 +32,18 @@ class PersonaldataActivity : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser
         val id : String = user.uid
 
-        database.child("users").child(id).child("nickname").get().addOnSuccessListener {
+        database.child("User").child(id).get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value}")
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+
+        //per il cibo
+        database.child("aliment").get().addOnSuccessListener {
+            val result = it.value as ArrayList<String>
+                    // Map<String,Map<String, String>>
+            Log.i("firebase", "Got value ${it.value}")
+            Log.i("firbase", "${result}")
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
         }

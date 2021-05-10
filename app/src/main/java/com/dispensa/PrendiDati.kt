@@ -28,10 +28,10 @@ class PrendiDati: AppCompatActivity() {
                 Log.e("cancel", error.toString())
             }
             override fun onDataChange(snapshot: DataSnapshot) {
-                val list = ArrayList<User>()
+                val list = ArrayList<Aliment>()
                 for (data in snapshot.children) {
                     val model = data.getValue(Aliment::class.java)
-                    list.add(model as User)
+                    list.add(model as Aliment)
                 }
                 if (list.size > 0) {
                     val adapter = DataAdapter(list)
