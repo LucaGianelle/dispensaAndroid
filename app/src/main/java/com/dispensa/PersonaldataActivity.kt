@@ -49,6 +49,15 @@ class PersonaldataActivity : AppCompatActivity() {
         }
 
 
+        //per gli utenti
+        database.child("User").child(id).get().addOnSuccessListener {
+            val result2 = it.value as ArrayList<String>
+            Log.i("firebase", "Got value ${it.value}")
+            Log.i("firebase","${result2}")
+        }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+        }
+
 
        /* user?.let {
             val name:String? = user.displayName
