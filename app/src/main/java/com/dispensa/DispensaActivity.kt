@@ -25,7 +25,7 @@ class DispensaActivity : AppCompatActivity() {
             //val result = it.value as ArrayList<String>
             // Map<String,Map<String, String>>
             Log.i("firebase", "Got value ${it.value}")
-            Log.i("firbase", "${result}")
+            Log.i("firebase", "${result}")
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
         }

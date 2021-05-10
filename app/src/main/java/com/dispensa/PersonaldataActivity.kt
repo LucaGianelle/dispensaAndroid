@@ -63,6 +63,20 @@ class PersonaldataActivity : AppCompatActivity() {
         }
 
 
+        Log.d("TAG", "$userarray")
+        //Queste cose non si possono fare
+        /*var actName = userarray.get(2)
+        nickname.text = actName
+
+        var actMail = userarray.get(1)
+        emailPersonalData.text = actMail
+
+        var actPeso = userarray.get(4)
+        weight.text = actPeso
+
+        var actAltezza = userarray.get(0)
+        height.text = actAltezza*/
+
        /* user?.let {
             val name:String? = user.displayName
             if (name != null) {
