@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.personaldata.*
 
 class PersonaldataActivity : AppCompatActivity() {
 
-    //private lateinit var auth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     //private lateinit var firestore: FirebaseFirestore
 
     private lateinit var database: DatabaseReference
@@ -29,16 +29,17 @@ class PersonaldataActivity : AppCompatActivity() {
         setContentView(R.layout.personaldata)
 
         database = Firebase.database.reference
-
+        auth = FirebaseAuth.getInstance()
 
         val user = FirebaseAuth.getInstance().currentUser
         val id : String = user.uid
 
-       /* database.child("User").child(id).get().addOnSuccessListener {
+       database.child("User").child(id).get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value}")
+           println("Stampo tutto !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
-        }*/
+        }
 
         //per il cibo
         database.child("aliment").get().addOnSuccessListener {
@@ -54,22 +55,17 @@ class PersonaldataActivity : AppCompatActivity() {
         lateinit var mappa : Map<String, Map<String, String>>
         lateinit var mapArray : Map<String, String>
 
+        var idprova : String = auth.currentUser.uid
+        println("=========================== " + idprova)
         //per gli utenti
-        database.child("User").child(id).get().addOnSuccessListener {
+        database.child("User").child(idprova).get().addOnSuccessListener {
 
             //mapArray = it.value as Map<String, String>
-            val mapArray2 = it.value as Map<String, Map<String, String>>
+            //val mapArray2 = it.value as Map<String, Map<String, String>>
 
-            //provare a trasformare la Map di Mappe in una List di mappe -------------------------------
-            val listaMappe = it.value as List<Map<String, String>>
-
-            //val result2 = it.value as ArrayList<String>
+            val listaMappe = it.value as Map<String, String>
             Log.i("firebase", "Got value ${it.value}")
             Log.i("firebase","${listaMappe}")
-
-            val mapprova: Map<String, String> = listaMappe.get(0)
-
-            //Ora qui dobbiamo stampare la map --------------------------------------
 
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
