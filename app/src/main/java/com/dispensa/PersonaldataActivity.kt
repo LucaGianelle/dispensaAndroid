@@ -20,7 +20,7 @@ class PersonaldataActivity : AppCompatActivity() {
     //private lateinit var firestore: FirebaseFirestore
 
     private lateinit var database: DatabaseReference
-    private var mapArray : Map<String,Map<String, String>>? = null
+    //private lateinit var mapArray : Map<String, Map<String, String>>
     //Map<String, Map<String,String>>
 
 
@@ -51,10 +51,12 @@ class PersonaldataActivity : AppCompatActivity() {
         }
 
 
+        lateinit var mappa : Map<String, Map<String, String>>
+        lateinit var mapArray : Map<String, String>
         //per gli utenti
         database.child("User").child(id).get().addOnSuccessListener {
 
-            mapArray = it.value as Map<String,Map<String, String>>
+            mapArray = it.value as Map<String, String>
 
             //val result2 = it.value as ArrayList<String>
             Log.i("firebase", "Got value ${it.value}")
@@ -63,8 +65,14 @@ class PersonaldataActivity : AppCompatActivity() {
             Log.e("firebase", "Error getting data", it)
         }
 
-        val userId = mapArray?.get("name")
-        Log.d("TAG", "$userId prova dell'id")
+
+        for ((id, x) in mappa  ) {
+            for((x, generalità) in mapArray){
+
+            }
+        }
+
+
         //val nameprova : String = mapArray?.get(id).toString()
         //Log.d("TAG", "$nameprova prova del nick")
         //Queste cose non si possono fare
