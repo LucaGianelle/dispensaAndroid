@@ -20,7 +20,8 @@ class PersonaldataActivity : AppCompatActivity() {
     //private lateinit var firestore: FirebaseFirestore
 
     private lateinit var database: DatabaseReference
-    private lateinit var userarray : ArrayList<String>
+    private var mapArray : Map<String,Map<String, String>>? = null
+    //Map<String, Map<String,String>>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,18 +54,19 @@ class PersonaldataActivity : AppCompatActivity() {
         //per gli utenti
         database.child("User").child(id).get().addOnSuccessListener {
 
-            userarray = it.value as ArrayList<String>
+            mapArray = it.value as Map<String,Map<String, String>>
 
             //val result2 = it.value as ArrayList<String>
             Log.i("firebase", "Got value ${it.value}")
-            Log.i("firebase","${userarray}")
+            Log.i("firebase","${mapArray}")
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
         }
 
-
-        var nameprova :String = userarray.get(2)
-        Log.d("TAG", "$nameprova")
+        val userId = mapArray?.get("name")
+        Log.d("TAG", "$userId prova dell'id")
+        //val nameprova : String = mapArray?.get(id).toString()
+        //Log.d("TAG", "$nameprova prova del nick")
         //Queste cose non si possono fare
         /*var actName = userarray.get(2)
         nickname.text = actName
