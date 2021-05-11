@@ -53,24 +53,37 @@ class PersonaldataActivity : AppCompatActivity() {
 
         lateinit var mappa : Map<String, Map<String, String>>
         lateinit var mapArray : Map<String, String>
+
         //per gli utenti
         database.child("User").child(id).get().addOnSuccessListener {
 
-            mapArray = it.value as Map<String, String>
+            //mapArray = it.value as Map<String, String>
+            val mapArray2 = it.value as Map<String, Map<String, String>>
+
+            //provare a trasformare la Map di Mappe in una List di mappe -------------------------------
+            val listaMappe = it.value as List<Map<String, String>>
 
             //val result2 = it.value as ArrayList<String>
             Log.i("firebase", "Got value ${it.value}")
-            Log.i("firebase","${mapArray}")
+            Log.i("firebase","${listaMappe}")
+
+            val mapprova: Map<String, String> = listaMappe.get(0)
+
+            //Ora qui dobbiamo stampare la map --------------------------------------
+
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
         }
 
-
+        //Gienelle's loop for -----------------------------------------------
+        /*val arrayprova : ArrayList<String>
         for ((id, x) in mappa  ) {
-            for((x, generalità) in mapArray){
 
+            val mapProva = x
+            for((x, generalità) in mapProva){
+                println("===============" + generalità)
             }
-        }
+        }*/
 
 
         //val nameprova : String = mapArray?.get(id).toString()
