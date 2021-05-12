@@ -36,7 +36,6 @@ class PersonaldataActivity : AppCompatActivity() {
 
        database.child("User").child(id).get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value}")
-           println("Stampo tutto !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
         }
@@ -51,21 +50,29 @@ class PersonaldataActivity : AppCompatActivity() {
             Log.e("firebase", "Error getting data", it)
         }
 
-
-        lateinit var mappa : Map<String, Map<String, String>>
-        lateinit var mapArray : Map<String, String>
-
         var idprova : String = auth.currentUser.uid
         println("=========================== " + idprova)
+
         //per gli utenti
         database.child("User").child(idprova).get().addOnSuccessListener {
 
-            //mapArray = it.value as Map<String, String>
-            //val mapArray2 = it.value as Map<String, Map<String, String>>
-
-            val listaMappe = it.value as Map<String, String>
+            val mappaProfilo = it.value as Map<String, String>
             Log.i("firebase", "Got value ${it.value}")
-            Log.i("firebase","${listaMappe}")
+            Log.i("firebase","${mappaProfilo}")
+
+            val nameMap: String = mappaProfilo.get("name").toString()
+            val emailMap : String = mappaProfilo.get("email").toString()
+            var pwMap : String = mappaProfilo.get("password").toString()
+            val altezzaMap : String = mappaProfilo.get("altezza").toString()
+            val pesoMap : String = mappaProfilo.get("peso").toString()
+
+            nickname.text = nameMap
+            emailPersonalData.text = emailMap
+            height.text = altezzaMap + " cm"
+            weight.text = pesoMap + " kg"
+
+            //Creare un user per caricare i dati nell'oggetto User
+            //User(var name:String, var email:String, var password: String, var altezza: String, var peso: String)
 
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
