@@ -9,7 +9,9 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.modify_profile.*
+import kotlinx.android.synthetic.main.modify_profile.buttonConferma
 import kotlinx.android.synthetic.main.personaldata.*
+import kotlinx.android.synthetic.main.register.*
 
 class ModifyProfile: AppCompatActivity() {
 
@@ -21,6 +23,27 @@ class ModifyProfile: AppCompatActivity() {
         setContentView(R.layout.modify_profile)
         database = Firebase.database.reference
         auth = FirebaseAuth.getInstance()
+
+        modificaPickerPeso.setMinValue(40);
+        modificaPickerPeso.setMaxValue(120);
+        modificaPickerPeso.wrapSelectorWheel = false
+
+        modificaPickerAltezza.setMinValue(100);
+        modificaPickerAltezza.setMaxValue(210);
+        modificaPickerAltezza.wrapSelectorWheel = false
+
+        var valAlt=""
+
+        modificaPickerAltezza.setOnValueChangedListener { picker, oldVal, newVal ->
+            //Display the newly selected number to text view
+            valAlt = "$newVal"
+        }
+
+        var valPeso=""
+        modificaPickerPeso.setOnValueChangedListener { picker, oldVal, newVal ->
+            //Display the newly selected number to text view
+            valPeso = "$newVal"
+        }
 
         val user = FirebaseAuth.getInstance().currentUser
         val id : String = user.uid

@@ -35,7 +35,7 @@ class RegisterActivity : AppCompatActivity() {
         pickerAltezza.setMaxValue(210);
         pickerAltezza.wrapSelectorWheel = false
 
-        var valAlt: String =""
+        var valAlt =""
 
         pickerAltezza.setOnValueChangedListener { picker, oldVal, newVal ->
 
@@ -44,7 +44,7 @@ class RegisterActivity : AppCompatActivity() {
 
         }
 
-        var valPeso: String =""
+        var valPeso=""
 
         pickerPeso.setOnValueChangedListener { picker, oldVal, newVal ->
 
