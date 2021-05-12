@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -15,17 +16,59 @@ import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.home.*
+import kotlinx.android.synthetic.main.personaldata.*
 
 class HomeActivity : AppCompatActivity() {
 
     var myAuth = FirebaseAuth.getInstance()
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
 
+        database = Firebase.database.reference
+        auth = FirebaseAuth.getInstance()
+
+        //=========================================================================================================================
+        //Prendo i dati del mio utente corrente
+
+        var idprova : String = auth.currentUser.uid
+
+        //per gli utenti
+        database.child("User").child(idprova).get().addOnSuccessListener {
+
+            val mappaProfilo = it.value as Map<String, String>
+
+            //prove stampa
+            Log.i("firebase", "Got value ${it.value}")
+            Log.i("firebase","${mappaProfilo}")
+
+            val nameMap: String = mappaProfilo.get("name").toString()
+            val emailMap : String = mappaProfilo.get("email").toString()
+            var pwMap : String = mappaProfilo.get("password").toString()
+            val altezzaMap : String = mappaProfilo.get("altezza").toString()
+            val pesoMap : String = mappaProfilo.get("peso").toString()
+
+            DbCommunication.createUser(nameMap,emailMap,pwMap,altezzaMap,pesoMap)
+            var utenteprova : User = DbCommunication.getUser()
+            println("===================================== > " + utenteprova)
+
+            //Creare un user per caricare i dati nell'oggetto User
+            //User(var name:String, var email:String, var password: String, var altezza: String, var peso: String)
+
+        }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+        }
+
+
+
+        //=========================================================================================================================
         val datib = findViewById<Button>(R.id.buttonDatiPersonali)
         val valnb = findViewById<Button>(R.id.buttonValoriNutrizionali)
 
