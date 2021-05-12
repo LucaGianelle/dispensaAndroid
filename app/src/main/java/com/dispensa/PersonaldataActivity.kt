@@ -1,16 +1,12 @@
 package com.dispensa
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.dispensa.utils.ValueListenerAdapter
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.personaldata.*
 
@@ -75,5 +71,12 @@ class PersonaldataActivity : AppCompatActivity() {
             Log.e("firebase", "Error getting data", it)
         }
 
+        buttonModifica.setOnClickListener {
+            val data = Intent (this, ModifyProfile::class.java)
+            startActivity(data)
+        }
+
+
     }
+
 }
