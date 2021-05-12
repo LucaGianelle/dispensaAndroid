@@ -17,4 +17,6 @@ object DbCommunication {
     fun getDbInstance(){
         reference = database.getReference()
     }
+
+
 }
