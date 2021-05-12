@@ -18,7 +18,7 @@ class PrendiDati: AppCompatActivity() {
         setContentView(R.layout.activity_getdata)
 
         database = FirebaseDatabase.getInstance()
-        reference = database.getReference("User")
+        reference = database.getReference("aliment")
         getData()
     }
 
@@ -30,6 +30,7 @@ class PrendiDati: AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val list = ArrayList<Aliment>()
                 for (data in snapshot.children) {
+
                     val model = data.getValue(Aliment::class.java)
                     list.add(model as Aliment)
                 }
