@@ -30,4 +30,5 @@ object DbCommunication {
         return utenteCorrente
     }
 
+
 }
