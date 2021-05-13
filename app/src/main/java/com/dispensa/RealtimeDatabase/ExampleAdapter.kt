@@ -8,10 +8,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dispensa.ExampleItem
+import com.dispensa.MainActivity
 import com.dispensa.R
 import kotlinx.android.synthetic.main.example_item.view.*
 
-class ExampleAdapter(private val exampleList: List<ExampleItem>) : RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder>() {
+class ExampleAdapter(
+    private val exampleList: List<ExampleItem>,
+    private val listener: OnItemClickListener
+) :
+    RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExampleViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.example_item,
@@ -36,9 +41,25 @@ class ExampleAdapter(private val exampleList: List<ExampleItem>) : RecyclerView.
 
     override fun getItemCount() = exampleList.size
 
-    class ExampleViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+    inner class ExampleViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView),
+    View.OnClickListener{
         val imageView: ImageView = itemView.image_view
         val textView1: TextView = itemView.text_view_1
         val textView2: TextView = itemView.text_view_2
+
+        init{
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(p0: View?) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
+            }
+        }
+    }
+
+    interface  OnItemClickListener {
+        fun onItemClick(position: Int)
     }
 }
