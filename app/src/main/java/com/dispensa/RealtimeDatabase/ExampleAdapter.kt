@@ -1,5 +1,6 @@
 package com.dispensa.RealtimeDatabase
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,12 @@ class ExampleAdapter(private val exampleList: List<ExampleItem>) : RecyclerView.
         holder.imageView.setImageResource(currentItem.imageResource)
         holder.textView1.text = currentItem.text1
         holder.textView1.text = currentItem.text2
+
+        if (position == 0) {
+            holder.textView1.setBackgroundColor(Color.YELLOW)
+        } else {
+
+        }
     }
 
     override fun getItemCount() = exampleList.size
