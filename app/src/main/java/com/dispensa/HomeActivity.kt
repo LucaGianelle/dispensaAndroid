@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -20,7 +19,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.home.*
-import kotlinx.android.synthetic.main.personaldata.*
 
 class HomeActivity : AppCompatActivity() {
 
@@ -38,10 +36,10 @@ class HomeActivity : AppCompatActivity() {
         //=========================================================================================================================
         //Prendo i dati del mio utente corrente
 
-       var idprova : String = auth.currentUser.uid
+       val idUtente : String = auth.currentUser.uid
 
         //per gli utenti
-        database.child("User").child(idprova).get().addOnSuccessListener {
+        database.child("User").child(idUtente).get().addOnSuccessListener {
 
             val mappaProfilo = it.value as Map<String, String>
 
@@ -51,22 +49,16 @@ class HomeActivity : AppCompatActivity() {
 
             val nameMap: String = mappaProfilo.get("name").toString()
             val emailMap : String = mappaProfilo.get("email").toString()
-            var pwMap : String = mappaProfilo.get("password").toString()
+            val pwMap : String = mappaProfilo.get("password").toString()
             val altezzaMap : String = mappaProfilo.get("altezza").toString()
             val pesoMap : String = mappaProfilo.get("peso").toString()
             val etaMap : String = mappaProfilo.get("eta").toString()
 
             DbCommunication.createUser(nameMap,emailMap,pwMap,altezzaMap,pesoMap,etaMap)
-            var utenteprova : User = DbCommunication.getUser()
-            println("===================================== > " + utenteprova.name + " " + utenteprova.email + " " + utenteprova.eta)
-
-            //Creare un user per caricare i dati nell'oggetto User
-            //User(var name:String, var email:String, var password: String, var altezza: String, var peso: String)
 
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
         }
-
 
 
         //=========================================================================================================================
@@ -116,10 +108,5 @@ class HomeActivity : AppCompatActivity() {
             )
         }
     }
-
-    fun callmap(view: View) {
-
-    }
-
 
 }

@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         val buttonStart = findViewById<Button>(R.id.startb)
 
+        //=========LOGO=========
         buttonStart.setOnClickListener{
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
@@ -48,23 +49,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /*public override fun onStart() {
-        super.onStart()
-
-        //vediamo se funziona --------------------------
-        val log = Intent(this, LoginActivity::class.java)
-        startActivity(log)
-        //-------------------------------------------------------
-
-
-        setContentView(R.layout.login)
-            //controlla se l'utente è registrato, (valore non nullo) e aggiorna l'interfaccia di conseguenza
-        val currentUser = auth.currentUser
-        updateUI (currentUser)
-    }*/
-
-    fun updateUI(currentUser: FirebaseUser?) {
-
-    }
 
 }

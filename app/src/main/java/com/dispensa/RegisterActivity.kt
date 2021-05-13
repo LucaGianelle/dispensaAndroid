@@ -25,7 +25,6 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.register)
         auth = FirebaseAuth.getInstance()
 
-
         pickerPeso.setMinValue(40);
         pickerPeso.setMaxValue(120);
         pickerPeso.wrapSelectorWheel = false
@@ -39,30 +38,21 @@ class RegisterActivity : AppCompatActivity() {
         pickerEta.wrapSelectorWheel = false
 
         var valAlt =""
-
         pickerAltezza.setOnValueChangedListener { picker, oldVal, newVal ->
-
             //Display the newly selected number to text view
             valAlt = "$newVal"
-
         }
 
         var valPeso=""
-
         pickerPeso.setOnValueChangedListener { picker, oldVal, newVal ->
-
             //Display the newly selected number to text view
             valPeso = "$newVal"
-
         }
 
         var valEta =""
-
         pickerEta.setOnValueChangedListener { picker, oldVal, newVal ->
-
             //Display the newly selected number to text view
             valEta = "$newVal"
-
         }
 
 

@@ -2,7 +2,6 @@ package com.dispensa
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -10,8 +9,6 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.modify_profile.*
 import kotlinx.android.synthetic.main.modify_profile.buttonConferma
-import kotlinx.android.synthetic.main.personaldata.*
-import kotlinx.android.synthetic.main.register.*
 
 class ModifyProfile: AppCompatActivity() {
 
@@ -24,16 +21,14 @@ class ModifyProfile: AppCompatActivity() {
         database = Firebase.database.reference
         auth = FirebaseAuth.getInstance()
 
-        var cambiaUtente = DbCommunication.getUser()
-        val user = FirebaseAuth.getInstance().currentUser
-        val id : String = user.uid
+        val cambiaUtente = DbCommunication.getUser()
 
-        var idUserCorrente : String = auth.currentUser.uid
-        var altezzaMap = cambiaUtente.altezza
-        var pesoMap = cambiaUtente.peso
-        var etaMap = cambiaUtente.eta
-        var nameMap = cambiaUtente.name
-        var pwMap = cambiaUtente.password
+        val idUserCorrente : String = auth.currentUser.uid
+        val altezzaUtente = cambiaUtente.altezza
+        val pesoUtente = cambiaUtente.peso
+        val etaUtente = cambiaUtente.eta
+        val nameUtente = cambiaUtente.name
+        val passwordUtente = cambiaUtente.password
 
 
         modificaPickerPeso.setMinValue(40);
@@ -49,36 +44,36 @@ class ModifyProfile: AppCompatActivity() {
         modificaPickerEta.wrapSelectorWheel = false
 
 
-        modificaNome.setText(nameMap)
-        modificaPassword.setText(pwMap)
-        modificaPickerAltezza.value = altezzaMap.toInt()
-        modificaPickerPeso.value = pesoMap.toInt()
-        modificaPickerEta.value = etaMap.toInt()
+        modificaNome.setText(nameUtente)
+        modificaPassword.setText(passwordUtente)
+        modificaPickerAltezza.value = altezzaUtente.toInt()
+        modificaPickerPeso.value = pesoUtente.toInt()
+        modificaPickerEta.value = etaUtente.toInt()
 
 
         buttonConferma.setOnClickListener {
             var temp : String = modificaNome.text.toString()
-            if(nameMap.equals(temp) == false){
+            if(nameUtente.equals(temp) == false){
                 database.child("User").child(idUserCorrente).child("name").setValue(temp)
             }
 
             temp = modificaPassword.text.toString()
-            if(pwMap.equals(temp) == false){
+            if(passwordUtente.equals(temp) == false){
                 database.child("User").child(idUserCorrente).child("password").setValue(temp)
             }
 
             temp = modificaPickerAltezza.value.toString()
-            if(!altezzaMap.equals(temp)){
+            if(!altezzaUtente.equals(temp)){
                 database.child("User").child(idUserCorrente).child("altezza").setValue(temp)
             }
 
             temp = modificaPickerPeso.value.toString()
-            if(!pesoMap.equals(temp)){
+            if(!pesoUtente.equals(temp)){
                 database.child("User").child(idUserCorrente).child("peso").setValue(temp)
             }
 
             temp = modificaPickerEta.value.toString()
-            if(!etaMap.equals(temp)){
+            if(!etaUtente.equals(temp)){
                 database.child("User").child(idUserCorrente).child("eta").setValue(temp)
             }
 

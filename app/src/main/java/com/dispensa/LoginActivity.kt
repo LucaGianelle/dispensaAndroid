@@ -53,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
 
         auth.signInWithEmailAndPassword(inputEmailLogin.text.toString(), inputPasswordLogin.text.toString())
                 .addOnCompleteListener(this) { task ->
-                    var prova: Boolean = task.isSuccessful
+                    val prova: Boolean = task.isSuccessful
                     Log.e("TAG","$prova")
 
                     if (prova) {
