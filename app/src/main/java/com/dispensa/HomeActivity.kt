@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.personaldata.*
 
 class HomeActivity : AppCompatActivity() {
 
-    var myAuth = FirebaseAuth.getInstance()
+
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
 
@@ -38,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
         //=========================================================================================================================
         //Prendo i dati del mio utente corrente
 
-        var idprova : String = auth.currentUser.uid
+       /* var idprova : String = auth.currentUser.uid
 
         //per gli utenti
         database.child("User").child(idprova).get().addOnSuccessListener {
@@ -64,7 +64,7 @@ class HomeActivity : AppCompatActivity() {
 
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
-        }
+        }*/
 
 
 
@@ -82,43 +82,13 @@ class HomeActivity : AppCompatActivity() {
             startActivity(valNut)
         }
 
-        btnLogout.setOnClickListener {
-
-            Toast.makeText(this,"Logout...",Toast.LENGTH_LONG).show()
-            signOut()
-            val back = Intent(this, LoginActivity::class.java)
-            startActivity(back)
-        }
 
         buttonMappa.setOnClickListener{
             this.openMaps(this,this.applicationContext)
         }
 
-        /*buttonMappa.setOnClickListener {
-
-            /*val latitude: Double = location.getLatitude()
-            val longitude: Double = location.getLongitude()
-
-            val uri: String = java.lang.String.format(Locale.ENGLISH, "geo:%f,%f", latitude, longitude)
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
-            context.startActivity(intent)*/
-
-            /*
-            *
-            *
-            *
-            */
-
-           /* val intent = Intent(Intent.ACTION_VIEW,
-                    /*Uri.parse("http://maps.google.com/maps?saddr=20.344,34.34&daddr=20.5666,45.345"))*/
-                    Uri.parse("google.navigation:q=an+address+city"))
-            startActivity(intent)*/
-        }*/
     }
 
-    private fun signOut() {
-        myAuth.signOut()
-    }
 
     fun openMaps (activity: Activity, context: Context) {
         val REQUEST_POSITION_PERMISSION_ID = 1

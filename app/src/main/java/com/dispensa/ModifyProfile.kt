@@ -50,7 +50,6 @@ class ModifyProfile: AppCompatActivity() {
 
         var idUserCorrente : String = auth.currentUser.uid
         var nameMap = ""
-        var emailMap = ""
         var pwMap = ""
         var altezzaMap = ""
         var pesoMap = ""
@@ -65,15 +64,12 @@ class ModifyProfile: AppCompatActivity() {
             Log.i("firebase", "Got value ${it.value}")
             Log.i("firebase","${mappaProfilo}")
             nameMap = mappaProfilo.get("name").toString()
-            emailMap = mappaProfilo.get("email").toString()
             pwMap = mappaProfilo.get("password").toString()
             altezzaMap = mappaProfilo.get("altezza").toString()
             pesoMap = mappaProfilo.get("peso").toString()
 
 
             modificaNome.setText(nameMap)
-            //togliere mail
-            modificaEmail.setText(emailMap)
             modificaPassword.setText(pwMap)
             //height.text = "$altezzaMap cm"
             //weight.text = "$pesoMap kg"

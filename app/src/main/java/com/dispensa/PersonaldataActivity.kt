@@ -3,6 +3,7 @@ package com.dispensa
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -15,7 +16,7 @@ class PersonaldataActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
-
+    var myAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,7 +78,19 @@ class PersonaldataActivity : AppCompatActivity() {
             startActivity(data)
         }
 
+        btnLogout.setOnClickListener {
 
+            Toast.makeText(this,"Logout...", Toast.LENGTH_LONG).show()
+            signOut()
+            val back = Intent(this, LoginActivity::class.java)
+            startActivity(back)
+        }
+
+
+    }
+
+    private fun signOut() {
+        myAuth.signOut()
     }
 
 }
