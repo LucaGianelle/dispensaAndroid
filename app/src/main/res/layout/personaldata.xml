@@ -26,13 +26,11 @@
         android:layout_width="347dp"
         android:layout_height="wrap_content"
         android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_account"
         android:drawablePadding="10dp"
-        android:drawableTint="@color/primaryText"
         android:hint="@string/inputName"
-        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
         android:paddingTop="10dp"
-        android:paddingRight="10dp"
+        android:paddingEnd="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/primaryText"
         android:textColorHint="@color/primaryText"
@@ -41,20 +39,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:drawableTint="@color/primaryText"
+        app:drawableStartCompat="@drawable/ic_account" />
 
     <TextView
         android:id="@+id/emailPersonalData"
         android:layout_width="347dp"
         android:layout_height="wrap_content"
         android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_mail"
         android:drawablePadding="10dp"
-        android:drawableTint="@color/primaryText"
         android:hint="@string/inputEmail"
-        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
         android:paddingTop="10dp"
-        android:paddingRight="10dp"
+        android:paddingEnd="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/primaryText"
         android:textColorHint="@color/primaryText"
@@ -63,7 +61,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nickname" />
+        app:layout_constraintTop_toBottomOf="@+id/nickname"
+        app:drawableTint="@color/primaryText"
+        app:drawableLeftCompat="@drawable/ic_mail" />
 
     <TextView
         android:id="@+id/age"

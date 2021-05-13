@@ -40,7 +40,7 @@ class ModifyProfile: AppCompatActivity() {
         modificaPickerPeso.setMaxValue(120);
         modificaPickerPeso.wrapSelectorWheel = false
 
-        modificaPickerAltezza.setMinValue(100);
+        modificaPickerAltezza.setMinValue(150);
         modificaPickerAltezza.setMaxValue(210);
         modificaPickerAltezza.wrapSelectorWheel = false
 

@@ -30,7 +30,7 @@ class RegisterActivity : AppCompatActivity() {
         pickerPeso.setMaxValue(120);
         pickerPeso.wrapSelectorWheel = false
 
-        pickerAltezza.setMinValue(100);
+        pickerAltezza.setMinValue(150);
         pickerAltezza.setMaxValue(210);
         pickerAltezza.wrapSelectorWheel = false
 
