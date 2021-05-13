@@ -38,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
         //=========================================================================================================================
         //Prendo i dati del mio utente corrente
 
-       /* var idprova : String = auth.currentUser.uid
+       var idprova : String = auth.currentUser.uid
 
         //per gli utenti
         database.child("User").child(idprova).get().addOnSuccessListener {
@@ -55,16 +55,16 @@ class HomeActivity : AppCompatActivity() {
             val altezzaMap : String = mappaProfilo.get("altezza").toString()
             val pesoMap : String = mappaProfilo.get("peso").toString()
 
-            DbCommunication.createUser(nameMap,emailMap,pwMap,altezzaMap,pesoMap)
+            DbCommunication.createUser(nameMap,emailMap,pwMap,altezzaMap,pesoMap, "25")
             var utenteprova : User = DbCommunication.getUser()
-            println("===================================== > " + utenteprova)
+            println("===================================== > " + utenteprova.name + " " + utenteprova.email + " " + utenteprova.eta)
 
             //Creare un user per caricare i dati nell'oggetto User
             //User(var name:String, var email:String, var password: String, var altezza: String, var peso: String)
 
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
-        }*/
+        }
 
 
 

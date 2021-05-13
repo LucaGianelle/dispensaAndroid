@@ -21,9 +21,9 @@ object DbCommunication {
         reference = database.getReference()
     }
 
-    fun createUser(name:String, email:String, password: String, altezza: String, peso: String){
+    fun createUser(name:String, email:String, password: String, altezza: String, peso: String, eta: String){
 
-
+        utenteCorrente = User(name, email, password, altezza, peso, eta)
     }
 
     fun getUser() : User {
