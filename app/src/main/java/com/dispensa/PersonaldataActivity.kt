@@ -44,7 +44,7 @@ class PersonaldataActivity : AppCompatActivity() {
             Log.e("firebase", "Error getting data", it)
         }
 
-        var idprova : String = auth.currentUser.uid
+        /*var idprova : String = auth.currentUser.uid
 
         //per gli utenti
         database.child("User").child(idprova).get().addOnSuccessListener {
@@ -71,7 +71,14 @@ class PersonaldataActivity : AppCompatActivity() {
 
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
-        }
+        }*/
+
+        var dataUser = DbCommunication.getUser()
+
+        nickname.text = dataUser.name
+        emailPersonalData.text = dataUser.email
+        height.text = "${dataUser.altezza} cm"
+        weight.text = "${dataUser.peso} kg"
 
         buttonModifica.setOnClickListener {
             val data = Intent (this, ModifyProfile::class.java)
