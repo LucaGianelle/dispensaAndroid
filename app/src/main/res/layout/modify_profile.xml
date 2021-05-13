@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="26dp"
         android:layout_marginRight="26dp"
         android:background="@drawable/input_bg"
@@ -68,12 +68,37 @@
         android:textColor="@color/primaryText"
         android:textColorHint="@color/primaryText" />
 
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/viewEta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/eta"
+        android:textColor="@color/primaryText"
+        android:textColorHint="@color/primaryText"
+        android:textSize="18sp" />
+
+
+
+
+    <NumberPicker
+        android:layout_marginBottom="10dp"
+        android:id="@+id/modificaPickerEta"
+        android:layout_width="106dp"
+        android:layout_height="106dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_gravity="center"
+        android:foregroundTint="@color/primaryText"
+        android:theme="@style/AppTheme.Picker" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="36dp">
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/viewPeso"
@@ -104,7 +129,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="60dp">
+        android:layout_marginBottom="40dp">
 
         <NumberPicker
             android:id="@+id/modificaPickerPeso"

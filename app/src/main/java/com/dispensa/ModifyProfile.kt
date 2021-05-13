@@ -32,6 +32,10 @@ class ModifyProfile: AppCompatActivity() {
         modificaPickerAltezza.setMaxValue(210);
         modificaPickerAltezza.wrapSelectorWheel = false
 
+        modificaPickerEta.setMinValue(15);
+        modificaPickerEta.setMaxValue(99);
+        modificaPickerEta.wrapSelectorWheel = false
+
         var valAlt=""
 
         modificaPickerAltezza.setOnValueChangedListener { picker, oldVal, newVal ->
@@ -45,6 +49,12 @@ class ModifyProfile: AppCompatActivity() {
             valPeso = "$newVal"
         }
 
+        var valEta=""
+        modificaPickerEta.setOnValueChangedListener { picker, oldVal, newVal ->
+            //Display the newly selected number to text view
+            valEta = "$newVal"
+        }
+
         val user = FirebaseAuth.getInstance().currentUser
         val id : String = user.uid
 
@@ -53,6 +63,7 @@ class ModifyProfile: AppCompatActivity() {
         var pwMap = ""
         var altezzaMap = ""
         var pesoMap = ""
+        var etaMap = ""
 
 
         //per gli utenti
@@ -67,6 +78,8 @@ class ModifyProfile: AppCompatActivity() {
             pwMap = mappaProfilo.get("password").toString()
             altezzaMap = mappaProfilo.get("altezza").toString()
             pesoMap = mappaProfilo.get("peso").toString()
+            etaMap = mappaProfilo.get("eta").toString()
+
 
 
             modificaNome.setText(nameMap)
