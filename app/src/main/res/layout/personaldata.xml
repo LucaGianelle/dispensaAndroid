@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="0dp"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:text="@string/datiPersonali"
         android:textAlignment="center"
@@ -23,14 +23,13 @@
 
     <TextView
         android:id="@+id/nickname"
-        android:layout_width="0dp"
+        android:layout_width="347dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_account"
         android:drawablePadding="10dp"
         android:drawableTint="@color/primaryText"
+        android:hint="@string/inputName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -46,10 +45,8 @@
 
     <TextView
         android:id="@+id/emailPersonalData"
-        android:layout_width="0dp"
+        android:layout_width="347dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_mail"
         android:drawablePadding="10dp"
@@ -75,11 +72,10 @@
         android:text="peso"
         android:textColor="@color/primaryText"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonModifica"
+        app:layout_constraintBottom_toBottomOf="@+id/height"
         app:layout_constraintEnd_toStartOf="@+id/height"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailPersonalData" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/height"
@@ -96,15 +92,28 @@
 
     <android.widget.Button
         android:id="@+id/buttonModifica"
-        android:layout_width="0dp"
+        android:layout_width="347dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:background="@drawable/two_state_button"
         android:text="@string/buttonModifica"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/primaryText"
+
+        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weight" />
+        app:layout_constraintTop_toBottomOf="@+id/height" />
+
+    <android.widget.Button
+        android:id="@+id/btnLogout"
+        android:layout_height="wrap_content"
+        android:background="@drawable/two_state_button"
+        android:textColor="@color/primaryText"
+        android:text="@string/logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonModifica"
+
+        app:layout_constraintTop_toBottomOf="@+id/buttonModifica"
+        android:layout_width="wrap_content" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

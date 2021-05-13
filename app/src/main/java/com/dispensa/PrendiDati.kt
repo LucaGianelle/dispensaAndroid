@@ -30,7 +30,6 @@ class PrendiDati: AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val list = ArrayList<Aliment>()
                 for (data in snapshot.children) {
-
                     val model = data.getValue(Aliment::class.java)
                     list.add(model as Aliment)
                 }

@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/sfondo">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/sfondo">
 
 
     <TextView
-        android:id="@+id/login"
+        android:id="@+id/tv_modifica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/registrazione"
-        android:paddingTop="30dp"
+        android:hint="@string/infoModifica"
+        android:paddingTop="40dp"
         android:layout_gravity="center"
-        android:paddingBottom="30dp"
+        android:paddingBottom="40dp"
         android:textColorHint="@color/primaryText"
-        android:textSize="36sp"
-        android:textStyle="bold" />
+        android:textSize="26sp"
+        android:textStyle="bold"/>
 
 
     <EditText
-        android:id="@+id/inputNome"
+        android:id="@+id/modificaNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="40dp"
         android:layout_marginLeft="26dp"
         android:layout_marginRight="26dp"
         android:background="@drawable/input_bg"
@@ -44,36 +43,15 @@
         android:textColor="@color/primaryText"
         android:textColorHint="@color/primaryText" />
 
-    <EditText
-        android:id="@+id/inputEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="26dp"
-        android:layout_marginRight="26dp"
-        android:background="@drawable/input_bg"
-        android:drawableStart="@drawable/ic_mail"
-        android:drawablePadding="10dp"
-        android:drawableTint="@color/primaryText"
-        android:ems="10"
-        android:hint="@string/inputEmail"
-        android:inputType="textPersonName"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/primaryText"
-        android:textColorHint="@color/primaryText"
-        tools:ignore="TextFields" />
+
 
 
     <EditText
-        android:id="@+id/inputPassword"
+        android:id="@+id/modificaPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="26dp"
         android:layout_marginRight="26dp"
         android:background="@drawable/input_bg"
@@ -90,33 +68,31 @@
         android:textColor="@color/primaryText"
         android:textColorHint="@color/primaryText" />
 
-
-
-
     <TextView
-            android:layout_marginTop="10dp"
-            android:id="@+id/viewEta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/eta"
-            android:textColor="@color/primaryText"
-            android:textColorHint="@color/primaryText"
-            android:textSize="18sp" />
+        android:layout_marginTop="10dp"
+        android:id="@+id/viewEta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/eta"
+        android:textColor="@color/primaryText"
+        android:textColorHint="@color/primaryText"
+        android:textSize="18sp" />
 
 
 
 
     <NumberPicker
-            android:layout_marginBottom="10dp"
-            android:id="@+id/pickerEta"
-            android:layout_width="106dp"
-            android:layout_height="106dp"
-            android:layout_marginLeft="36dp"
-            android:layout_marginRight="36dp"
-            android:layout_gravity="center"
-            android:foregroundTint="@color/primaryText"
-            android:theme="@style/AppTheme.Picker" />
+        android:layout_marginBottom="10dp"
+        android:id="@+id/modificaPickerEta"
+        android:layout_width="106dp"
+        android:layout_height="106dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_gravity="center"
+        android:foregroundTint="@color/primaryText"
+        android:theme="@style/AppTheme.Picker" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -153,23 +129,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="40dp">
 
         <NumberPicker
-            android:id="@+id/pickerPeso"
+            android:id="@+id/modificaPickerPeso"
             android:layout_width="wrap_content"
             android:layout_height="106dp"
-            android:layout_weight="1"
             android:layout_marginLeft="36dp"
             android:layout_marginRight="36dp"
-            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="false"
             android:foregroundTint="@color/primaryText"
+            android:gravity="center"
             android:theme="@style/AppTheme.Picker" />
 
 
 
         <NumberPicker
-            android:id="@+id/pickerAltezza"
+            android:id="@+id/modificaPickerAltezza"
             android:layout_width="wrap_content"
             android:layout_height="106dp"
             android:layout_weight="1"
