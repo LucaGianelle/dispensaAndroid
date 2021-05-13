@@ -24,6 +24,18 @@ class ModifyProfile: AppCompatActivity() {
         database = Firebase.database.reference
         auth = FirebaseAuth.getInstance()
 
+        var cambiaUtente = DbCommunication.getUser()
+        val user = FirebaseAuth.getInstance().currentUser
+        val id : String = user.uid
+
+        var idUserCorrente : String = auth.currentUser.uid
+        var altezzaMap = cambiaUtente.altezza
+        var pesoMap = cambiaUtente.peso
+        var etaMap = cambiaUtente.eta
+        var nameMap = cambiaUtente.name
+        var pwMap = cambiaUtente.password
+
+
         modificaPickerPeso.setMinValue(40);
         modificaPickerPeso.setMaxValue(120);
         modificaPickerPeso.wrapSelectorWheel = false
@@ -36,69 +48,12 @@ class ModifyProfile: AppCompatActivity() {
         modificaPickerEta.setMaxValue(99);
         modificaPickerEta.wrapSelectorWheel = false
 
-        var valAlt=""
 
-        modificaPickerAltezza.setOnValueChangedListener { picker, oldVal, newVal ->
-            //Display the newly selected number to text view
-            valAlt = "$newVal"
-        }
-
-        var valPeso=""
-        modificaPickerPeso.setOnValueChangedListener { picker, oldVal, newVal ->
-            //Display the newly selected number to text view
-            valPeso = "$newVal"
-        }
-
-        var valEta=""
-        modificaPickerEta.setOnValueChangedListener { picker, oldVal, newVal ->
-            //Display the newly selected number to text view
-            valEta = "$newVal"
-        }
-
-        val user = FirebaseAuth.getInstance().currentUser
-        val id : String = user.uid
-
-        var idUserCorrente : String = auth.currentUser.uid
-        var nameMap = ""
-        var pwMap = ""
-        var altezzaMap = ""
-        var pesoMap = ""
-        var etaMap = ""
-
-
-        //per gli utenti
-        /*database.child("User").child(idUserCorrente).get().addOnSuccessListener {
-
-            val mappaProfilo = it.value as Map<String, String>
-
-            //prove stampa
-            Log.i("firebase", "Got value ${it.value}")
-            Log.i("firebase","${mappaProfilo}")
-            nameMap = mappaProfilo.get("name").toString()
-            pwMap = mappaProfilo.get("password").toString()
-            altezzaMap = mappaProfilo.get("altezza").toString()
-            pesoMap = mappaProfilo.get("peso").toString()
-            etaMap = mappaProfilo.get("eta").toString()
-
-
-
-            modificaNome.setText(nameMap)
-            modificaPassword.setText(pwMap)
-            //height.text = "$altezzaMap cm"
-            //weight.text = "$pesoMap kg"
-
-
-
-            //Creare un user per caricare i dati nell'oggetto User
-            //User(var name:String, var email:String, var password: String, var altezza: String, var peso: String)
-
-        }.addOnFailureListener {
-            Log.e("firebase", "Error getting data", it)
-        }*/
-
-        var cambiaUtente = DbCommunication.getUser()
-        modificaNome.setText(cambiaUtente.name)
-        modificaPassword.setText(cambiaUtente.password)
+        modificaNome.setText(nameMap)
+        modificaPassword.setText(pwMap)
+        modificaPickerAltezza.value = altezzaMap.toInt()
+        modificaPickerPeso.value = pesoMap.toInt()
+        modificaPickerEta.value = etaMap.toInt()
 
 
         buttonConferma.setOnClickListener {
@@ -108,21 +63,26 @@ class ModifyProfile: AppCompatActivity() {
             }
 
             temp = modificaPassword.text.toString()
-            if(nameMap.equals(temp) == false){
+            if(pwMap.equals(temp) == false){
                 database.child("User").child(idUserCorrente).child("password").setValue(temp)
             }
 
-            /*temp = modificaPickerAltezza.text.toString()
-            if(nameMap.equals(temp)){
-                database.child("User").child(idUserCorrente).child("name").setValue(name)
+            temp = modificaPickerAltezza.value.toString()
+            if(!altezzaMap.equals(temp)){
+                database.child("User").child(idUserCorrente).child("altezza").setValue(temp)
             }
 
-            temp = modificaNome.text.toString()
-            if(nameMap.equals(temp)){
-                database.child("User").child(idUserCorrente).child("name").setValue(name)
-            }*/
+            temp = modificaPickerPeso.value.toString()
+            if(!pesoMap.equals(temp)){
+                database.child("User").child(idUserCorrente).child("peso").setValue(temp)
+            }
 
-            val data = Intent (this, PersonaldataActivity::class.java)
+            temp = modificaPickerEta.value.toString()
+            if(!etaMap.equals(temp)){
+                database.child("User").child(idUserCorrente).child("eta").setValue(temp)
+            }
+
+            val data = Intent (this, HomeActivity::class.java)
             startActivity(data)
         }
     }

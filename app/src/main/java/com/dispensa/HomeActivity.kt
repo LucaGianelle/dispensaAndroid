@@ -54,8 +54,9 @@ class HomeActivity : AppCompatActivity() {
             var pwMap : String = mappaProfilo.get("password").toString()
             val altezzaMap : String = mappaProfilo.get("altezza").toString()
             val pesoMap : String = mappaProfilo.get("peso").toString()
+            val etaMap : String = mappaProfilo.get("eta").toString()
 
-            DbCommunication.createUser(nameMap,emailMap,pwMap,altezzaMap,pesoMap, "25")
+            DbCommunication.createUser(nameMap,emailMap,pwMap,altezzaMap,pesoMap,etaMap)
             var utenteprova : User = DbCommunication.getUser()
             println("===================================== > " + utenteprova.name + " " + utenteprova.email + " " + utenteprova.eta)
 
