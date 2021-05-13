@@ -1,5 +1,6 @@
 package com.dispensa
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,7 @@ class PersonaldataActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     var myAuth = FirebaseAuth.getInstance()
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.personaldata)
@@ -79,6 +81,7 @@ class PersonaldataActivity : AppCompatActivity() {
         emailPersonalData.text = dataUser.email
         height.text = "${dataUser.altezza} cm"
         weight.text = "${dataUser.peso} kg"
+        age.text = "${dataUser.eta} anni"
 
         buttonModifica.setOnClickListener {
             val data = Intent (this, ModifyProfile::class.java)

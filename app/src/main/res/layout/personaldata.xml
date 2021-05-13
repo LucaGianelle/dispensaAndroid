@@ -66,22 +66,34 @@
         app:layout_constraintTop_toBottomOf="@+id/nickname" />
 
     <TextView
+        android:id="@+id/age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/eta"
+        android:textColor="@color/primaryText"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/weight"
+        app:layout_constraintEnd_toStartOf="@+id/weight"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="peso"
+        android:text="@string/textPeso"
         android:textColor="@color/primaryText"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/height"
         app:layout_constraintEnd_toStartOf="@+id/height"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/age" />
 
     <TextView
         android:id="@+id/height"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="altezza"
+        android:text="@string/textAltezza"
         android:textColor="@color/primaryText"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonModifica"
@@ -106,14 +118,14 @@
 
     <android.widget.Button
         android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/two_state_button"
-        android:textColor="@color/primaryText"
         android:text="@string/logout"
+
+        android:textColor="@color/primaryText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/buttonModifica"
-
-        app:layout_constraintTop_toBottomOf="@+id/buttonModifica"
-        android:layout_width="wrap_content" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonModifica" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
