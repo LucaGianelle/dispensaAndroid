@@ -67,7 +67,7 @@ class ModifyProfile: AppCompatActivity() {
 
 
         //per gli utenti
-        database.child("User").child(idUserCorrente).get().addOnSuccessListener {
+        /*database.child("User").child(idUserCorrente).get().addOnSuccessListener {
 
             val mappaProfilo = it.value as Map<String, String>
 
@@ -94,7 +94,11 @@ class ModifyProfile: AppCompatActivity() {
 
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
-        }
+        }*/
+
+        var cambiaUtente = DbCommunication.getUser()
+        modificaNome.setText(cambiaUtente.name)
+        modificaPassword.setText(cambiaUtente.password)
 
 
         buttonConferma.setOnClickListener {
