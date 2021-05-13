@@ -32,6 +32,7 @@
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="logout" translatable="false">logout</string>
     <string name="infoModifica" translatable="false">Rimpiazza i dati per la modifica</string>
+    <string name="eta" translatable="false">Età</string>
 
 
 </resources>

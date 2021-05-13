@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.register.*
 
 
@@ -35,6 +34,10 @@ class RegisterActivity : AppCompatActivity() {
         pickerAltezza.setMaxValue(210);
         pickerAltezza.wrapSelectorWheel = false
 
+        pickerEta.setMinValue(15);
+        pickerEta.setMaxValue(99);
+        pickerEta.wrapSelectorWheel = false
+
         var valAlt =""
 
         pickerAltezza.setOnValueChangedListener { picker, oldVal, newVal ->
@@ -53,31 +56,41 @@ class RegisterActivity : AppCompatActivity() {
 
         }
 
+        var valEta =""
+
+        pickerEta.setOnValueChangedListener { picker, oldVal, newVal ->
+
+            //Display the newly selected number to text view
+            valEta = "$newVal"
+
+        }
+
 
         val buttonConf = findViewById<Button>(R.id.buttonConferma)
         database= FirebaseDatabase.getInstance()
         reference=database.getReference("User")
         buttonConf.setOnClickListener{
             Log.d("TAG", "prova1")
-            signUpUser(valAlt, valPeso)
+            signUpUser(valAlt, valPeso, valEta)
         }
 
 
 
 }
 
-    private fun sendData(valAlt: String, valPeso: String){
+    private fun sendData(valAlt: String, valPeso: String, valEta: String){
         val name = inputNome.text.toString().trim()
         val email = inputEmail.text.toString().trim()
         val password = inputPassword.text.toString().trim()
         val altezza = pickerAltezza.value.toString()
         val peso =  pickerPeso.value.toString()
+        val eta =  pickerEta.value.toString()
 
         Log.d("TAG", "prova2")
 
         if(name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()){
 
-            val model= User(name, email , password, altezza, peso)
+            val model= User(name, email , password, altezza, peso, eta)
 
             val utente = FirebaseAuth.getInstance().currentUser
                         val id : String = utente.uid
@@ -100,7 +113,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-private fun signUpUser(valAlt: String, valPeso: String) {
+private fun signUpUser(valAlt: String, valPeso: String, valEta: String) {
 
 
 if (inputNome.text.toString().isEmpty()) {
@@ -147,6 +160,12 @@ if (inputPassword.text.toString().isEmpty()) {
         return
     }
 
+    if (pickerEta.value.toString().isEmpty()) {
+        Toast.makeText(baseContext, "Inserire il peso", Toast.LENGTH_SHORT).show()
+        pickerEta.requestFocus()
+        return
+    }
+
     auth.createUserWithEmailAndPassword(inputEmail.text.toString(), inputPassword.text.toString())
     .addOnCompleteListener(this) { task ->
         if (task.isSuccessful) {
@@ -163,7 +182,7 @@ if (inputPassword.text.toString().isEmpty()) {
                         database = FirebaseDatabase.getInstance()
                         reference = database.getReference(id)*/
 
-                        sendData(valAlt, valPeso)
+                        sendData(valAlt, valPeso, valEta)
                         startActivity(Intent(this, HomeActivity::class.java))
                         finish()
                     }
