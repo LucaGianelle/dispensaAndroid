@@ -3,25 +3,48 @@ package com.dispensa.RealtimeDatabase
 import android.graphics.drawable.RippleDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dispensa.ExampleItem
 import com.dispensa.R
 import kotlinx.android.synthetic.main.activity_one.*
+import kotlinx.android.synthetic.main.example_item.*
+import kotlin.random.Random
 
 class ActivityOne : AppCompatActivity() {
+    private val exampleList = generateDummyList(500)
+    private val adapter = ExampleAdapter(exampleList)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_one)
 
-        val exampleList = generateDummyList(500)
-
-        recycler_view.adapter = ExampleAdapter(exampleList)
+        recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.setHasFixedSize(true)
     }
 
-    private fun generateDummyList(size: Int): List<ExampleItem> {
+    fun insertItem(view: View) {
+        val index = Random.nextInt(8)
+
+        val newItem = ExampleItem(
+            R.drawable.ic_android_black_24dp,
+            "New item at position $index",
+            "Line 2"
+        )
+
+        exampleList.add(index, newItem)
+        adapter.notifyItemInserted(index)
+    }
+
+    fun removeItem(view: View) {
+        val index = Random.nextInt(8)
+
+        exampleList.removeAt(index)
+        adapter.notifyItemRemoved(index)
+    }
+
+    private fun generateDummyList(size: Int): ArrayList<ExampleItem> {
 
         val list = ArrayList<ExampleItem>()
 
