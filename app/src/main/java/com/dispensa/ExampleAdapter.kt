@@ -8,9 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.example_item.view.*
+import kotlinx.android.synthetic.main.row.view.*
 
 class ExampleAdapter(
-    private val exampleList: List<ExampleItem>,
+    private val exampleList: List<Aliment>,
     private val listener: OnItemClickListener
 ) :
     RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder>() {
@@ -25,24 +26,26 @@ class ExampleAdapter(
     override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
         val currentItem = exampleList[position]
 
-        holder.imageView.setImageResource(currentItem.imageResource)
-        holder.textView1.text = currentItem.text1
-        holder.textView1.text = currentItem.text2
+        holder.nomeCibo.text = currentItem.nameAliment
+        holder.calorieCibo.text = currentItem.calorie.toString()
+        holder.quantitaCibo.text = currentItem.quantita.toString()
+        holder.proteineCibo.text = currentItem.proteine.toString()
+        holder.grassiCibo.text = currentItem.grassi.toString()
+        holder.carboidratiCibo.text = currentItem.carboidrati.toString()
 
-        if (position == 0) {
-            holder.textView1.setBackgroundColor(Color.YELLOW)
-        } else {
-
-        }
     }
 
     override fun getItemCount() = exampleList.size
 
     inner class ExampleViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView),
     View.OnClickListener{
-        val imageView: ImageView = itemView.image_view
-        val textView1: TextView = itemView.text_view_1
-        val textView2: TextView = itemView.text_view_2
+        val nomeCibo: TextView = itemView.textViewNomeCibo
+        val calorieCibo: TextView = itemView.textViewCalorie
+        val proteineCibo: TextView = itemView.grammiProteine
+        val grassiCibo: TextView = itemView.grammiGrassi
+        val carboidratiCibo: TextView = itemView.grammiCarboidrati
+        val quantitaCibo: TextView = itemView.textViewQuantita
+
 
         init{
             itemView.setOnClickListener(this)
