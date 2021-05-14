@@ -1,4 +1,4 @@
-package com.dispensa.RealtimeDatabase
+package com.dispensa
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -7,9 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.dispensa.ExampleItem
-import com.dispensa.MainActivity
-import com.dispensa.R
 import kotlinx.android.synthetic.main.example_item.view.*
 
 class ExampleAdapter(
@@ -19,7 +16,7 @@ class ExampleAdapter(
     RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExampleViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.example_item,
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.row,
         parent, false)
 
         return ExampleViewHolder(itemView)

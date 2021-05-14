@@ -71,7 +71,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         valnb.setOnClickListener {
-            val valNut = Intent (this, PrendiDati::class.java)
+            val valNut = Intent (this, ActivityOne::class.java)
             startActivity(valNut)
         }
 
