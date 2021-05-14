@@ -69,4 +69,5 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
 
         return list
     }
+
 }
