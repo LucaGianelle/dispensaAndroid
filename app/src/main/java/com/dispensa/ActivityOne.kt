@@ -48,14 +48,16 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
     fun insertItem(view: View) {
         val index = Random.nextInt(8)
 
-       val newItem = ExampleItem(
+        //dove verranno inseriti i dati dal db
+      /* val newItem = ExampleItem(
+
             R.drawable.ic_android_black_24dp,
             "New item at position $index",
             "Line 2"
         )
 
 
-        exampleList.add(index, newItem)
+        exampleList.add(index, newItem)*/
         adapter.notifyItemInserted(index)
     }
 
@@ -69,13 +71,13 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
     override fun onItemClick(position: Int) {
         Toast.makeText(this, "Item $position clicked", Toast.LENGTH_SHORT).show()
         val clickedItem = exampleList [position]
-        clickedItem.text1 = "Clicked"
+        //clickedItem.text1 = "Clicked"
         adapter.notifyItemChanged(position)
     }
 
-    private fun generateDummyList(size: Int): ArrayList<ExampleItem> {
+    private fun generateDummyList(size: Int): ArrayList<Aliment> {
 
-        val list = ArrayList<ExampleItem>()
+        val list = ArrayList<Aliment>()
 
         for (i in 0 until size) {
             val drawable = when (i % 3) {
@@ -84,8 +86,8 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
                 else -> R.drawable.ic_account
             }
 
-            val item = ExampleItem(drawable, "Item $i", "Line 2")
-            list += item
+            //val item = Aliment(drawable, "Item $i", "Line 2")
+            //list += item
         }
 
         return list
