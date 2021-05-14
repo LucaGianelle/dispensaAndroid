@@ -37,12 +37,15 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
             result = it.value as ArrayList<Map<String,String>>
             //val result = it.value as ArrayList<String>
             // Map<String,Map<String, String>>
+            DbCommunication.stampaAliment(result)
             println("=================================================================================================================================================================================")
             Log.i("firebase", "Got value ${it.value}")
             Log.i("firebase", "${result}")
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
         }
+
+
     }
 
     fun insertItem(view: View) {
@@ -92,5 +95,7 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
 
         return list
     }
+
+
 
 }
