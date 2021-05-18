@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_one.*
 import kotlin.random.Random
 
 class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
-    private val exampleList = generateDummyList(500)
+    private var exampleList = generateDummyList(500)
     private val adapter = ExampleAdapter(exampleList, this)
 
 
@@ -37,7 +37,7 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
             result = it.value as ArrayList<Map<String,String>>
             //val result = it.value as ArrayList<String>
             // Map<String,Map<String, String>>
-            DbCommunication.stampaAliment(result)
+            DbCommunication.createAliment(result)
             println("=================================================================================================================================================================================")
             Log.i("firebase", "Got value ${it.value}")
             Log.i("firebase", "${result}")
@@ -49,10 +49,11 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
     }
 
     fun insertItem(view: View) {
-        val index = Random.nextInt(8)
+        exampleList = DbCommunication.getAliment()
+        /*val index = Random.nextInt(8)
 
         //dove verranno inseriti i dati dal db
-      /* val newItem = ExampleItem(
+      val newItem = ExampleItem(
 
             R.drawable.ic_android_black_24dp,
             "New item at position $index",
@@ -60,8 +61,8 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
         )
 
 
-        exampleList.add(index, newItem)*/
-        adapter.notifyItemInserted(index)
+        exampleList.add(index, newItem)
+        adapter.notifyItemInserted(index)*/
     }
 
     fun removeItem(view: View) {

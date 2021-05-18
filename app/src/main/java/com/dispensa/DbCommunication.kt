@@ -31,7 +31,7 @@ object DbCommunication {
         return utenteCorrente
     }
 
-     fun stampaAliment (allAliment: ArrayList<Map<String,String>>){
+     fun createAliment (allAliment: ArrayList<Map<String,String>>){
         val lunghezzaAliment = allAliment.size
         var listaCibi = ArrayList<Aliment>()
 
@@ -49,6 +49,10 @@ object DbCommunication {
 
             this.listaCibi.add(tempAliment)
         }
+    }
+
+    fun getAliment() : ArrayList<Aliment> {
+        return listaCibi
     }
 
 
