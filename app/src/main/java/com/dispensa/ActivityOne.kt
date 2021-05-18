@@ -50,6 +50,7 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
 
     fun insertItem(view: View) {
         exampleList = DbCommunication.getAliment()
+        println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ "+exampleList.size)
         /*val index = Random.nextInt(8)
 
         //dove verranno inseriti i dati dal db
@@ -83,7 +84,7 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
 
         val list = ArrayList<Aliment>()
 
-        for (i in 0 until size) {
+        /*for (i in 0 until size) {
             val drawable = when (i % 3) {
                 0 -> R.drawable.ic_android_black_24dp
                 1 -> R.drawable.ic_security
@@ -92,7 +93,7 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
 
             //val item = Aliment(drawable, "Item $i", "Line 2")
             //list += item
-        }
+        }*/
 
         return list
     }
