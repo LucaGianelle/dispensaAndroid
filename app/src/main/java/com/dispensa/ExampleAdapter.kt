@@ -33,6 +33,10 @@ class ExampleAdapter(
         holder.grassiCibo.text = currentItem.grassi.toString()
         holder.carboidratiCibo.text = currentItem.carboidrati.toString()
 
+        println("******************************************** ************************************************ ***************************")
+        println(" "+holder.nomeCibo.text+" "+holder.calorieCibo.text+" "+holder.quantitaCibo.text+" "
+                +holder.proteineCibo.text+" "+holder.grassiCibo.text+" "+holder.carboidratiCibo.text)
+
     }
 
     override fun getItemCount() = exampleList.size
