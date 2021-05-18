@@ -35,17 +35,22 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
         database.child("aliment").get().addOnSuccessListener {
 
             result = it.value as ArrayList<Map<String,String>>
-            //val result = it.value as ArrayList<String>
-            // Map<String,Map<String, String>>
+
             DbCommunication.createAliment(result)
-            println("=================================================================================================================================================================================")
-            Log.i("firebase", "Got value ${it.value}")
-            Log.i("firebase", "${result}")
+            insertList() //da qui non mi serve più DbCommunication
+
+           /*Log.i("firebase", "Got value ${it.value}")
+            Log.i("firebase", "${result}")*/
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
         }
 
 
+    }
+
+    fun insertList() {
+        exampleList = DbCommunication.getAliment()
+        println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ "+exampleList.size)
     }
 
     fun insertItem(view: View) {
