@@ -12,7 +12,7 @@ object DbCommunication {
     private lateinit var database: FirebaseDatabase
 
     private lateinit var utenteCorrente : User
-    private lateinit var listaCibi : ArrayList<Aliment>
+    private var listaCibi : ArrayList<Aliment> = generateList(500)
 
     fun getDbReference(){
         reference = Firebase.database.reference
@@ -54,6 +54,13 @@ object DbCommunication {
     fun getAliment() : ArrayList<Aliment> {
         return listaCibi
     }
+    private fun generateList(size: Int): ArrayList<Aliment> {
 
+        val list = ArrayList<Aliment>()
+
+
+
+        return list
+    }
 
 }
