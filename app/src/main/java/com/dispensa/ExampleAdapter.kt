@@ -27,15 +27,16 @@ class ExampleAdapter(
         val currentItem = exampleList[position]
 
         holder.nomeCibo.text = currentItem.nameAliment
-        holder.calorieCibo.text = currentItem.calorie.toString()
-        holder.quantitaCibo.text = currentItem.quantita.toString()
-        holder.proteineCibo.text = currentItem.proteine.toString()
+        holder.calorieCibo.text = currentItem.calorie
+        holder.quantitaCibo.text = currentItem.quantita
+       /* holder.proteineCibo.text = currentItem.proteine.toString()
         holder.grassiCibo.text = currentItem.grassi.toString()
-        holder.carboidratiCibo.text = currentItem.carboidrati.toString()
+        holder.carboidratiCibo.text = currentItem.carboidrati.toString()*/
+
 
         println("******************************************** ************************************************ ***************************")
-        println(" "+holder.nomeCibo.text+" "+holder.calorieCibo.text+" "+holder.quantitaCibo.text+" "
-                +holder.proteineCibo.text+" "+holder.grassiCibo.text+" "+holder.carboidratiCibo.text)
+       /* println(" "+holder.nomeCibo.text+" "+holder.calorieCibo.text+" "+holder.quantitaCibo.text+" "
+                +holder.proteineCibo.text+" "+holder.grassiCibo.text+" "+holder.carboidratiCibo.text)*/
 
     }
 
@@ -45,10 +46,11 @@ class ExampleAdapter(
     View.OnClickListener{
         val nomeCibo: TextView = itemView.textViewNomeCibo
         val calorieCibo: TextView = itemView.textViewCalorie
-        val proteineCibo: TextView = itemView.grammiProteine
-        val grassiCibo: TextView = itemView.grammiGrassi
-        val carboidratiCibo: TextView = itemView.grammiCarboidrati
         val quantitaCibo: TextView = itemView.textViewQuantita
+       /* val proteineCibo: TextView = itemView.grammiProteine
+        val grassiCibo: TextView = itemView.grammiGrassi
+        val carboidratiCibo: TextView = itemView.grammiCarboidrati*/
+
 
 
         init{

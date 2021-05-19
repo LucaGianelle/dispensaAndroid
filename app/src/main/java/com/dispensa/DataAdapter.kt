@@ -29,8 +29,8 @@ class DataAdapter(var list:ArrayList<Aliment>) : RecyclerView.Adapter<DataAdapte
         holder.nameAliment.text=list[position].nameAliment
         holder.grammi.text= list[position].quantita.toString()
         holder.cal.text= list[position].calorie.toString()
-        holder.gra.text= list[position].grassi.toString()
+        /*holder.gra.text= list[position].grassi.toString()
         holder.pro.text= list[position].proteine.toString()
-        holder.carb.text= list[position].carboidrati.toString()
+        holder.carb.text= list[position].carboidrati.toString()*/
     }
 }

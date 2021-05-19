@@ -12,7 +12,7 @@ object DbCommunication {
     private lateinit var database: FirebaseDatabase
 
     private lateinit var utenteCorrente : User
-    private var listaCibi : ArrayList<Aliment> = generateList(500)
+    private var listaCibi : ArrayList<Aliment> = generateList()
 
     fun getDbReference(){
         reference = Firebase.database.reference
@@ -33,6 +33,7 @@ object DbCommunication {
 
      fun createAliment (allAliment: ArrayList<Map<String,String>>){
         val lunghezzaAliment = allAliment.size
+         print("&&&&&&&&&&&&&&&&&&&&&&&&&&     questa è il numero degli alimenti presi dal db " +lunghezzaAliment+ "\n")
         var listaCibi = ArrayList<Aliment>()
 
         for(i in 0 until lunghezzaAliment){
@@ -45,16 +46,17 @@ object DbCommunication {
             val tempQuantitaAliment = tempMap.get("quantita").toString()
             //valori nutrizionali
 
-            var tempAliment = Aliment(tempNameAliment, tempCalorieAliment, tempQuantitaAliment, 10.0,10.0,10.0)
+            var tempAliment = Aliment(tempNameAliment, tempCalorieAliment, tempQuantitaAliment/*, 10.0,10.0,10.0*/)
 
             this.listaCibi.add(tempAliment)
         }
     }
 
     fun getAliment() : ArrayList<Aliment> {
+        listaCibi
         return listaCibi
     }
-    private fun generateList(size: Int): ArrayList<Aliment> {
+    private fun generateList(): ArrayList<Aliment> {
 
         val list = ArrayList<Aliment>()
 

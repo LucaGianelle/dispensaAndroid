@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_one.*
 import kotlin.random.Random
 
 class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
-    private var exampleList = generateDummyList(500)
+    private var exampleList = generateDummyList(/*500*/)
     private val adapter = ExampleAdapter(exampleList, this)
 
 
@@ -30,27 +30,20 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
 
         //=*=*=*=**=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=**=*=*= >> per il cibo
 
-        database = Firebase.database.reference
+        /*database = Firebase.database.reference
 
         database.child("aliment").get().addOnSuccessListener {
 
             result = it.value as ArrayList<Map<String,String>>
 
             DbCommunication.createAliment(result)
-            insertList() //da qui non mi serve più DbCommunication
 
            /*Log.i("firebase", "Got value ${it.value}")
             Log.i("firebase", "${result}")*/
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
-        }
+        }*/
 
-
-    }
-
-    fun insertList() {
-        exampleList = DbCommunication.getAliment()
-        println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ "+exampleList.size)
     }
 
     fun insertItem(view: View) {
@@ -85,21 +78,46 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
         adapter.notifyItemChanged(position)
     }
 
-    private fun generateDummyList(size: Int): ArrayList<Aliment> {
+    private fun generateDummyList(/*size: Int*/): ArrayList<Aliment> {
+
+        //=*=*=*=**=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=**=*=*= >> per il cibo
+
+        database = Firebase.database.reference
+
+        database.child("aliment").get().addOnSuccessListener {
+
+            result = it.value as ArrayList<Map<String,String>>
+
+            DbCommunication.createAliment(result)
+
+            /*Log.i("firebase", "Got value ${it.value}")
+             Log.i("firebase", "${result}")*/
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
 
         val list = ArrayList<Aliment>()
 
-        /*for (i in 0 until size) {
-            val drawable = when (i % 3) {
-                0 -> R.drawable.ic_android_black_24dp
-                1 -> R.drawable.ic_security
-                else -> R.drawable.ic_account
-            }
+        val templist = DbCommunication.getAliment()
+        val size = templist.size
+        print("((((((((((((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))))))))))))))" + size)
 
-            //val item = Aliment(drawable, "Item $i", "Line 2")
-            //list += item
-        }*/
+        for (i in 0 until size) {
 
+            val tempitem = templist[i]
+            val tnameAliment = tempitem.nameAliment
+            val tcalAliment = tempitem.calorie
+            val tquantAliment = tempitem.quantita
+           /* val tproteinAliment = tempitem.proteine
+            val tcarboAliment = tempitem.carboidrati
+            val tgrassiAliment = tempitem.grassi*/
+
+
+            val item = Aliment(tnameAliment, tcalAliment, tquantAliment)
+            list += item
+        }
+
+        print("((((((((((((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))))))))))))))" + list.size)
         return list
     }
 
