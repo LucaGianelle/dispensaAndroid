@@ -3,17 +3,18 @@ package com.dispensa
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.rv_layout.view.*
 
 class DataAdapter(var list:ArrayList<Aliment>) : RecyclerView.Adapter<DataAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        var nameAliment=itemView.nomeAlimento
-        var grammi=itemView.grammatura
-        var cal = itemView.calorie
-        var pro = itemView.proteine
-        var carb = itemView.carboidrati
-        var gra = itemView.grassi
+        var nameAliment : TextView = itemView.nomeAlimento
+        var grammi : TextView =itemView.grammatura
+        var cal : TextView = itemView.calorie
+        var pro : TextView = itemView.proteine
+        var carb : TextView = itemView.carboidrati
+        var gra : TextView = itemView.grassi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
