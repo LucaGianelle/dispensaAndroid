@@ -43,8 +43,9 @@ object DbCommunication {
 
             val tempNameAliment = tempMap.get("nome").toString()
             val tempCalorieAliment = tempMap.get("calorie").toString()
-            val tempQuantitaAliment = tempMap.get("quantita").toString()
-            //valori nutrizionali
+            val tempQuantitaAliment = tempMap.get("quantità").toString()
+
+            //visualizzazione valori nutrizionali
 
             var tempAliment = Aliment(tempNameAliment, tempCalorieAliment, tempQuantitaAliment/*, 10.0,10.0,10.0*/)
 
