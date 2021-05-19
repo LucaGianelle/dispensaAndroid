@@ -25,6 +25,7 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
+    private lateinit var result : ArrayList<Map<String,String>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +58,23 @@ class HomeActivity : AppCompatActivity() {
             DbCommunication.createUser(nameMap,emailMap,pwMap,altezzaMap,pesoMap,etaMap)
 
         }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+        }
+
+
+        //=*=*=*=**=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=**=*=*= >> per il cibo
+
+        database = Firebase.database.reference
+
+        database.child("aliment").get().addOnSuccessListener {
+
+            result = it.value as ArrayList<Map<String,String>>
+
+            DbCommunication.createAliment(result)
+
+            /*Log.i("firebase", "Got value ${it.value}")
+             Log.i("firebase", "${result}")*/
+        }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
         }
 

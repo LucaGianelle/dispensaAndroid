@@ -16,10 +16,6 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
     private var exampleList = generateDummyList(/*500*/)
     private val adapter = ExampleAdapter(exampleList, this)
 
-
-    private lateinit var database: DatabaseReference
-    private lateinit var result : ArrayList<Map<String,String>>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_one)
@@ -80,24 +76,7 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
 
     private fun generateDummyList(/*size: Int*/): ArrayList<Aliment> {
 
-        //=*=*=*=**=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=**=*=*= >> per il cibo
-
-        database = Firebase.database.reference
-
-        database.child("aliment").get().addOnSuccessListener {
-
-            result = it.value as ArrayList<Map<String,String>>
-
-            DbCommunication.createAliment(result)
-
-            /*Log.i("firebase", "Got value ${it.value}")
-             Log.i("firebase", "${result}")*/
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
-
         val list = ArrayList<Aliment>()
-
         val templist = DbCommunication.getAliment()
         val size = templist.size
         print("((((((((((((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))))))))))))))" + size)
