@@ -29,9 +29,11 @@ class ExampleAdapter(
         holder.nomeCibo.text = currentItem.nameAliment
         holder.calorieCibo.text = currentItem.calorie
         holder.quantitaCibo.text = currentItem.quantita
-       /* holder.proteineCibo.text = currentItem.proteine.toString()
+
+
+        holder.proteineCibo.text = currentItem.proteine.toString()
         holder.grassiCibo.text = currentItem.grassi.toString()
-        holder.carboidratiCibo.text = currentItem.carboidrati.toString()*/
+        holder.carboidratiCibo.text = currentItem.carboidrati.toString()
 
 
         println("******************************************** ************************************************ ***************************")
@@ -47,9 +49,11 @@ class ExampleAdapter(
         val nomeCibo: TextView = itemView.textViewNomeCibo
         val calorieCibo: TextView = itemView.textViewCalorie
         val quantitaCibo: TextView = itemView.textViewQuantita
-       /* val proteineCibo: TextView = itemView.grammiProteine
+
+
+        val proteineCibo: TextView = itemView.grammiProteine
         val grassiCibo: TextView = itemView.grammiGrassi
-        val carboidratiCibo: TextView = itemView.grammiCarboidrati*/
+        val carboidratiCibo: TextView = itemView.grammiCarboidrati
 
 
 

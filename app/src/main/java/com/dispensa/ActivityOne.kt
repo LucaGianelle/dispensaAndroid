@@ -1,4 +1,4 @@
-package com.dispensa
+  package com.dispensa
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -87,12 +87,12 @@ class ActivityOne : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
             val tnameAliment = tempitem.nameAliment
             val tcalAliment = tempitem.calorie
             val tquantAliment = tempitem.quantita
-           /* val tproteinAliment = tempitem.proteine
+            val tproteinAliment = tempitem.proteine
             val tcarboAliment = tempitem.carboidrati
-            val tgrassiAliment = tempitem.grassi*/
+            val tgrassiAliment = tempitem.grassi
 
 
-            val item = Aliment(tnameAliment, tcalAliment, tquantAliment)
+            val item = Aliment(tnameAliment, tcalAliment, tquantAliment, tproteinAliment, tcarboAliment, tgrassiAliment)
             list += item
         }
 
