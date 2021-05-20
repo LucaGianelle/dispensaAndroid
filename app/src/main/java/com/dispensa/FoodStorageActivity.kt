@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.food_storage.*
 import kotlin.random.Random
 
-class FoodStorageActivity : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
+class FoodStorageActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
     private var exampleList = generateDummyList()
-    private val adapter = ExampleAdapter(exampleList, this)
+    private val adapter = FoodAdapter(exampleList, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

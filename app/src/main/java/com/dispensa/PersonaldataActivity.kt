@@ -27,9 +27,6 @@ class PersonaldataActivity : AppCompatActivity() {
         database = Firebase.database.reference
         auth = FirebaseAuth.getInstance()
 
-        /*val user = FirebaseAuth.getInstance().currentUser
-        val id : String = user.uid*/
-
         val dataUser = DbCommunication.getUser()
 
         nickname.text = dataUser.name

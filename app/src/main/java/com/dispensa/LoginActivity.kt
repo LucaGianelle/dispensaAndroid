@@ -58,54 +58,14 @@ class LoginActivity : AppCompatActivity() {
 
                     if (prova) {
                         val user = auth.currentUser
-                        //updateUI(user)
-
                         val acc = Intent (this, HomeActivity::class.java)
                         startActivity(acc)
-
 
                         Log.e("TAG", "ok")
                     } else {
                         //errore, fa loggare con profilo non loggato se se è entrati prima, bloccare undo nella home
                         Log.e("TAG", "ok2")
-
-
-
-                       //updateUI(null)
                     }
-
-
                 }
-
     }
-
-    /*public override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        updateUI(currentUser)
-    }
-
-    private fun updateUI(currentUser: FirebaseUser?) {
-
-        if (currentUser != null) {
-            if(currentUser.isEmailVerified) {
-                startActivity(Intent(this, DashboardActivity::class.java))
-                finish()
-            }else{
-                Toast.makeText(
-                        baseContext, "Verifica il tuo indirizzo e-mail",
-                        Toast.LENGTH_SHORT
-                ).show()
-            }
-        }else{
-            Toast.makeText(
-                baseContext, "Login fallito",
-                Toast.LENGTH_SHORT
-            ).show()
-
-        }
-
-    }*/
-
-
 }

@@ -86,7 +86,6 @@ class RegisterActivity : AppCompatActivity() {
                         val id : String = utente.uid
                         Log.e("TAG",id )
 
-            //val id=reference.push().key
 
             Log.e("TAG", id)
 
@@ -163,14 +162,6 @@ if (inputPassword.text.toString().isEmpty()) {
             user!!.sendEmailVerification()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-
-                        //cambio id
-
-                        /*val user = FirebaseAuth.getInstance().currentUser
-                        val id : String = user.uid
-                        Log.e("TAG",id )
-                        database = FirebaseDatabase.getInstance()
-                        reference = database.getReference(id)*/
 
                         sendData(valAlt, valPeso, valEta)
                         startActivity(Intent(this, HomeActivity::class.java))

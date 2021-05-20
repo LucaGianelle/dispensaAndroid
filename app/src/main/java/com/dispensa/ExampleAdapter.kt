@@ -1,19 +1,15 @@
 package com.dispensa
 
-import android.graphics.Color
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.row.view.*
 
-class ExampleAdapter(
-    private val exampleList: List<Aliment>,
-    private val listener: OnItemClickListener
-) :
-    RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder>() {
+class FoodAdapter(private val exampleList: List<Aliment>, private val listener: OnItemClickListener) :
+        RecyclerView.Adapter<FoodAdapter.ExampleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExampleViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.row,
@@ -28,16 +24,9 @@ class ExampleAdapter(
         holder.nomeCibo.text = currentItem.nameAliment
         holder.calorieCibo.text = currentItem.calorie
         holder.quantitaCibo.text = currentItem.quantita
-
-
-        holder.proteineCibo.text = currentItem.proteine.toString()
-        holder.grassiCibo.text = currentItem.grassi.toString()
-        holder.carboidratiCibo.text = currentItem.carboidrati.toString()
-
-
-        println("******************************************** ************************************************ ***************************")
-       /* println(" "+holder.nomeCibo.text+" "+holder.calorieCibo.text+" "+holder.quantitaCibo.text+" "
-                +holder.proteineCibo.text+" "+holder.grassiCibo.text+" "+holder.carboidratiCibo.text)*/
+        holder.proteineCibo.text = currentItem.proteine
+        holder.grassiCibo.text = currentItem.grassi
+        holder.carboidratiCibo.text = currentItem.carboidrati
 
     }
 
@@ -51,8 +40,6 @@ class ExampleAdapter(
         val proteineCibo: TextView = itemView.grammiProteine
         val grassiCibo: TextView = itemView.grammiGrassi
         val carboidratiCibo: TextView = itemView.grammiCarboidrati
-
-
 
         init{
             itemView.setOnClickListener(this)

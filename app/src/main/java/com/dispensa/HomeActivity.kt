@@ -43,7 +43,6 @@ class HomeActivity : AppCompatActivity() {
 
             val mappaProfilo = it.value as Map<String, String>
 
-            //prove stampa
             Log.i("firebase", "Got value ${it.value}")
             Log.i("firebase","${mappaProfilo}")
 
@@ -61,26 +60,30 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
-        //=*=*=*=**=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=**=*=*= >> per il cibo
 
+        //per il cibo
         database = Firebase.database.reference
 
         database.child("aliment").get().addOnSuccessListener {
 
             result = it.value as ArrayList<Map<String,String>>
-
             DbCommunication.createAliment(result)
 
-            /*Log.i("firebase", "Got value ${it.value}")
-             Log.i("firebase", "${result}")*/
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
         }
 
-
         //=========================================================================================================================
+
+
         val datib = findViewById<Button>(R.id.buttonDatiPersonali)
         val valnb = findViewById<Button>(R.id.buttonValoriNutrizionali)
+        val foodStorageB = findViewById<Button>(R.id.buttonDispensa)
+
+        foodStorageB.setOnClickListener {
+            val data = Intent (this, FoodStorageActivity::class.java)
+            startActivity(data)
+        }
 
         datib.setOnClickListener {
             val data = Intent (this, PersonaldataActivity::class.java)
@@ -88,7 +91,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         valnb.setOnClickListener {
-            val valNut = Intent (this, FoodStorageActivity::class.java)
+            val valNut = Intent (this, NutritionalValuesActivity::class.java)
             startActivity(valNut)
         }
 

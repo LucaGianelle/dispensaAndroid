@@ -8,15 +8,11 @@ import com.google.firebase.auth.FirebaseUser
 
 class MainActivity : AppCompatActivity() {
 
-    /*private lateinit var auth: FirebaseAuth*/
-
     private lateinit var mFirebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.login)
         setContentView(R.layout.load_app)
-       /* auth = FirebaseAuth.getInstance()*/
         mFirebaseAuth = FirebaseAuth.getInstance()
 
     }
