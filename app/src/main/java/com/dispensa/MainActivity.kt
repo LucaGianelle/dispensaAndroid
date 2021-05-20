@@ -25,14 +25,6 @@ class MainActivity : AppCompatActivity() {
        /* auth = FirebaseAuth.getInstance()*/
         mFirebaseAuth = FirebaseAuth.getInstance()
 
-        val buttonStart = findViewById<Button>(R.id.startb)
-
-        //=========LOGO=========
-        buttonStart.setOnClickListener{
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-        }
-
     }
 
     override fun onStart() {
