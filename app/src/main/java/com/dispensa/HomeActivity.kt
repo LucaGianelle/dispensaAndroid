@@ -8,7 +8,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -89,7 +88,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         valnb.setOnClickListener {
-            val valNut = Intent (this, ActivityOne::class.java)
+            val valNut = Intent (this, FoodStorageActivity::class.java)
             startActivity(valNut)
         }
 
