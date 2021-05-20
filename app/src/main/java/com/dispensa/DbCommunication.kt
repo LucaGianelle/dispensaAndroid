@@ -44,9 +44,11 @@ object DbCommunication {
             val tempNameAliment = tempMap.get("nome").toString()
             val tempCalorieAliment = tempMap.get("calorie").toString()
             val tempQuantitaAliment = tempMap.get("quantità").toString()
-            val tempProteineAliment = tempMap.get("proteine").toString()
-            val tempGrassiAliment = tempMap.get("grassi").toString()
-            val tempCarboidratiAliment = tempMap.get("carboidrati").toString()
+            val tempValoriNutrizionali = tempMap.get("valoriNutrizionali") as Map<String,String>
+
+            val tempProteineAliment = tempValoriNutrizionali.get("proteine").toString()
+            val tempGrassiAliment = tempValoriNutrizionali.get("grassi").toString()
+            val tempCarboidratiAliment = tempValoriNutrizionali.get("carboidrati").toString()
 
             //visualizzazione valori nutrizionali
 

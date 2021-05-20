@@ -49,8 +49,6 @@ class ExampleAdapter(
         val nomeCibo: TextView = itemView.textViewNomeCibo
         val calorieCibo: TextView = itemView.textViewCalorie
         val quantitaCibo: TextView = itemView.textViewQuantita
-
-
         val proteineCibo: TextView = itemView.grammiProteine
         val grassiCibo: TextView = itemView.grammiGrassi
         val carboidratiCibo: TextView = itemView.grammiCarboidrati
