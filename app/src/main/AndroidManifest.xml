@@ -32,8 +32,8 @@
         <activity android:name=".ModifyProfile" />
         <activity android:name=".NutritionalValuesActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".PrendiDati" />
-        <activity android:name=".RealtimeDatabase.RealTimeActivity" />
+        <activity android:name=".videoSearchingBar.SearchBar" />
+
     </application>
 
 </manifest>

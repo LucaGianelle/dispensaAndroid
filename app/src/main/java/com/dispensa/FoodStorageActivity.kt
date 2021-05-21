@@ -2,13 +2,15 @@
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.food_storage.*
 import kotlin.random.Random
 
-class FoodStorageActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
+  class FoodStorageActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
     private var exampleList = generateDummyList()
     private val adapter = FoodAdapter(exampleList, this)
 
@@ -73,6 +75,25 @@ class FoodStorageActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener
         }
 
         return list
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.researchbar,menu)
+        val searchItem = menu?.findItem(R.id.menu_search)
+        if(searchItem != null){
+            val searchView = searchItem.actionView as SearchView
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(p0: String?): Boolean {
+                    return true
+                }
+
+                override fun onQueryTextChange(p0: String?): Boolean {
+                    return true
+                }
+            })
+        }
+
+        return super.onCreateOptionsMenu(menu)
     }
 
 
