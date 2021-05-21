@@ -14,7 +14,7 @@ import kotlin.random.Random
 
   class FoodStorageActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
     private var exampleList = generateDummyList()
-      private var displayList : ArrayList<Aliment> = generateDummyList()
+      private lateinit var displayList: ArrayList<Aliment>
     private val adapter = FoodAdapter(exampleList, this)
     lateinit var food_view : RecyclerView
 
@@ -22,6 +22,7 @@ import kotlin.random.Random
         super.onCreate(savedInstanceState)
         setContentView(R.layout.food_storage)
 
+        displayList= generateDummyList()
         food_view = findViewById(R.id.recycler_view) as RecyclerView
 
         food_view.adapter = adapter
@@ -113,9 +114,13 @@ import kotlin.random.Random
                         food_view.adapter?.notifyDataSetChanged()
 
                     }else{
-                        displayList.clear()
-                        displayList.addAll(displayList)
+                        exampleList.clear()
+                        exampleList.addAll(displayList)
                         food_view.adapter?.notifyDataSetChanged()
+
+                       /* displayList.clear()
+                        displayList.addAll(exampleList)
+                        food_view.adapter?.notifyDataSetChanged()*/
                     }
 
                     return true
