@@ -77,6 +77,7 @@ import kotlin.random.Random
         return list
     }
 
+      //funzione
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.researchbar,menu)
         val searchItem = menu?.findItem(R.id.menu_search)
