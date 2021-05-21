@@ -102,19 +102,19 @@ import kotlin.random.Random
                 override fun onQueryTextChange(newText: String?): Boolean {
                     if(newText!!.isNotEmpty()){
                         print("?????????????????????????????????????????>>>>>>>entra<<<<<<<<<<<?????????????????????????????")
-                        displayList.clear()
+                        exampleList.clear()
 
                         val search = newText.toLowerCase()
-                        exampleList.forEach {
+                        displayList.forEach {
                             if(it.nameAliment.toLowerCase().contains(search)){
-                                displayList.add(it)
+                                exampleList.add(it)
                             }
                         }
                         food_view.adapter?.notifyDataSetChanged()
 
                     }else{
                         displayList.clear()
-                        displayList.addAll(exampleList)
+                        displayList.addAll(displayList)
                         food_view.adapter?.notifyDataSetChanged()
                     }
 
