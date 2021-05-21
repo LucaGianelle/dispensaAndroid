@@ -4,23 +4,33 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import android.widget.EditText
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.food_storage.*
 import kotlin.random.Random
 
   class FoodStorageActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
     private var exampleList = generateDummyList()
+      private var displayList : ArrayList<Aliment> = generateDummyList()
     private val adapter = FoodAdapter(exampleList, this)
+    lateinit var food_view : RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.food_storage)
 
-        recycler_view.adapter = adapter
+        food_view = findViewById(R.id.recycler_view) as RecyclerView
+
+        food_view.adapter = adapter
+        food_view.layoutManager = LinearLayoutManager(this)
+        food_view.setHasFixedSize(true)
+
+        /*recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(this)
-        recycler_view.setHasFixedSize(true)
+        recycler_view.setHasFixedSize(true)*/
     }
 
     fun insertItem(view: View) {
@@ -84,11 +94,29 @@ import kotlin.random.Random
         if(searchItem != null){
             val searchView = searchItem.actionView as SearchView
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-                override fun onQueryTextSubmit(p0: String?): Boolean {
+                override fun onQueryTextSubmit(query: String?): Boolean {
                     return true
                 }
 
-                override fun onQueryTextChange(p0: String?): Boolean {
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if(newText!!.isNotEmpty()){
+
+                        displayList.clear()
+
+                        val search = newText.toLowerCase()
+                        exampleList.forEach {
+                            if(it.nameAliment.toLowerCase().contains(search)){
+                                displayList.add(it)
+                            }
+                        }
+                        food_view.adapter?.notifyDataSetChanged()
+
+                    }else{
+                        displayList.clear()
+                        displayList.addAll(exampleList)
+                        food_view.adapter?.notifyDataSetChanged()
+                    }
+
                     return true
                 }
             })
