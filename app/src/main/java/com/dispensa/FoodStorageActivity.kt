@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.View
 import android.widget.EditText
+import android.widget.PopupWindow
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,6 +33,14 @@ import kotlin.random.Random
         /*recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.setHasFixedSize(true)*/
+
+        //popup per inserire i cibi
+        insertItemBtn.setOnClickListener{
+            val window = PopupWindow(this)
+            val view = layoutInflater.inflate(R.layout.popup_insert_aliment, null)
+            window.contentView = view
+            window.showAsDropDown(insertItemBtn)
+        }
     }
 
     fun insertItem(view: View) {

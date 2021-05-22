@@ -26,11 +26,12 @@
         android:layout_alignParentBottom="true">
 
         <Button
+            android:id="@+id/insertItemBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Insert item"
             android:layout_weight="1"
-            android:onClick="insertItem"/>
+            android:onClick="insertItem"
+            android:text="Insert item" />
 
         <Button
             android:layout_width="match_parent"
