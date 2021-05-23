@@ -4,10 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
-import android.widget.EditText
-import android.widget.PopupWindow
-import android.widget.SearchView
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.food_storage.*
@@ -35,12 +32,19 @@ import kotlin.random.Random
         recycler_view.setHasFixedSize(true)*/
 
         //popup per inserire i cibi
-        insertItemBtn.setOnClickListener{
-            val window = PopupWindow(this)
+
+
+       /* insertItemBtn.setOnClickListener{
+            /*val window = PopupWindow(this)
             val view = layoutInflater.inflate(R.layout.popup_insert_aliment, null)
             window.contentView = view
-            window.showAsDropDown(insertItemBtn)
-        }
+            val TextView = view.findViewById<TextView>(R.id.quantitaView)
+            val buttonYes = view.findViewById<Button>(R.id.buttonYes)
+            buttonYes.setOnClickListener {
+                window.dismiss()
+            }
+            window.showAsDropDown(insertItemBtn)*/
+        }*/
     }
 
     fun insertItem(view: View) {
@@ -71,6 +75,11 @@ import kotlin.random.Random
         val clickedItem = exampleList [position]
         //clickedItem.text1 = "Clicked"
         adapter.notifyItemChanged(position)
+
+
+        //popup per inserire gli alimenti nella dispensa
+        var dialog = AlimentDialogFragment()
+        dialog.show(supportFragmentManager, "customDialog")
     }
 
     private fun generateDummyList(): ArrayList<Aliment> {
