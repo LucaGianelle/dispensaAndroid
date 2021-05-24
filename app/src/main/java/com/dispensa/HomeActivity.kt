@@ -6,9 +6,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -26,6 +28,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var result : ArrayList<Map<String,String>>
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
@@ -68,6 +71,21 @@ class HomeActivity : AppCompatActivity() {
 
             result = it.value as ArrayList<Map<String,String>>
             DbCommunication.createAliment(result)
+
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+
+        //per la data
+        database.child("User").child(idUtente).child("Valori_giornalieri").get().addOnSuccessListener {
+
+            val result = it.value as Map<String,String>
+            var cancellaDailyValues : Boolean = DbCommunication.confrontaData(result)
+            if (cancellaDailyValues){
+                DbCommunication.setNutritionalValues(result)
+            }else{
+                //azzero i dati del db
+            }
 
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
