@@ -72,7 +72,7 @@ object DbCommunication {
         return list
     }
 
-    fun getNutritionalValues(inizio: Map<String, String>) : ArrayList<String> {
+    fun setNutritionalValues(inizio: Map<String, String>) {
 
         var carboidratiUtente =  inizio.get("carboDaily")
         if (carboidratiUtente != null) {
@@ -90,12 +90,10 @@ object DbCommunication {
         if (calorieUtente != null) {
             listaDailyValues.add(calorieUtente)
         }
-        return listaDailyValues
     }
 
-    fun setNutritionalValues() : ArrayList<Aliment> {
-        listaCibi
-        return listaCibi
+    fun getNutritionalValues() : ArrayList<String> {
+        return listaDailyValues
     }
 
 }
