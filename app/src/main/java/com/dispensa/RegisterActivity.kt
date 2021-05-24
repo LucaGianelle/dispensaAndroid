@@ -1,16 +1,19 @@
 package com.dispensa
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.register.*
+import java.time.LocalDate
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -20,6 +23,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register)
@@ -68,6 +72,7 @@ class RegisterActivity : AppCompatActivity() {
 
 }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun sendData(valAlt: String, valPeso: String, valEta: String){
         val name = inputNome.text.toString().trim()
         val email = inputEmail.text.toString().trim()
@@ -81,7 +86,6 @@ class RegisterActivity : AppCompatActivity() {
         if(name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()){
 
             val model= User(name, email , password, altezza, peso, eta)
-
             val utente = FirebaseAuth.getInstance().currentUser
                         val id : String = utente.uid
                         Log.e("TAG",id )
@@ -89,6 +93,8 @@ class RegisterActivity : AppCompatActivity() {
 
             Log.e("TAG", id)
 
+            val dataIscrizione: String = LocalDate.now().toString()
+            val extradata = DailyValues("0", "0", "0", "0", dataIscrizione)
             //Qui si inviano i dati a firebase
             reference.child(id).setValue(model)
             inputNome.setText("")
@@ -96,12 +102,13 @@ class RegisterActivity : AppCompatActivity() {
             inputPassword.setText("")
 
             Log.d("TAG", "prova3")
-
+            reference.child(id).child("Valori_giornalieri").setValue(extradata)
         }else{
             Toast.makeText(applicationContext, "All field required",Toast.LENGTH_LONG).show()
         }
     }
 
+@RequiresApi(Build.VERSION_CODES.O)
 private fun signUpUser(valAlt: String, valPeso: String, valEta: String) {
 
 

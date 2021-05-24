@@ -107,8 +107,7 @@ object DbCommunication {
         val dataCorrente = LocalDate.now()
 
         // default format is DateTimeFormatter.ISO_DATE_TIME
-        println(dataCorrente.format(DateTimeFormatter.BASIC_ISO_DATE))
-
+        //println(dataCorrente.format(DateTimeFormatter.BASIC_ISO_DATE))
 
         if (dataCorrente.equals(dData)) {
             eraseData = false
