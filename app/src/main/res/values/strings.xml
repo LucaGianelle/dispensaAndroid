@@ -33,6 +33,9 @@
     <string name="logout" translatable="false">logout</string>
     <string name="infoModifica" translatable="false">Rimpiazza i dati per la modifica</string>
     <string name="eta" translatable="false">Età</string>
+    <string name="quantitAlimenti" translatable="false">Inserire la quantità</string>
+    <string name="buttonYes" translatable="false">aggiungi</string>
+    <string name="buttonNo" translatable="false">annulla</string>
 
 
 </resources>

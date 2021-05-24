@@ -5,35 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
+    <android.widget.Button
         android:id="@+id/buttonNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:text="Annulla"
+        android:background="@drawable/two_state_button"
+        android:text="@string/buttonNo"
+        android:textColor="@color/primaryText"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonYes"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/buttonYes"
-        tools:layout_editor_absoluteY="654dp" />
+        app:layout_constraintTop_toTopOf="@+id/buttonYes" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/buttonYes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aggiungi"
+        android:background="@drawable/two_state_button"
+        android:text="@string/buttonYes"
+        android:textColor="@color/primaryText"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonNo"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="648dp" />
+        app:layout_constraintTop_toBottomOf="@+id/quantitAliment" />
+
 
     <EditText
         android:id="@+id/quantitAliment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
         android:ems="10"
+        android:hint="@string/quantitAlimenti"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/buttonYes"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

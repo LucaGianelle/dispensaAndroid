@@ -78,7 +78,7 @@ import kotlin.random.Random
 
 
         //popup per inserire gli alimenti nella dispensa
-        var dialog = AlimentDialogFragment()
+        val dialog = AlimentDialogFragment()
         dialog.show(supportFragmentManager, "customDialog")
     }
 
