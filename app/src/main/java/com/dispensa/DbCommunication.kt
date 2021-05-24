@@ -103,7 +103,7 @@ object DbCommunication {
     @RequiresApi(Build.VERSION_CODES.O)
     fun confrontaData(inizio: Map<String, String>): Boolean {
         var eraseData: Boolean = true
-        var dData: String = inizio.get("dataCorrente").toString()
+        var dData: String = inizio.get("dataSalvata").toString()
         val dataCorrente = LocalDate.now()
 
         // default format is DateTimeFormatter.ISO_DATE_TIME
