@@ -1,9 +1,13 @@
 package com.dispensa
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 
 object DbCommunication {
@@ -96,13 +100,21 @@ object DbCommunication {
         return listaDailyValues
     }
 
-    fun confrontaData(inizio: Map<String, String>) {
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun confrontaData(inizio: Map<String, String>): Boolean {
+        var eraseData: Boolean = true
         var dData: String = inizio.get("dataCorrente").toString()
-        var dataConfronto: String = ""
-        if (dataConfronto.equals(dData)) {
-            val b1: Boolean = true
+        val dataCorrente = LocalDate.now()
+
+        // default format is DateTimeFormatter.ISO_DATE_TIME
+        println(dataCorrente.format(DateTimeFormatter.BASIC_ISO_DATE))
+
+
+        if (dataCorrente.equals(dData)) {
+            eraseData = false
             //azzerare i valori nel database e cambiare la data
         }
+        return eraseData
     }
 
 }
