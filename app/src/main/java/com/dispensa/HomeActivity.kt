@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.home.*
+import java.time.LocalDate
 
 class HomeActivity : AppCompatActivity() {
 
@@ -85,6 +86,12 @@ class HomeActivity : AppCompatActivity() {
                 DbCommunication.setNutritionalValues(result)
             }else{
                 //azzero i dati del db
+                val dataCorrente = LocalDate.now()
+                database.child("User").child(idUtente).child("Valori_giornalieri").child("calDaily").setValue("0")
+                database.child("User").child(idUtente).child("Valori_giornalieri").child("carboDaily").setValue("0")
+                database.child("User").child(idUtente).child("Valori_giornalieri").child("proteinDaily").setValue("0")
+                database.child("User").child(idUtente).child("Valori_giornalieri").child("grassiDaily").setValue("0")
+                database.child("User").child(idUtente).child("Valori_giornalieri").child("dataSalvata").setValue(dataCorrente)
             }
 
         }.addOnFailureListener{

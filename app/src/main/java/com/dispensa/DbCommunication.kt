@@ -116,4 +116,8 @@ object DbCommunication {
         return eraseData
     }
 
+    fun calcoloMacroGiornalieri(){
+        //calcolare le calorie giornaliere dell'utente
+    }
+
 }
