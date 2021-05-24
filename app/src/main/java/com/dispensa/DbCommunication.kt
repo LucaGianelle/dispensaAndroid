@@ -96,4 +96,13 @@ object DbCommunication {
         return listaDailyValues
     }
 
+    fun confrontaData(inizio: Map<String, String>) {
+        var dData: String = inizio.get("dataCorrente").toString()
+        var dataConfronto: String = ""
+        if (dataConfronto.equals(dData)) {
+            val b1: Boolean = true
+            //azzerare i valori nel database e cambiare la data
+        }
+    }
+
 }
