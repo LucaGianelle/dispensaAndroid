@@ -1,5 +1,6 @@
   package com.dispensa
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -26,6 +27,7 @@ import kotlin.random.Random
         food_view.adapter = adapter
         food_view.layoutManager = LinearLayoutManager(this)
         food_view.setHasFixedSize(true)
+
 
         /*recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(this)
@@ -62,6 +64,7 @@ import kotlin.random.Random
         exampleList.add(index, newItem)
         adapter.notifyItemInserted(index)*/
     }
+
 
     fun removeItem(view: View) {
         val index = Random.nextInt(8)
