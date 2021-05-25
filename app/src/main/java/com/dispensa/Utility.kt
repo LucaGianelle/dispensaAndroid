@@ -37,6 +37,8 @@ object Utility {
 
     fun macronutrienti_calcolo() : ArrayList<Double>{
 
+        kcal = 2000
+        print("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°")
         /*
 
         %CHO = 2000 * 55% = 1100 kcal;
@@ -50,18 +52,25 @@ object Utility {
 
          */
 
-        var choPerc : Int = (kcal * 45) / 100
-        var lipPerc : Int = (kcal * 25) / 100
-        var proPerc : Int = kcal - (choPerc + lipPerc)
+        val choPerc : Int = (kcal * 45) / 100
+        val lipPerc : Int = (kcal * 25) / 100
+        val proPerc : Int = kcal - (choPerc + lipPerc)
 
-        var tempList : ArrayList<Double> = ArrayList()
+        val tempList : ArrayList<Double> = ArrayList()
 
-        var cho = choPerc / 3.75
+        val cho = choPerc / 3.75
         tempList.add(cho)
-        var lip = choPerc / 3.75
+        val lip : Double = lipPerc / 9.0
         tempList.add(lip)
-        var pro = choPerc / 3.75
+        val pro : Double = proPerc / 4.0
         tempList.add(pro)
+
+        var tempMap : Map<String, Double>? = null
+
+        tempMap = mutableMapOf("carboidrati" to cho, "grassi" to lip, "proteine" to pro)
+
+        print("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°"+tempMap)
+
 
 
         return tempList
