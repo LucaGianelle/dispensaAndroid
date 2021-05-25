@@ -30,6 +30,7 @@ object DbCommunication {
     fun createUser(name:String, email:String, password: String, altezza: String, peso: String, eta: String){
 
         utenteCorrente = User(name, email, password, altezza, peso, eta)
+        Utility.kcal_giornaliere_calcolo(eta, peso)
     }
 
     fun getUser() : User {

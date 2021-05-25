@@ -3,8 +3,7 @@ package com.dispensa
 object Utility {
 
     private var kcal : Int = 0
-    //private var valoriMap : Map<String, Double> = macronutrienti_calcolo()
-    private var valoriMap : ArrayList<Double> = macronutrienti_calcolo()
+    private lateinit var valoriMap : Map<String, Double>
 
     fun setData(){
 
@@ -35,9 +34,8 @@ object Utility {
         return kcal
     }
 
-    fun macronutrienti_calcolo() : ArrayList<Double>{  //cambiare la lista nella mappa
+    fun macronutrienti_calcolo(){  //cambiare la lista nella mappa
 
-        kcal = 2000
         print("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°")
         /*
 
@@ -56,14 +54,9 @@ object Utility {
         val lipPerc : Int = (kcal * 25) / 100
         val proPerc : Int = kcal - (choPerc + lipPerc)
 
-        val tempList : ArrayList<Double> = ArrayList()
-
         val cho = choPerc / 3.75
-        tempList.add(cho)
         val lip : Double = lipPerc / 9.0
-        tempList.add(lip)
         val pro : Double = proPerc / 4.0
-        tempList.add(pro)
 
         var tempMap : Map<String, Double>? = null
 
@@ -71,9 +64,12 @@ object Utility {
 
         print("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°"+tempMap)
 
+        valoriMap = tempMap
 
 
-        return tempList
+    }
 
+    fun getMacros() : Map<String, Double>{
+        return valoriMap
     }
 }
