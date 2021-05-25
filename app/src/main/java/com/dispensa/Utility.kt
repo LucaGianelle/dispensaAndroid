@@ -35,7 +35,7 @@ object Utility {
         return kcal
     }
 
-    fun macronutrienti_calcolo() : ArrayList<Double>{
+    fun macronutrienti_calcolo() : ArrayList<Double>{  //cambiare la lista nella mappa
 
         kcal = 2000
         print("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°")
