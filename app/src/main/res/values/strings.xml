@@ -36,6 +36,7 @@
     <string name="quantitAlimenti" translatable="false">Inserire la quantità</string>
     <string name="buttonYes" translatable="false">aggiungi</string>
     <string name="buttonNo" translatable="false">annulla</string>
+    <string name="idCalorie">Calorie</string>
 
 
 </resources>
