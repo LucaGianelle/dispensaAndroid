@@ -19,6 +19,8 @@ object DbCommunication {
     private var listaCibi : ArrayList<Aliment> = generateList()
     private val listaDailyValues: ArrayList<String> = ArrayList()
 
+    private lateinit var dailyValuesMap : Map <String, Int>
+
     fun getDbReference(){
         reference = Firebase.database.reference
     }
@@ -77,6 +79,7 @@ object DbCommunication {
         return list
     }
 
+
     fun setNutritionalValues(inizio: Map<String, String>) {
 
         var carboidratiUtente =  inizio.get("carboDaily")
@@ -95,6 +98,10 @@ object DbCommunication {
         if (calorieUtente != null) {
             listaDailyValues.add(calorieUtente)
         }
+    }
+
+    fun getDailyMap() : Map<String, Int>{
+        return dailyValuesMap
     }
 
     fun getNutritionalValues() : ArrayList<String> {

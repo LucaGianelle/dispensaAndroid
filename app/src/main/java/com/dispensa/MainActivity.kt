@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         if(mFirebaseUser != null){
             val prv1 = Intent (this, HomeActivity::class.java)
             startActivity(prv1)
-            val prova =  Utility.macronutrienti_calcolo()
         }else{
 
             val prv2 = Intent (this, LoginActivity::class.java)
