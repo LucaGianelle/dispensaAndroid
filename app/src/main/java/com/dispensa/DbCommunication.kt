@@ -103,7 +103,7 @@ object DbCommunication {
 
     fun getDailyMap() : Map<String, Double>{
 
-        dailyValuesMap =  mutableMapOf("carboidrati" to 150.0, "grassi" to 10.0, "proteine" to 70.0)
+        dailyValuesMap =  mutableMapOf("calorie" to 1500.0,"carboidrati" to 150.0, "grassi" to 10.0, "proteine" to 70.0)
         return dailyValuesMap
     }
 
