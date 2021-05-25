@@ -1,12 +1,24 @@
 package com.dispensa
 
+import android.os.Build
+import androidx.annotation.RequiresApi
+import java.time.LocalDate
+
 object Utility {
 
     private var kcal : Int = 0
     private var valoriMap : Map<String, Double> = createMap()
 
-    fun setData(){
+    private var dailyDate : String = ""
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun setData(){
+        val dataCorrente = LocalDate.now()
+        dailyDate = dataCorrente.toString()
+    }
+
+    fun getData() : String{
+        return dailyDate
     }
 
     fun kcal_giornaliere_calcolo(age :String, peso : String) {

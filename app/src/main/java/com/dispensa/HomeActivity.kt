@@ -37,6 +37,8 @@ class HomeActivity : AppCompatActivity() {
         database = Firebase.database.reference
         auth = FirebaseAuth.getInstance()
 
+        Utility.setData()
+
         //=========================================================================================================================
         //Prendo i dati del mio utente corrente
 

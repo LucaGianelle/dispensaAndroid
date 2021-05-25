@@ -111,14 +111,10 @@ object DbCommunication {
         return listaDailyValues
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun confrontaData(inizio: Map<String, String>): Boolean {
         var eraseData: Boolean = true
         var dData: String = inizio.get("dataSalvata").toString()
-        val dataCorrente = LocalDate.now()
-
-        // default format is DateTimeFormatter.ISO_DATE_TIME
-        //println(dataCorrente.format(DateTimeFormatter.BASIC_ISO_DATE))
+        val dataCorrente = Utility.getData()
 
         if (dataCorrente.equals(dData)) {
             eraseData = false
