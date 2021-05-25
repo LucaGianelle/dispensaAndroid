@@ -1,7 +1,9 @@
 package com.dispensa
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.nutritionalvalues.*
 
 class NutritionalValuesActivity: AppCompatActivity() {
 
@@ -12,6 +14,7 @@ class NutritionalValuesActivity: AppCompatActivity() {
     private var grassiperc : Int = 0
     private var proteperc : Int = 0
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.nutritionalvalues)
@@ -19,6 +22,16 @@ class NutritionalValuesActivity: AppCompatActivity() {
         createPerc()
 
         print("\n @°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°" + carboperc + " " + grassiperc + " " + proteperc )
+
+        textViewProgressProteine.text= "${proteperc}%"
+        textViewProgressCarboidrati.text= "${carboperc}%"
+        textViewProgressGrassi.text= "${grassiperc}%"
+
+        progressBarCarboidrati.progress = carboperc
+        progressBarProteine.progress = proteperc
+        progressBarGrassi.progress = grassiperc
+
+
 
     }
 
@@ -39,7 +52,6 @@ class NutritionalValuesActivity: AppCompatActivity() {
         carboperc = ((100 * cho2!!) / cho!!).toInt()
         grassiperc = ((100 * lip2!!) / lip!!).toInt()
         proteperc = ((100 * pro2!!) / pro!!).toInt()
-
 
     }
 }
