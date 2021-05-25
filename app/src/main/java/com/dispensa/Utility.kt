@@ -3,7 +3,7 @@ package com.dispensa
 object Utility {
 
     private var kcal : Int = 0
-    private lateinit var valoriMap : Map<String, Double>
+    private var valoriMap : Map<String, Double> = createMap()
 
     fun setData(){
 
@@ -71,5 +71,10 @@ object Utility {
 
     fun getMacros() : Map<String, Double>{
         return valoriMap
+    }
+
+    fun createMap(): Map<String, Double>{
+        val map1 : Map<String, Double> = mutableMapOf("carboidrati" to 0.0, "grassi" to 0.0, "proteine" to 0.0)
+        return map1
     }
 }

@@ -19,7 +19,7 @@ object DbCommunication {
     private var listaCibi : ArrayList<Aliment> = generateList()
     private val listaDailyValues: ArrayList<String> = ArrayList()
 
-    private lateinit var dailyValuesMap : Map <String, Int>
+    private lateinit var dailyValuesMap : Map <String, Double>
 
     fun getDbReference(){
         reference = Firebase.database.reference
@@ -33,6 +33,7 @@ object DbCommunication {
 
         utenteCorrente = User(name, email, password, altezza, peso, eta)
         Utility.kcal_giornaliere_calcolo(eta, peso)
+        Utility.macronutrienti_calcolo()
     }
 
     fun getUser() : User {
@@ -100,7 +101,9 @@ object DbCommunication {
         }
     }
 
-    fun getDailyMap() : Map<String, Int>{
+    fun getDailyMap() : Map<String, Double>{
+
+        dailyValuesMap =  mutableMapOf("carboidrati" to 150.0, "grassi" to 10.0, "proteine" to 70.0)
         return dailyValuesMap
     }
 
