@@ -28,7 +28,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register)
         auth = FirebaseAuth.getInstance()
-        Utility.setData()
+
 
         pickerPeso.setMinValue(40);
         pickerPeso.setMaxValue(120);
@@ -73,6 +73,7 @@ class RegisterActivity : AppCompatActivity() {
 
 }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun sendData(valAlt: String, valPeso: String, valEta: String){
         val name = inputNome.text.toString().trim()
         val email = inputEmail.text.toString().trim()
@@ -93,7 +94,7 @@ class RegisterActivity : AppCompatActivity() {
 
             Log.e("TAG", id)
 
-            val dataIscrizione: String = Utility.getData()
+            val dataIscrizione: String = LocalDate.now().toString()
             val extradata = DailyValues("0", "0", "0", "0", dataIscrizione)
             //Qui si inviano i dati a firebase
             reference.child(id).setValue(model)
@@ -108,6 +109,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+@RequiresApi(Build.VERSION_CODES.O)
 private fun signUpUser(valAlt: String, valPeso: String, valEta: String) {
 
 

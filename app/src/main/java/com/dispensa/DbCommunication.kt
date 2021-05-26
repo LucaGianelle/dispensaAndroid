@@ -114,10 +114,11 @@ object DbCommunication {
         return listaDailyValues
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun confrontaData(inizio: Map<String, String>): Boolean {
         var eraseData: Boolean = true
-        var dData: String = inizio.get("dataSalvata").toString()
-        val dataCorrente = Utility.getData()
+        val dData: String = inizio.get("dataSalvata").toString()
+        val dataCorrente = LocalDate.now()
 
         if (dataCorrente.equals(dData)) {
             eraseData = false
@@ -137,7 +138,7 @@ object DbCommunication {
     }
 
     fun setId (idUser: String){
-        idUtente = idUser
+        this.idUtente = idUser
     }
 
     fun getId (): String {
@@ -145,7 +146,7 @@ object DbCommunication {
     }
 
     fun setNameAliment (nameAliment:String){
-        nomeAlimento = nameAliment
+        this.nomeAlimento = nameAliment
     }
 
     fun getNameAliment (): String {
