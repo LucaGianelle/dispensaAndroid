@@ -29,6 +29,7 @@ class AlimentDialogFragment : DialogFragment(){
             if(qt != "")
             {
                 DbCommunication.inserimentoAlimentoPersonale(qt)
+                dismiss()
             }
 
             //Qui ci inseriamo l'invio della quantità e l'aggiunta alla dispensa persoanle

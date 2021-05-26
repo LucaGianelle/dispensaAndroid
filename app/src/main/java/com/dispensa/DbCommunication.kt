@@ -135,10 +135,10 @@ object DbCommunication {
 
     fun inserimentoAlimentoPersonale (quantAl: String){
 
-        reference = Firebase.database.reference
-        reference = database.getReference()
-        val alimentoPersonale = AlimentoPersonale(quantAl, nomeAlimento)
-        reference.child("User").child(idUtente).child("Dispensa_personale").setValue(alimentoPersonale)
+        getDbReference()
+
+        val alimentoPersonale = AlimentoPersonale(nomeAlimento, quantAl)
+        reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).setValue(alimentoPersonale)
     }
 
     fun setId (idUser: String){
