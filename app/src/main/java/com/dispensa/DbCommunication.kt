@@ -158,20 +158,38 @@ object DbCommunication {
     }
 
 
-    fun createPersonaList(mieAliment : Map<String,String>) : ArrayList<Aliment>{
+    fun createPersonaList(mieAliment : Map<String, String>) : ArrayList<Aliment>{
 
         val myAlimentList : ArrayList<Aliment> = ArrayList()
-        //class AlimentoPersonale (val idAlimento: String, val quantita: String){
-        val ricercaid : String = mieAliment.get("idAlimento").toString()
         val size = listaCibi.size
+        val mysize = mieAliment.size
 
-        for (i in 0 until size){
-            val temp = listaCibi[i].nameAliment
-            if (temp.equals(ricercaid)){
-                myAlimentList.add(listaCibi[i])
+
+        for (i in mieAliment.entries){
+            val myAliment  = i.value as Map<String,String>
+
+            for(y in 0 until size){
+                val temp = listaCibi[y].nameAliment
+                println("-------------------> " + temp+ " --------------------------- >" + myAliment)
+                if (temp.equals(myAliment.get("idAlimento"))) {
+                    println("-------------------> " + temp+ " --------------------------- >" + myAliment)
+                    //Aliment(var nameAliment: String, var calorie: String, var quantita: String, var proteine: String, var carboidrati: String, var grassi: String)
+                    val tempName = listaCibi[y].nameAliment
+                    val tempCal = listaCibi[y].calorie
+                    val tempQuant = myAliment.get("quantita").toString()
+                    val tempPro = listaCibi[y].proteine
+                    val tempCarbo = listaCibi[y].carboidrati
+                    val tempGras = listaCibi[y].grassi
+
+                    val tempAliment :Aliment = Aliment(tempName,tempCal,tempQuant,tempPro,tempCarbo,tempGras)
+
+                    myAlimentList.add(tempAliment)
+                    break
+                }
             }
         }
 
+        println(myAlimentList)
         return myAlimentList
 
     }

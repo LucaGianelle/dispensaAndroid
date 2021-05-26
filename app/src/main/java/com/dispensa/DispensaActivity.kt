@@ -25,19 +25,6 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dispensa)
 
-        database = Firebase.database.reference
-
-        val idUtente = DbCommunication.getId()
-        //per il cibo
-        //reference.child("User").child(idUtente).child("Dispensa_personale").setValue(alimentoPersonale)
-        database.child("User").child(idUtente).child("Dispensa_personale").get().addOnSuccessListener {
-
-          val result = it.value as Map<String,String>
-            exampleList = DbCommunication.createPersonaList(result)
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
-
         val btnDisp = findViewById<Button>(R.id.buttonAggiuntaCibo)
 
         btnDisp.setOnClickListener {
@@ -52,24 +39,17 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
 
     private fun generateDummyList(): ArrayList<Aliment> {
 
-        val list = ArrayList<Aliment>()
-        val templist = DbCommunication.getAliment()
-        val size = templist.size
+        var list = ArrayList<Aliment>()
+        database = Firebase.database.reference
 
-        for (i in 0 until size) {
+        val idUtente = DbCommunication.getId()
 
-            val tempitem = templist[i]
-            val tnameAliment = tempitem.nameAliment
+        database.child("User").child(idUtente).child("Dispensa_personale").get().addOnSuccessListener {
 
-            val tcalAliment = tempitem.calorie
-            val tquantAliment = tempitem.quantita
-            val tproteinAliment = tempitem.proteine
-            val tcarboAliment = tempitem.carboidrati
-            val tgrassiAliment = tempitem.grassi
-
-
-            val item = Aliment(tnameAliment, tcalAliment, tquantAliment, tproteinAliment, tcarboAliment, tgrassiAliment)
-            list += item
+            val result = it.value as Map<String, String>
+            list = DbCommunication.createPersonaList(result)
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
         }
 
         return list

@@ -109,7 +109,7 @@ class HomeActivity : AppCompatActivity() {
         val foodStorageB = findViewById<Button>(R.id.buttonDispensa)
 
         foodStorageB.setOnClickListener {
-            val data = Intent (this, FoodStorageActivity::class.java)
+            val data = Intent (this, DispensaActivity::class.java)
             startActivity(data)
         }
 

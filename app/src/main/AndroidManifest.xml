@@ -33,6 +33,7 @@
         <activity android:name=".NutritionalValuesActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".videoSearchingBar.SearchBar" />
+        <activity android:name=".DispensaActivity" />
 
     </application>
 
