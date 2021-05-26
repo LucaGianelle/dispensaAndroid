@@ -101,6 +101,15 @@ class HomeActivity : AppCompatActivity() {
             Log.e("firebase", "Error getting data", it)
         }
 
+        //dispensa personale
+        database.child("User").child(idUtente).child("Dispensa_personale").get().addOnSuccessListener {
+
+            val result = it.value as Map<String, String>
+            DbCommunication.setMyaliment(result)
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+
         //=========================================================================================================================
 
 

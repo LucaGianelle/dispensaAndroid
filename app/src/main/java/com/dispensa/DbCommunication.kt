@@ -22,6 +22,7 @@ object DbCommunication {
     private var nomeAlimento : String = ""
 
     private lateinit var dailyValuesMap : Map <String, Double>
+    private lateinit var miaDispensaMap: Map<String, String>
 
     fun getDbReference(){
         reference = Firebase.database.reference
@@ -158,14 +159,13 @@ object DbCommunication {
     }
 
 
-    fun createPersonaList(mieAliment : Map<String, String>) : ArrayList<Aliment>{
+    fun createPersonaList() : ArrayList<Aliment>{
 
         val myAlimentList : ArrayList<Aliment> = ArrayList()
         val size = listaCibi.size
-        val mysize = mieAliment.size
 
 
-        for (i in mieAliment.entries){
+        for (i in miaDispensaMap.entries){
             val myAliment  = i.value as Map<String,String>
 
             for(y in 0 until size){
@@ -191,6 +191,11 @@ object DbCommunication {
 
         println(myAlimentList)
         return myAlimentList
+
+    }
+
+    fun setMyaliment(mappa : Map<String,String>){
+        miaDispensaMap = mappa
 
     }
 }

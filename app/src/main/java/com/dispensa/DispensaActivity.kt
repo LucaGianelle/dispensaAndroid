@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.dispensa.*
 
 class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
 
-    private var exampleList = generateDummyList()
+    private var exampleList:ArrayList<Aliment> = generateDummyList()
     private lateinit var displayList: ArrayList<Aliment>
     private val adapter = FoodAdapter(exampleList, this)
     lateinit var food_view : RecyclerView
@@ -39,19 +39,9 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
 
     private fun generateDummyList(): ArrayList<Aliment> {
 
-        var list = ArrayList<Aliment>()
-        database = Firebase.database.reference
+        var list =  DbCommunication.createPersonaList()
 
-        val idUtente = DbCommunication.getId()
-
-        database.child("User").child(idUtente).child("Dispensa_personale").get().addOnSuccessListener {
-
-            val result = it.value as Map<String, String>
-            list = DbCommunication.createPersonaList(result)
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
-
+        println(" $/////////////////////////(((((((())))))))))))))))=============== "+ list)
         return list
     }
 }
