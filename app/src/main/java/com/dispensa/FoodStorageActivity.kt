@@ -74,10 +74,13 @@ import kotlin.random.Random
     }
 
     override fun onItemClick(position: Int) {
+
+        //da togliere
         Toast.makeText(this, "Item $position clicked", Toast.LENGTH_SHORT).show()
         val clickedItem = exampleList [position]
         //clickedItem.text1 = "Clicked"
         adapter.notifyItemChanged(position)
+        DbCommunication.setNameAliment(clickedItem.nameAliment)
 
 
         //popup per inserire gli alimenti nella dispensa

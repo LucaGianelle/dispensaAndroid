@@ -19,6 +19,9 @@ object DbCommunication {
     private var listaCibi : ArrayList<Aliment> = generateList()
     private val listaDailyValues: ArrayList<String> = ArrayList()
 
+    private var idUtente : String = ""
+    private var nomeAlimento : String = ""
+
     private lateinit var dailyValuesMap : Map <String, Double>
 
     fun getDbReference(){
@@ -127,4 +130,25 @@ object DbCommunication {
         //calcolare le calorie giornaliere dell'utente
     }
 
+    fun inserimentoAlimentoPersonale (quantAl: String){
+
+        val alimentoPersonale = AlimentoPersonale(quantAl, nomeAlimento)
+        reference.child(idUtente).child("Dispensa_personale").setValue(alimentoPersonale)
+    }
+
+    fun setId (idUser: String){
+        idUtente = idUser
+    }
+
+    fun getId (): String {
+        return idUtente
+    }
+
+    fun setNameAliment (nameAliment:String){
+        nomeAlimento = nameAliment
+    }
+
+    fun getNameAliment (): String {
+        return nomeAlimento
+    }
 }

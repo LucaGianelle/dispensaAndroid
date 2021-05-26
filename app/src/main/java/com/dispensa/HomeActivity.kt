@@ -13,6 +13,7 @@ import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.dispensa.DbCommunication.setId
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
@@ -43,6 +44,7 @@ class HomeActivity : AppCompatActivity() {
         //Prendo i dati del mio utente corrente
 
        val idUtente : String = auth.currentUser.uid
+        DbCommunication.setId(idUtente)
 
         //per gli utenti
         database.child("User").child(idUtente).get().addOnSuccessListener {
