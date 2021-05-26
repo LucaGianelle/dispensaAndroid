@@ -7,7 +7,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 
 object DbCommunication {
@@ -74,6 +73,9 @@ object DbCommunication {
         listaCibi
         return listaCibi
     }
+
+
+
     private fun generateList(): ArrayList<Aliment> {
 
         val list = ArrayList<Aliment>()
@@ -133,8 +135,10 @@ object DbCommunication {
 
     fun inserimentoAlimentoPersonale (quantAl: String){
 
+        reference = Firebase.database.reference
+        reference = database.getReference()
         val alimentoPersonale = AlimentoPersonale(quantAl, nomeAlimento)
-        reference.child(idUtente).child("Dispensa_personale").setValue(alimentoPersonale)
+        reference.child("User").child(idUtente).child("Dispensa_personale").setValue(alimentoPersonale)
     }
 
     fun setId (idUser: String){
@@ -151,5 +155,24 @@ object DbCommunication {
 
     fun getNameAliment (): String {
         return nomeAlimento
+    }
+
+
+    fun createPersonaList(mieAliment : Map<String,String>) : ArrayList<Aliment>{
+
+        val myAlimentList : ArrayList<Aliment> = ArrayList()
+        //class AlimentoPersonale (val idAlimento: String, val quantita: String){
+        val ricercaid : String = mieAliment.get("idAlimento").toString()
+        val size = listaCibi.size
+
+        for (i in 0 until size){
+            val temp = listaCibi[i].nameAliment
+            if (temp.equals(ricercaid)){
+                myAlimentList.add(listaCibi[i])
+            }
+        }
+
+        return myAlimentList
+
     }
 }

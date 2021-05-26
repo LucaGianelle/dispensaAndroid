@@ -19,7 +19,7 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
     lateinit var food_view : RecyclerView
 
     private lateinit var database: DatabaseReference
-    private lateinit var result : ArrayList<String>
+    //private lateinit var result : Map<String,String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,14 +27,13 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
 
         database = Firebase.database.reference
 
+        val idUtente = DbCommunication.getId()
         //per il cibo
-        database.child("aliment").get().addOnSuccessListener {
+        //reference.child("User").child(idUtente).child("Dispensa_personale").setValue(alimentoPersonale)
+        database.child("User").child(idUtente).child("Dispensa_personale").get().addOnSuccessListener {
 
-            result = it.value as ArrayList<String>
-            //val result = it.value as ArrayList<String>
-            // Map<String,Map<String, String>>
-            Log.i("firebase", "Got value ${it.value}")
-            Log.i("firebase", "${result}")
+          val result = it.value as Map<String,String>
+            exampleList = DbCommunication.createPersonaList(result)
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
         }
