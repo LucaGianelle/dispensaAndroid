@@ -84,7 +84,7 @@ class HomeActivity : AppCompatActivity() {
         database.child("User").child(idUtente).child("Valori_giornalieri").get().addOnSuccessListener {
 
             val result = it.value as Map<String,String>
-            var cancellaDailyValues : Boolean = DbCommunication.confrontaData(result)
+            val cancellaDailyValues : Boolean = DbCommunication.confrontaData(result)
             if (cancellaDailyValues){
                 DbCommunication.setNutritionalValues(result)
             }else{

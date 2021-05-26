@@ -17,7 +17,7 @@ class AlimentDialogFragment : DialogFragment(){
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        var rootView: View = inflater.inflate(R.layout.popup_insert_aliment, container, false)
+        val rootView: View = inflater.inflate(R.layout.popup_insert_aliment, container, false)
 
         rootView.buttonNo.setOnClickListener {
             dismiss()

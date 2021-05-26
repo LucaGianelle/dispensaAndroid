@@ -19,7 +19,7 @@ import kotlin.random.Random
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.food_storage)
+        setContentView(R.layout.dispensa)
 
         displayList= generateDummyList()
         food_view = findViewById(R.id.recycler_view) as RecyclerView
