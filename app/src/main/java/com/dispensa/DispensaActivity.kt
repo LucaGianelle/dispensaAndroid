@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -24,6 +25,14 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dispensa)
+
+
+        food_view = findViewById(R.id.recycler_view) as RecyclerView
+
+        food_view.adapter = adapter
+        food_view.layoutManager = LinearLayoutManager(this)
+        food_view.setHasFixedSize(true)
+
 
         val btnDisp = findViewById<Button>(R.id.buttonAggiuntaCibo)
 
