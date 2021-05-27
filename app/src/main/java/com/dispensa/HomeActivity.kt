@@ -29,7 +29,6 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
     private lateinit var result : ArrayList<Map<String,String>>
-    private var emptyStorage : Boolean = true
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -102,7 +101,8 @@ class HomeActivity : AppCompatActivity() {
             Log.e("firebase", "Error getting data", it)
         }
 
-        emptyStorage = DbCommunication.setMyaliment()
+
+
         //dispensa personale
         /*database.child("User").child(idUtente).child("Dispensa_personale").get().addOnSuccessListener {
 
@@ -125,7 +125,7 @@ class HomeActivity : AppCompatActivity() {
         val foodStorageB = findViewById<Button>(R.id.buttonDispensa)
 
         foodStorageB.setOnClickListener {
-            if(emptyStorage){
+            if(DbCommunication.emptyStorage){
                 val data = Intent (this, FoodStorageActivity::class.java)
                 startActivity(data)
             }else{

@@ -24,6 +24,7 @@ object DbCommunication {
 
     private lateinit var dailyValuesMap : Map <String, Double>
     private lateinit var miaDispensaMap: Map<String, String>
+    var emptyStorage : Boolean = true
 
     fun getDbReference(){
         reference = Firebase.database.reference
@@ -204,9 +205,9 @@ object DbCommunication {
 
     }
 
-    fun setMyaliment(/*mappa : Map<String,String>*/): Boolean {
+    fun setMyaliment(/*mappa : Map<String,String>*/) {
 
-        var emptyStorage : Boolean = true
+
         val prova : DatabaseReference = Firebase.database.reference
         prova.child("User").child(idUtente).child("Dispensa_personale").get().addOnSuccessListener {
 
@@ -214,6 +215,11 @@ object DbCommunication {
                 val result = it.value as Map<String, String>
                 miaDispensaMap = result
                 emptyStorage = false
+                println("__________________------------------ Ho caricato la dispensa personale")
+                println("__________________------------------ "+emptyStorage)
+
+            }else{
+                emptyStorage = true
 
             }
 
@@ -221,7 +227,6 @@ object DbCommunication {
             Log.e("firebase", "Error getting data", it)
         }
 
-        return emptyStorage
 
 
     }
