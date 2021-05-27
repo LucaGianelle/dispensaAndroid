@@ -25,7 +25,7 @@ class PersonalAlimentDialogFragment : DialogFragment() {
             val qt :String = quantitAliment.text.toString()
             if(qt != "")
             {
-                DbCommunication.inserimentoAlimentoPersonale(qt)
+                DbCommunication.riduzioneAlimentoPersonale(qt)
                 dismiss()
             }
 

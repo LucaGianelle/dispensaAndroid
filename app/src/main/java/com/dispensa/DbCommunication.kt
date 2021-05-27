@@ -2,6 +2,8 @@ package com.dispensa
 
 import android.os.Build
 import android.util.Log
+import android.widget.Toast
+import android.widget.Toast.makeText
 import androidx.annotation.RequiresApi
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -148,9 +150,37 @@ object DbCommunication {
     fun riduzioneAlimentoPersonale (quantAl: String){
 
         getDbReference()
+        var finalQt : Int = quantAl.toInt()
+        var qt: Int = 0
 
-        val alimentoPersonale = AlimentoPersonale(nomeAlimento, quantAl)
-        reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).setValue(alimentoPersonale)
+        val prova : DatabaseReference = Firebase.database.reference
+        prova.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).get().addOnSuccessListener {
+
+            if(it.value != null){
+                val result = it.value as Map<String, String>
+                qt = result.get("quantita")!!.toInt()
+
+                finalQt = qt - finalQt
+
+
+            }else{
+                emptyStorage = true
+
+            }
+
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+
+        if(finalQt >= 0){
+            reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).child("quantita").setValue(finalQt)
+
+        }else{
+            /*messaggio per quantità errata rimossa
+             Toast.makeText(this, "Non puoi togliere $finalQt grammi",Toast.LENGTH_SHORT).show()*/
+            reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).child("quantita").setValue(qt)
+
+        }
     }
 
     fun setId (idUser: String){
