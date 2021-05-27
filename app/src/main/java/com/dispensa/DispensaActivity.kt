@@ -3,8 +3,10 @@ package com.dispensa
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.View
 import android.widget.Button
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -71,4 +73,47 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
         println(" $/////////////////////////(((((((())))))))))))))))=============== "+ list)
         return list
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        print("?????????????????????????????????????????>>>>>>>entra11111<<<<<<<<<<<?????????????????????????????")
+        menuInflater.inflate(R.menu.researchbar,menu)
+        val searchItem = menu?.findItem(R.id.menu_search)
+        if(searchItem != null){
+            val searchView = searchItem.actionView as SearchView
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if(newText!!.isNotEmpty()){
+                        print("?????????????????????????????????????????>>>>>>>entra<<<<<<<<<<<?????????????????????????????")
+                        exampleList.clear()
+
+                        val search = newText.toLowerCase()
+                        displayList.forEach {
+                            if(it.nameAliment.toLowerCase().contains(search)){
+                                exampleList.add(it)
+                            }
+                        }
+                        food_view.adapter?.notifyDataSetChanged()
+
+                    }else{
+                        exampleList.clear()
+                        exampleList.addAll(displayList)
+                        food_view.adapter?.notifyDataSetChanged()
+
+                        /* displayList.clear()
+                         displayList.addAll(exampleList)
+                         food_view.adapter?.notifyDataSetChanged()*/
+                    }
+
+                    return true
+                }
+            })
+        }
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
 }
