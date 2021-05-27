@@ -155,6 +155,10 @@ import kotlin.random.Random
         return super.onCreateOptionsMenu(menu)
     }
 
+      override fun onBackPressed (){
+          val data = Intent (this, DispensaActivity::class.java)
+          startActivity(data)
+      }
 
 
 }

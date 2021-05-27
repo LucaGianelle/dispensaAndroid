@@ -157,8 +157,7 @@ class HomeActivity : AppCompatActivity() {
 
 
  override fun onBackPressed (){
-     makeText(this, "Hai premuto il tasto back e l'app non si è chiusa\nProva a cliccare il tasto Chiudi", LENGTH_LONG).show()
-    val dialog = ExitDialogFragment()
+     val dialog = ExitDialogFragment()
     dialog.show(supportFragmentManager, "customDialog")
     if(Utility.exit){
         finish()
