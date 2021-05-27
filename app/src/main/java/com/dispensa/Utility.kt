@@ -11,6 +11,8 @@ object Utility {
 
     private var dailyDate : String = ""
 
+    var exit = false
+
     @RequiresApi(Build.VERSION_CODES.O)
     fun setData(){
         val dataCorrente = LocalDate.now()
@@ -91,4 +93,9 @@ object Utility {
         val map1 : Map<String, Double> = mutableMapOf("carboidrati" to 0.0, "grassi" to 0.0, "proteine" to 0.0)
         return map1
     }
+
+    fun sureExit (){
+        exit = true
+    }
+
 }

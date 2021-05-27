@@ -10,6 +10,9 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast.LENGTH_LONG
+import android.widget.Toast.makeText
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -102,6 +105,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
+        DbCommunication.setMyaliment()
 
         //dispensa personale
         /*database.child("User").child(idUtente).child("Dispensa_personale").get().addOnSuccessListener {
@@ -152,30 +156,42 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
-    fun openMaps (activity: Activity, context: Context) {
-        val REQUEST_POSITION_PERMISSION_ID = 1
-        lateinit var fusedLocationClient: FusedLocationProviderClient
-
-        val permissionAccessCoarseLocationApproved = ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
-
-        if(permissionAccessCoarseLocationApproved){
-            fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity)
-            fusedLocationClient.lastLocation.addOnSuccessListener {
-                val intent = Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse(context.getString(R.string.query_location))
-                )
-                intent.setPackage("com.google.android.apps.maps")
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                context.startActivity(intent)
-            }
-        }else{
-            ActivityCompat.requestPermissions(
-                activity,
-                arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION),
-                REQUEST_POSITION_PERMISSION_ID
-            )
-        }
+ override fun onBackPressed (){
+     makeText(this, "Hai premuto il tasto back e l'app non si è chiusa\nProva a cliccare il tasto Chiudi", LENGTH_LONG).show()
+    val dialog = ExitDialogFragment()
+    dialog.show(supportFragmentManager, "customDialog")
+    if(Utility.exit){
+        finish()
     }
+}
+
+fun openMaps (activity: Activity, context: Context) {
+    val REQUEST_POSITION_PERMISSION_ID = 1
+    lateinit var fusedLocationClient: FusedLocationProviderClient
+
+    val permissionAccessCoarseLocationApproved = ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+
+    if(permissionAccessCoarseLocationApproved){
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity)
+        fusedLocationClient.lastLocation.addOnSuccessListener {
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse(context.getString(R.string.query_location))
+            )
+            intent.setPackage("com.google.android.apps.maps")
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(intent)
+        }
+    }else{
+        ActivityCompat.requestPermissions(
+            activity,
+            arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION),
+            REQUEST_POSITION_PERMISSION_ID
+        )
+    }
+}
+
+
 
 }
+

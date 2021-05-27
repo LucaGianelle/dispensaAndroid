@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/two_state_button"
-        android:text="@string/buttonRimuovi"
+        android:text="@string/buttonConferma"
         android:textColor="@color/primaryText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonNo"
@@ -32,13 +32,16 @@
         app:layout_constraintTop_toBottomOf="@+id/quantitAliment" />
 
 
-    <EditText
+    <TextView
         android:id="@+id/quantitAliment"
-        android:inputType= "number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/quantitAlimentiPresi"
+        android:gravity="center"
+        android:hint="@string/uscita"
+        android:text="@string/uscita"
+        android:textColor="@color/primaryText"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonYes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
