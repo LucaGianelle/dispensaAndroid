@@ -102,8 +102,9 @@ class HomeActivity : AppCompatActivity() {
             Log.e("firebase", "Error getting data", it)
         }
 
+        emptyStorage = DbCommunication.setMyaliment()
         //dispensa personale
-        database.child("User").child(idUtente).child("Dispensa_personale").get().addOnSuccessListener {
+        /*database.child("User").child(idUtente).child("Dispensa_personale").get().addOnSuccessListener {
 
             if(it.value != null){
                 val result = it.value as Map<String, String>
@@ -114,7 +115,7 @@ class HomeActivity : AppCompatActivity() {
             println("__________________------------------ Ho caricato la dispensa personale")
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
-        }
+        }*/
 
         //=========================================================================================================================
 

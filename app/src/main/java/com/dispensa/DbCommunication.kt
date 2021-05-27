@@ -1,6 +1,7 @@
 package com.dispensa
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -89,19 +90,19 @@ object DbCommunication {
 
     fun setNutritionalValues(inizio: Map<String, String>) {
 
-        var carboidratiUtente =  inizio.get("carboDaily")
+        val carboidratiUtente =  inizio.get("carboDaily")
         if (carboidratiUtente != null) {
             listaDailyValues.add(carboidratiUtente)
         }
-        var proteineUtente = inizio.get("proteinDaily")
+        val proteineUtente = inizio.get("proteinDaily")
         if (proteineUtente != null) {
             listaDailyValues.add(proteineUtente)
         }
-        var grassiUtente = inizio.get("grassiDaily")
+        val grassiUtente = inizio.get("grassiDaily")
         if (grassiUtente != null) {
             listaDailyValues.add(grassiUtente)
         }
-        var calorieUtente = inizio.get("calDaily")
+        val calorieUtente = inizio.get("calDaily")
         if (calorieUtente != null) {
             listaDailyValues.add(calorieUtente)
         }
@@ -135,6 +136,15 @@ object DbCommunication {
     }
 
     fun inserimentoAlimentoPersonale (quantAl: String){
+
+        getDbReference()
+
+        val alimentoPersonale = AlimentoPersonale(nomeAlimento, quantAl)
+        reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).setValue(alimentoPersonale)
+        var temp = setMyaliment()
+    }
+
+    fun riduzioneAlimentoPersonale (quantAl: String){
 
         getDbReference()
 
@@ -194,8 +204,25 @@ object DbCommunication {
 
     }
 
-    fun setMyaliment(mappa : Map<String,String>){
-        miaDispensaMap = mappa
+    fun setMyaliment(/*mappa : Map<String,String>*/): Boolean {
+
+        var emptyStorage : Boolean = true
+        val prova : DatabaseReference = Firebase.database.reference
+        prova.child("User").child(idUtente).child("Dispensa_personale").get().addOnSuccessListener {
+
+            if(it.value != null){
+                val result = it.value as Map<String, String>
+                miaDispensaMap = result
+                emptyStorage = false
+
+            }
+
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+
+        return emptyStorage
+
 
     }
 }

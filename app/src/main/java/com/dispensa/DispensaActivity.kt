@@ -32,6 +32,7 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
         setContentView(R.layout.dispensa)
 
 
+        displayList= generateDummyList()
         food_view = findViewById(R.id.recycler_view) as RecyclerView
 
         food_view.adapter = adapter
