@@ -150,7 +150,7 @@ object DbCommunication {
     fun riduzioneAlimentoPersonale (quantAl: String){
 
         getDbReference()
-        var finalQt : Int = quantAl.toInt()
+        var finalQt : Int = 0
         var qt: Int = 0
 
         val prova : DatabaseReference = Firebase.database.reference
@@ -158,10 +158,25 @@ object DbCommunication {
 
             if(it.value != null){
                 val result = it.value as Map<String, String>
-                qt = result.get("quantita")!!.toInt()
+                val temp : String = result.get("quantita").toString()
+                qt = temp.toInt()
 
-                finalQt = qt - finalQt
+                finalQt = qt - quantAl.toInt()
+                println("finalqt"+finalQt)
+                println("qt"+qt)
+                println("quantal"+quantAl)
 
+                println("finalqt222222222233333333333333"+finalQt)
+                if(finalQt >= 0){
+                    println("finalqt2222222222"+finalQt)
+                    reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).child("quantita").setValue(finalQt)
+
+                }else{
+                    /*messaggio per quantità errata rimossa
+                     Toast.makeText(this, "Non puoi togliere $finalQt grammi",Toast.LENGTH_SHORT).show()*/
+                    reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).child("quantita").setValue(qt)
+
+                }
 
             }else{
                 emptyStorage = true
@@ -172,15 +187,6 @@ object DbCommunication {
             Log.e("firebase", "Error getting data", it)
         }
 
-        if(finalQt >= 0){
-            reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).child("quantita").setValue(finalQt)
-
-        }else{
-            /*messaggio per quantità errata rimossa
-             Toast.makeText(this, "Non puoi togliere $finalQt grammi",Toast.LENGTH_SHORT).show()*/
-            reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).child("quantita").setValue(qt)
-
-        }
     }
 
     fun setId (idUser: String){
