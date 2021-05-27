@@ -116,5 +116,9 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
 
         return super.onCreateOptionsMenu(menu)
     }
+    override fun onBackPressed (){
+        val data = Intent (this, HomeActivity::class.java)
+        startActivity(data)
+    }
 
 }

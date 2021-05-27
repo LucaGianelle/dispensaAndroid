@@ -29,6 +29,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.load_app)
+
+        if(Utility.exit){
+            finish()
+        }
         mFirebaseAuth = FirebaseAuth.getInstance()
 
     }

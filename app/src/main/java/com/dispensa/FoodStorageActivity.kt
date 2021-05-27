@@ -158,6 +158,7 @@ import kotlin.random.Random
       override fun onBackPressed (){
           val data = Intent (this, DispensaActivity::class.java)
           startActivity(data)
+          finish()
       }
 
 
