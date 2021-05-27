@@ -29,6 +29,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
     private lateinit var result : ArrayList<Map<String,String>>
+    private var emptyStorage : Boolean = true
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -104,8 +105,11 @@ class HomeActivity : AppCompatActivity() {
         //dispensa personale
         database.child("User").child(idUtente).child("Dispensa_personale").get().addOnSuccessListener {
 
-            val result = it.value as Map<String, String>
-            DbCommunication.setMyaliment(result)
+            if(it.value != null){
+                val result = it.value as Map<String, String>
+                DbCommunication.setMyaliment(result)
+                emptyStorage = false
+            }
 
             println("__________________------------------ Ho caricato la dispensa personale")
         }.addOnFailureListener{
@@ -120,8 +124,13 @@ class HomeActivity : AppCompatActivity() {
         val foodStorageB = findViewById<Button>(R.id.buttonDispensa)
 
         foodStorageB.setOnClickListener {
-            val data = Intent (this, DispensaActivity::class.java)
-            startActivity(data)
+            if(emptyStorage){
+                val data = Intent (this, FoodStorageActivity::class.java)
+                startActivity(data)
+            }else{
+                val data = Intent (this, DispensaActivity::class.java)
+                startActivity(data)
+            }
         }
 
         datib.setOnClickListener {
