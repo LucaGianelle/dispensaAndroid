@@ -106,6 +106,8 @@ class HomeActivity : AppCompatActivity() {
 
             val result = it.value as Map<String, String>
             DbCommunication.setMyaliment(result)
+
+            println("__________________------------------ Ho caricato la dispensa personale")
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
         }
