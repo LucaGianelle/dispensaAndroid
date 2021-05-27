@@ -81,7 +81,7 @@ class HomeActivity : AppCompatActivity() {
             Log.e("firebase", "Error getting data", it)
         }
 
-        //per la data
+        //per i valori giornalieri
         database.child("User").child(idUtente).child("Valori_giornalieri").get().addOnSuccessListener {
 
             val result = it.value as Map<String,String>
