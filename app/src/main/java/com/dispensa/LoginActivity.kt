@@ -21,9 +21,14 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.login)
         auth = FirebaseAuth.getInstance()
 
+
         buttonAccesso.setOnClickListener {
-            //mettere un if
-            doLogin()
+
+            if(inputPasswordLogin.text.toString().isEmpty() || inputEmailLogin.text.toString().isEmpty()){
+                Toast.makeText(this,"Riempire i campi",Toast.LENGTH_SHORT).show()
+            }else{
+                doLogin()
+            }
         }
         button.setOnClickListener {
             val reg = Intent (this, RegisterActivity::class.java)
