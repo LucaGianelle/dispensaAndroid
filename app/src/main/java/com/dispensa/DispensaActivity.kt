@@ -2,19 +2,14 @@ package com.dispensa
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.widget.Button
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.dispensa.*
 import kotlin.random.Random
 
 class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
@@ -52,7 +47,7 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
 
         val clickedItem = exampleList [position]
         adapter.notifyItemChanged(position)
-        DbCommunication.setNameAliment(clickedItem.nameAliment)
+        DbCommunication.setClickedAliment(clickedItem)
 
 
         //popup per inserire gli alimenti nella dispensa
@@ -71,12 +66,11 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
 
         var list =  DbCommunication.createPersonaList()
 
-        println(" $/////////////////////////(((((((())))))))))))))))=============== "+ list)
         return list
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        print("?????????????????????????????????????????>>>>>>>entra11111<<<<<<<<<<<?????????????????????????????")
+
         menuInflater.inflate(R.menu.researchbar,menu)
         val searchItem = menu?.findItem(R.id.menu_search)
         if(searchItem != null){
@@ -88,7 +82,7 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
 
                 override fun onQueryTextChange(newText: String?): Boolean {
                     if(newText!!.isNotEmpty()){
-                        print("?????????????????????????????????????????>>>>>>>entra<<<<<<<<<<<?????????????????????????????")
+
                         exampleList.clear()
 
                         val search = newText.toLowerCase()
@@ -103,10 +97,6 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
                         exampleList.clear()
                         exampleList.addAll(displayList)
                         food_view.adapter?.notifyDataSetChanged()
-
-                        /* displayList.clear()
-                         displayList.addAll(exampleList)
-                         food_view.adapter?.notifyDataSetChanged()*/
                     }
 
                     return true

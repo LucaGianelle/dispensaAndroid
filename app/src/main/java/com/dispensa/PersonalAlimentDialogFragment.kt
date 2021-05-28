@@ -26,6 +26,7 @@ class PersonalAlimentDialogFragment : DialogFragment() {
             if(qt != "")
             {
                 DbCommunication.riduzioneAlimentoPersonale(qt)
+                DbCommunication.addDailyValues(qt.toInt())
                 dismiss()
             }
 

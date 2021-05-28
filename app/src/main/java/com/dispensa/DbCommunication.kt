@@ -2,8 +2,6 @@ package com.dispensa
 
 import android.os.Build
 import android.util.Log
-import android.widget.Toast
-import android.widget.Toast.makeText
 import androidx.annotation.RequiresApi
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -23,6 +21,7 @@ object DbCommunication {
 
     private var idUtente : String = ""
     private var nomeAlimento : String = ""
+    private lateinit var clickedAliment : Aliment
 
     private lateinit var dailyValuesMap : Map <String, Double>
     private lateinit var miaDispensaMap: Map<String, String>
@@ -162,13 +161,9 @@ object DbCommunication {
                 qt = temp.toInt()
 
                 finalQt = qt - quantAl.toInt()
-                println("finalqt"+finalQt)
-                println("qt"+qt)
-                println("quantal"+quantAl)
 
-                println("finalqt222222222233333333333333"+finalQt)
                 if(finalQt >= 0){
-                    println("finalqt2222222222"+finalQt)
+
                     reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).child("quantita").setValue(finalQt)
 
                 }else{
@@ -189,6 +184,47 @@ object DbCommunication {
 
     }
 
+    fun addDailyValues(qt : Int){
+        getDbReference()
+        val prova : DatabaseReference = Firebase.database.reference
+
+        var kcla : Int = clickedAliment.calorie.toInt()
+        var prote : Double = clickedAliment.proteine.toDouble()
+        var gras : Double = clickedAliment.grassi.toDouble()
+        var carbo : Double = clickedAliment.carboidrati.toDouble()
+
+        kcla = kcla*(qt / 100)
+        prote = prote*(qt / 100)
+        gras = gras*(qt / 100)
+        carbo = carbo*(qt / 100)
+
+
+        prova.child("User").child(idUtente).child("Valori_giornalieri").get().addOnSuccessListener {
+
+            if(it.value != null){
+                val result = it.value as Map<String, String>
+                var tempkcal : String = result.get("calDaily").toString()
+                var tempprote : String = result.get("proteinDaily").toString()
+                var tempgras : String = result.get("grassiDaily").toString()
+                var tempcarbo : String = result.get("carboDaily").toString()
+
+                tempkcal += kcla
+                tempprote += prote
+                tempgras += gras
+                tempcarbo += carbo
+
+
+                    reference.child("User").child(idUtente).child("Valori_giornalieri").child("calDaily").setValue(tempkcal)
+                    reference.child("User").child(idUtente).child("Valori_giornalieri").child("proteinDaily").setValue(tempprote)
+                    reference.child("User").child(idUtente).child("Valori_giornalieri").child("grassiDaily").setValue(tempgras)
+                    reference.child("User").child(idUtente).child("Valori_giornalieri").child("carboDaily").setValue(tempcarbo)
+            }
+
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+    }
+
     fun setId (idUser: String){
         this.idUtente = idUser
     }
@@ -197,8 +233,10 @@ object DbCommunication {
         return idUtente
     }
 
-    fun setNameAliment (nameAliment:String){
-        this.nomeAlimento = nameAliment
+    fun setClickedAliment (aliment: Aliment){
+
+        this.clickedAliment =  aliment
+        this.nomeAlimento = clickedAliment.nameAliment
     }
 
     fun getNameAliment (): String {
