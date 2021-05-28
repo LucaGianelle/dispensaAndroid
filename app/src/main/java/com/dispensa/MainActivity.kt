@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import com.dispensa.videoSearchingBar.SearchBar
@@ -17,6 +18,9 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -25,15 +29,46 @@ import java.time.format.DateTimeFormatter
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mFirebaseAuth: FirebaseAuth
+    private lateinit var database: DatabaseReference
+    private lateinit var result : ArrayList<Map<String,String>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.load_app)
 
+        database = Firebase.database.reference
+        mFirebaseAuth = FirebaseAuth.getInstance()
+
         if(Utility.exit){
             finish()
         }
         mFirebaseAuth = FirebaseAuth.getInstance()
+        val idUtente : String = mFirebaseAuth.currentUser.uid
+        DbCommunication.setId(idUtente)
+
+        //per gli utenti
+        database.child("User").child(idUtente).get().addOnSuccessListener {
+
+            val mappaProfilo = it.value as Map<String, String>
+
+            Log.i("firebase", "Got value ${it.value}")
+            Log.i("firebase","${mappaProfilo}")
+
+            val nameMap: String = mappaProfilo.get("name").toString()
+            val emailMap : String = mappaProfilo.get("email").toString()
+            val pwMap : String = mappaProfilo.get("password").toString()
+            val altezzaMap : String = mappaProfilo.get("altezza").toString()
+            val pesoMap : String = mappaProfilo.get("peso").toString()
+            val etaMap : String = mappaProfilo.get("eta").toString()
+
+            DbCommunication.createUser(nameMap,emailMap,pwMap,altezzaMap,pesoMap,etaMap)
+
+        }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+        }
+
+
+        DbCommunication.setDailyMap()
 
     }
 
@@ -42,6 +77,7 @@ class MainActivity : AppCompatActivity() {
 
         val mFirebaseUser : FirebaseUser? = mFirebaseAuth.currentUser
         if(mFirebaseUser != null){
+
             val prv1 = Intent (this, HomeActivity::class.java)
             startActivity(prv1)
         }else{

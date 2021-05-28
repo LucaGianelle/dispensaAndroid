@@ -10,13 +10,9 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.Toast.LENGTH_LONG
-import android.widget.Toast.makeText
-import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import com.dispensa.DbCommunication.setId
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
@@ -48,7 +44,7 @@ class HomeActivity : AppCompatActivity() {
        val idUtente : String = auth.currentUser.uid
         DbCommunication.setId(idUtente)
 
-        //per gli utenti
+       /* per gli utenti
         database.child("User").child(idUtente).get().addOnSuccessListener {
 
             val mappaProfilo = it.value as Map<String, String>
@@ -67,7 +63,7 @@ class HomeActivity : AppCompatActivity() {
 
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
-        }
+        }*/
 
 
 
@@ -83,44 +79,18 @@ class HomeActivity : AppCompatActivity() {
             Log.e("firebase", "Error getting data", it)
         }
 
-        //per i valori giornalieri
-        database.child("User").child(idUtente).child("Valori_giornalieri").get().addOnSuccessListener {
-
-            val result = it.value as Map<String,String>
-            val cancellaDailyValues : Boolean = DbCommunication.confrontaData(result)
-            if (cancellaDailyValues){
-                DbCommunication.setNutritionalValues(result)
-            }else{
-                //azzero i dati del db
-                val dataCorrente = LocalDate.now()
-                database.child("User").child(idUtente).child("Valori_giornalieri").child("calDaily").setValue("0")
-                database.child("User").child(idUtente).child("Valori_giornalieri").child("carboDaily").setValue("0")
-                database.child("User").child(idUtente).child("Valori_giornalieri").child("proteinDaily").setValue("0")
-                database.child("User").child(idUtente).child("Valori_giornalieri").child("grassiDaily").setValue("0")
-                database.child("User").child(idUtente).child("Valori_giornalieri").child("dataSalvata").setValue(dataCorrente)
-            }
-
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
+        DbCommunication.setMyaliment()
+        val cancellaDailyValues : Boolean = DbCommunication.confrontaData()
+        if (!!cancellaDailyValues) {
+            val dataCorrente = LocalDate.now().toString()
+            database.child("User").child(idUtente).child("Valori_giornalieri").child("calDaily").setValue("0")
+            database.child("User").child(idUtente).child("Valori_giornalieri").child("carboDaily").setValue("0")
+            database.child("User").child(idUtente).child("Valori_giornalieri").child("proteinDaily").setValue("0")
+            database.child("User").child(idUtente).child("Valori_giornalieri").child("grassiDaily").setValue("0")
+            database.child("User").child(idUtente).child("Valori_giornalieri").child("dataSalvata").setValue(dataCorrente)
         }
 
-
-        DbCommunication.setMyaliment()
-        DbCommunication.getDailyMap()
-
-        //dispensa personale
-        /*database.child("User").child(idUtente).child("Dispensa_personale").get().addOnSuccessListener {
-
-            if(it.value != null){
-                val result = it.value as Map<String, String>
-                DbCommunication.setMyaliment(result)
-                emptyStorage = false
-            }
-
-            println("__________________------------------ Ho caricato la dispensa personale")
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }*/
+        DbCommunication.setDailyMap()
 
         //=========================================================================================================================
 

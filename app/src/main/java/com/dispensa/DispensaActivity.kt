@@ -53,6 +53,7 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
         //popup per inserire gli alimenti nella dispensa
         val dialog = PersonalAlimentDialogFragment()
         dialog.show(supportFragmentManager, "customDialog")
+
     }
 
     fun removeItem(view: View) {

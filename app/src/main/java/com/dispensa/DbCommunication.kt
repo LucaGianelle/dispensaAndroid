@@ -26,6 +26,7 @@ object DbCommunication {
     private lateinit var dailyValuesMap : Map <String, Double>
     private lateinit var miaDispensaMap: Map<String, String>
     var emptyStorage : Boolean = true
+    var dataDatabase : String = ""
 
     fun getDbReference(){
         reference = Firebase.database.reference
@@ -110,7 +111,7 @@ object DbCommunication {
         }
     }
 
-    fun getDailyMap() {
+    fun setDailyMap() {
 
         getDbReference()
         val prova : DatabaseReference = Firebase.database.reference
@@ -122,6 +123,7 @@ object DbCommunication {
 
 
 
+
         prova.child("User").child(idUtente).child("Valori_giornalieri").get().addOnSuccessListener {
 
             if(it.value != null){
@@ -130,6 +132,7 @@ object DbCommunication {
                 prote = result.get("proteinDaily")!!.toDouble()
                 gras  = result.get("grassiDaily")!!.toDouble()
                 carbo  = result.get("carboDaily")!!.toDouble()
+                dataDatabase = result.get("dataSalvata").toString()
 
                 dailyValuesMap =  mutableMapOf("calorie" to kcal,"carboidrati" to carbo, "grassi" to gras, "proteine" to prote)
             }
@@ -147,12 +150,11 @@ object DbCommunication {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun confrontaData(inizio: Map<String, String>): Boolean {
+    fun confrontaData(): Boolean {
         var eraseData: Boolean = true
-        val dData: String = inizio.get("dataSalvata").toString()
         val dataCorrente = LocalDate.now()
 
-        if (dataCorrente.equals(dData)) {
+        if (dataCorrente.equals(this.dataDatabase)) {
             eraseData = false
             //azzerare i valori nel database e cambiare la data
         }
