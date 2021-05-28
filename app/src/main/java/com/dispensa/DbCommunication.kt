@@ -67,7 +67,7 @@ object DbCommunication {
 
             //visualizzazione valori nutrizionali
 
-            val tempAliment = Aliment(tempNameAliment, tempCalorieAliment, tempQuantitaAliment, tempProteineAliment, tempGrassiAliment, tempCarboidratiAliment)
+            val tempAliment = Aliment(tempNameAliment, tempCalorieAliment, tempQuantitaAliment, tempProteineAliment, tempCarboidratiAliment, tempGrassiAliment)
 
             this.listaCibi.add(tempAliment)
         }
@@ -131,13 +131,14 @@ object DbCommunication {
                 gras  = result.get("grassiDaily")!!.toDouble()
                 carbo  = result.get("carboDaily")!!.toDouble()
 
+                dailyValuesMap =  mutableMapOf("calorie" to kcal,"carboidrati" to carbo, "grassi" to gras, "proteine" to prote)
             }
 
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
         }
 
-        dailyValuesMap =  mutableMapOf("calorie" to kcal,"carboidrati" to carbo, "grassi" to gras, "proteine" to prote)
+
 
     }
 
@@ -292,6 +293,8 @@ object DbCommunication {
                     val tempGras = listaCibi[y].grassi
 
                     val tempAliment :Aliment = Aliment(tempName,tempCal,tempQuant,tempPro,tempCarbo,tempGras)
+
+                    println("=========================00000000000000000000000000000=====================" + tempAliment)
 
                     myAlimentList.add(tempAliment)
                     break
