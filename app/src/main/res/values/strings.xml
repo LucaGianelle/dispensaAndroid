@@ -3,43 +3,43 @@
     <string name="textview1" translatable="false" tools:ignore="DuplicateDefinition">TextView</string>
     <string name="textview" translatable="false">TextView</string>
 
-    <string name="inputName" translatable="false">Nome</string>
-    <string name="inputEmail" translatable="false">E-mail</string>
-    <string name="InputPassword" translatable="false">Password</string>
-    <string name="registrazione" translatable="false">Registrazione</string>
-    <string name="buttonConferma" translatable="false">Conferma</string>
+    <string name="inputName" translatable="true">Name</string>
+    <string name="inputEmail" translatable="true">E-mail</string>
+    <string name="InputPassword" translatable="true">Password</string>
+    <string name="registrazione" translatable="true">Sign up</string>
+    <string name="buttonConferma" translatable="true">Confirm</string>
 
-    <string name="homeProfile" translatable="false">Home</string>
-    <string name="buttonDispensa" translatable="false">Dispensa</string>
-    <string name="buttonMappa" translatable="false">Mappa</string>
-    <string name="buttonDatiPersonali" translatable="false">Dati personali</string>
-    <string name="buttonValoriNutrizionali" translatable="false">valori nutrizionali</string>
+    <string name="homeProfile" translatable="true">Home</string>
+    <string name="buttonDispensa" translatable="true">Storage</string>
+    <string name="buttonMappa" translatable="true">Map</string>
+    <string name="buttonDatiPersonali" translatable="true">Personal datas</string>
+    <string name="buttonValoriNutrizionali" translatable="true">nutritional values</string>
 
-    <string name="login" translatable="false">Login</string>
-    <string name="buttonAccesso" translatable="false">Accedi</string>
-    <string name="buttonRegistrazione" translatable="false">Registrazione</string>
-    <string name="noProfilo" translatable="false">SE NON HAI UN PROFILO</string>
-    <string name="buttonModifica" translatable="false">modifica</string>
+    <string name="login" translatable="true">Login</string>
+    <string name="buttonAccesso" translatable="true">Login</string>
+    <string name="buttonRegistrazione" translatable="true">Sign in</string>
+    <string name="noProfilo" translatable="true">IF YOU DON'T HAVE AN ACCOUNT</string>
+    <string name="buttonModifica" translatable="true">edit</string>
 
-    <string name="query_location" translatable="false">https://www.google.com/maps/search/?api=1&amp;query=supermercati</string>
-    <string name="datiPersonali" translatable="false">Dati Personali</string>
-    <string name="textPeso" translatable="false">Peso</string>
-    <string name="textAltezza" translatable="false">Altezza</string>
-    <string name="idProteine" translatable="false">Proteine</string>
-    <string name="idGrassi" translatable="false">Grassi</string>
-    <string name="idCarboidrati" translatable="false">Carboidrati</string>
+    <string name="query_location" translatable="true">https://www.google.com/maps/search/?api=1&amp;query=supermercati</string>
+        <string name="datiPersonali" translatable="true">Personal data</string>
+    <string name="textPeso" translatable="true">Weight</string>
+    <string name="textAltezza" translatable="true">Height</string>
+    <string name="idProteine" translatable="true">Proteins</string>
+    <string name="idGrassi" translatable="true">Fats</string>
+    <string name="idCarboidrati" translatable="true">Carbohydrates</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="logout" translatable="false">logout</string>
-    <string name="infoModifica" translatable="false">Rimpiazza i dati per la modifica</string>
-    <string name="eta" translatable="false">Età</string>
-    <string name="quantitAlimenti" translatable="false">Inserire la quantità</string>
-    <string name="buttonYes" translatable="false">aggiungi</string>
-    <string name="buttonNo" translatable="false">annulla</string>
-    <string name="idCalorie" translatable="false">Calorie</string>
-    <string name="buttonRimuovi" translatable="false">Prendi</string>
-    <string name="quantitAlimentiPresi" translatable="false">Quantità da utilizzare</string>
-    <string name="uscita" translatable="false">Vuoi uscire?</string>
+    <string name="hello_blank_fragment" translatable="true">Hello blank fragment</string>
+    <string name="logout" translatable="true">logout</string>
+    <string name="infoModifica" translatable="true">Replace data when editing</string>
+    <string name="eta" translatable="true">Age</string>
+    <string name="quantitAlimenti" translatable="true">Insert quantity</string>
+    <string name="buttonYes" translatable="true">add</string>
+    <string name="buttonNo" translatable="true">cancel</string>
+    <string name="idCalorie" translatable="true">Calories</string>
+    <string name="buttonRimuovi" translatable="true">Take</string>
+    <string name="quantitAlimentiPresi" translatable="true">How many?</string>
+    <string name="uscita" translatable="true">Do you want to exit?</string>
 
 
 </resources>

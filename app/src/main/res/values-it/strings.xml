@@ -1,4 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Dispensa</string>
+
+    <string name="inputName">Nome</string>
+    <string name="inputEmail">E-mail</string>
+    <string name="InputPassword">Password</string>
+    <string name="registrazione">Registrazione</string>
+    <string name="buttonConferma">Conferma</string>
+
+    <string name="homeProfile">Home</string>
+    <string name="buttonDispensa">Dispensa</string>
+    <string name="buttonMappa">Mappa</string>
+    <string name="buttonDatiPersonali">Dati personali</string>
+    <string name="buttonValoriNutrizionali">valori nutrizionali</string>
+
+    <string name="login">Login</string>
+    <string name="buttonAccesso">Accedi</string>
+    <string name="buttonRegistrazione">Registrazione</string>
+    <string name="noProfilo">SE NON HAI UN PROFILO</string>
+    <string name="buttonModifica">modifica</string>
+
+    <string name="query_location">https://www.google.com/maps/search/?api=1&amp;query=supermercati</string>
+    <string name="datiPersonali">Dati Personali</string>
+    <string name="textPeso">Peso</string>
+    <string name="textAltezza">Altezza</string>
+    <string name="idProteine">Proteine</string>
+    <string name="idGrassi">Grassi</string>
+    <string name="idCarboidrati">Carboidrati</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">logout</string>
+    <string name="infoModifica">Rimpiazza i dati per la modifica</string>
+    <string name="eta">Età</string>
+    <string name="quantitAlimenti">Inserire la quantità</string>
+    <string name="buttonYes">aggiungi</string>
+    <string name="buttonNo">annulla</string>
+    <string name="idCalorie">Calorie</string>
+    <string name="buttonRimuovi">Prendi</string>
+    <string name="quantitAlimentiPresi">Quantità da utilizzare</string>
+    <string name="uscita">Vuoi uscire?</string>
+
+
 </resources>
