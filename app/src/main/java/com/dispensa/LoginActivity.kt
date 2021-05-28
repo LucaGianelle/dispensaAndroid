@@ -22,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         buttonAccesso.setOnClickListener {
+            //mettere un if
             doLogin()
         }
         button.setOnClickListener {

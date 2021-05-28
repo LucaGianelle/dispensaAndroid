@@ -38,8 +38,8 @@
     <string name="buttonNo" translatable="false">annulla</string>
     <string name="idCalorie" translatable="false">Calorie</string>
     <string name="buttonRimuovi" translatable="false">Prendi</string>
-    <string name="quantitAlimentiPresi">Quantità da utilizzare</string>
-    <string name="uscita">Vuoi uscire?</string>
+    <string name="quantitAlimentiPresi" translatable="false">Quantità da utilizzare</string>
+    <string name="uscita" translatable="false">Vuoi uscire?</string>
 
 
 </resources>
