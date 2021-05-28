@@ -10,6 +10,7 @@ object Utility {
     private var valoriMap : Map<String, Double> = createMap()
 
     private var dailyDate : String = ""
+    var bLoop : Boolean = true
 
     var exit = false
 
@@ -97,5 +98,6 @@ object Utility {
     fun sureExit (){
         exit = true
     }
+
 
 }
