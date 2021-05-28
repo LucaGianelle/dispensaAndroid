@@ -23,12 +23,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         buttonAccesso.setOnClickListener {
-
-            if(inputPasswordLogin.text.toString().isEmpty() || inputEmailLogin.text.toString().isEmpty()){
-                Toast.makeText(this,"Riempire i campi",Toast.LENGTH_SHORT).show()
-            }else{
-                doLogin()
-            }
+            doLogin()
         }
         button.setOnClickListener {
             val reg = Intent (this, RegisterActivity::class.java)
@@ -39,21 +34,22 @@ class LoginActivity : AppCompatActivity() {
 
     private fun doLogin() {
 
+
         if (inputEmailLogin.text.toString().isEmpty()) {
-            inputEmail.error = "Inserire un indirizzo e-mail"
-            inputEmail.requestFocus()
+            inputEmailLogin.error = "Inserire un indirizzo e-mail"
+            inputEmailLogin.requestFocus()
             return
         }
 
         if(!Patterns.EMAIL_ADDRESS.matcher(inputEmailLogin.text.toString()).matches()) {
-            inputEmail.error = "Inserire un indirizzo e-mail valido"
-            inputEmail.requestFocus()
+            inputEmailLogin.error = "Inserire un indirizzo e-mail valido"
+            inputEmailLogin.requestFocus()
             return
         }
 
         if (inputPasswordLogin.text.toString().isEmpty()) {
-            inputPassword.error = "Inserire una password"
-            inputPassword.requestFocus()
+            inputPasswordLogin.error = "Inserire una password"
+            inputPasswordLogin.requestFocus()
             return
         }
 
