@@ -135,6 +135,8 @@ object DbCommunication {
                 dataDatabase = result.get("dataSalvata").toString()
 
                 dailyValuesMap =  mutableMapOf("calorie" to kcal,"carboidrati" to carbo, "grassi" to gras, "proteine" to prote)
+                println("pdlmdn")
+                Utility.bLoop = false
             }
 
         }.addOnFailureListener{
