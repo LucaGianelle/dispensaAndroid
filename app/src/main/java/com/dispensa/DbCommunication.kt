@@ -171,8 +171,29 @@ object DbCommunication {
 
         getDbReference()
 
-        val alimentoPersonale = AlimentoPersonale(nomeAlimento, quantAl)
-        reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).setValue(alimentoPersonale)
+        val prova : DatabaseReference = Firebase.database.reference
+        prova.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).get().addOnSuccessListener {
+
+            if(it.value != null){
+                val result = it.value as Map<String, String>
+                val temp : String = result.get("quantita").toString()
+                val qt = temp.toInt()
+
+                val finalQt = qt + quantAl.toInt()
+
+                    reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).child("quantita").setValue(finalQt)
+
+            }else{
+
+                val alimentoPersonale = AlimentoPersonale(nomeAlimento, quantAl)
+                reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).setValue(alimentoPersonale)
+
+            }
+
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+
         var temp = setMyaliment()
     }
 
