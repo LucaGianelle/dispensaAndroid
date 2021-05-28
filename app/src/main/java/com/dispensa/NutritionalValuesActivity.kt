@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.nutritionalvalues.*
 class NutritionalValuesActivity: AppCompatActivity() {
 
     private val mappaMaxValues = Utility.getMacros()
-    private val mappaDayliValues = DbCommunication.getDailyMap()
+    private lateinit var mappaDayliValues : Map<String, Double>
 
     private val maxKcal = Utility.getKcal().toDouble()
 
@@ -20,7 +20,10 @@ class NutritionalValuesActivity: AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        this.mappaDayliValues = DbCommunication.getNutritionalValues()
         setContentView(R.layout.nutritionalvalues)
+
 
         createPerc()
 

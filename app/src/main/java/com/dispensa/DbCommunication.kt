@@ -110,14 +110,39 @@ object DbCommunication {
         }
     }
 
-    fun getDailyMap() : Map<String, Double>{
+    fun getDailyMap() {
 
-        dailyValuesMap =  mutableMapOf("calorie" to 1500.0,"carboidrati" to 150.0, "grassi" to 10.0, "proteine" to 70.0)
-        return dailyValuesMap
+        getDbReference()
+        val prova : DatabaseReference = Firebase.database.reference
+
+        var kcal : Double = 0.0
+        var prote : Double = 0.0
+        var gras : Double = 0.0
+        var carbo : Double = 0.0
+
+
+
+        prova.child("User").child(idUtente).child("Valori_giornalieri").get().addOnSuccessListener {
+
+            if(it.value != null){
+                val result = it.value as Map<String, String>
+                kcal = result.get("calDaily")!!.toDouble()
+                prote = result.get("proteinDaily")!!.toDouble()
+                gras  = result.get("grassiDaily")!!.toDouble()
+                carbo  = result.get("carboDaily")!!.toDouble()
+
+            }
+
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+
+        dailyValuesMap =  mutableMapOf("calorie" to kcal,"carboidrati" to carbo, "grassi" to gras, "proteine" to prote)
+
     }
 
-    fun getNutritionalValues() : ArrayList<String> {
-        return listaDailyValues
+    fun getNutritionalValues() : Map<String, Double> {
+        return dailyValuesMap
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -188,7 +213,7 @@ object DbCommunication {
         getDbReference()
         val prova : DatabaseReference = Firebase.database.reference
 
-        var kcla : Int = clickedAliment.calorie.toInt()
+        var kcla : Double = clickedAliment.calorie.toDouble()
         var prote : Double = clickedAliment.proteine.toDouble()
         var gras : Double = clickedAliment.grassi.toDouble()
         var carbo : Double = clickedAliment.carboidrati.toDouble()
@@ -203,10 +228,10 @@ object DbCommunication {
 
             if(it.value != null){
                 val result = it.value as Map<String, String>
-                var tempkcal : String = result.get("calDaily").toString()
-                var tempprote : String = result.get("proteinDaily").toString()
-                var tempgras : String = result.get("grassiDaily").toString()
-                var tempcarbo : String = result.get("carboDaily").toString()
+                var tempkcal : Double = result.get("calDaily")!!.toDouble()
+                var tempprote : Double = result.get("proteinDaily")!!.toDouble()
+                var tempgras : Double = result.get("grassiDaily")!!.toDouble()
+                var tempcarbo : Double = result.get("carboDaily")!!.toDouble()
 
                 tempkcal += kcla
                 tempprote += prote
@@ -214,10 +239,10 @@ object DbCommunication {
                 tempcarbo += carbo
 
 
-                    reference.child("User").child(idUtente).child("Valori_giornalieri").child("calDaily").setValue(tempkcal)
-                    reference.child("User").child(idUtente).child("Valori_giornalieri").child("proteinDaily").setValue(tempprote)
-                    reference.child("User").child(idUtente).child("Valori_giornalieri").child("grassiDaily").setValue(tempgras)
-                    reference.child("User").child(idUtente).child("Valori_giornalieri").child("carboDaily").setValue(tempcarbo)
+                    reference.child("User").child(idUtente).child("Valori_giornalieri").child("calDaily").setValue(tempkcal.toString())
+                    reference.child("User").child(idUtente).child("Valori_giornalieri").child("proteinDaily").setValue(tempprote.toString())
+                    reference.child("User").child(idUtente).child("Valori_giornalieri").child("grassiDaily").setValue(tempgras.toString())
+                    reference.child("User").child(idUtente).child("Valori_giornalieri").child("carboDaily").setValue(tempcarbo.toString())
             }
 
         }.addOnFailureListener{

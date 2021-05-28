@@ -106,6 +106,7 @@ class HomeActivity : AppCompatActivity() {
 
 
         DbCommunication.setMyaliment()
+        DbCommunication.getDailyMap()
 
         //dispensa personale
         /*database.child("User").child(idUtente).child("Dispensa_personale").get().addOnSuccessListener {
