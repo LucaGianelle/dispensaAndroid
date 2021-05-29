@@ -164,7 +164,7 @@ if (inputPassword.text.toString().isEmpty()) {
                         sendData(valAlt, valPeso, valEta)
                         thread (start = true){
                             DbCommunication.setCurrentUser()
-                            Thread.sleep(1000)
+                            Thread.sleep(1000L)
                             startActivity(Intent(this, HomeActivity::class.java))
                         }
 

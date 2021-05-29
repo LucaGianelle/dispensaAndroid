@@ -6,10 +6,12 @@ import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.dispensa.utils.DbCommunication
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.login.*
 import kotlinx.android.synthetic.main.register.*
+import kotlin.concurrent.thread
 
 class LoginActivity : AppCompatActivity() {
 
@@ -64,8 +66,13 @@ class LoginActivity : AppCompatActivity() {
 
                     if (prova) {
                         val user = auth.currentUser
-                        val acc = Intent (this, HomeActivity::class.java)
-                        startActivity(acc)
+                        thread (start = true){
+                            DbCommunication.setCurrentUser()
+                            Thread.sleep(1000L)
+                            val acc = Intent (this, HomeActivity::class.java)
+                            startActivity(acc)
+                        }
+
 
                         Log.e("TAG", "ok")
                     } else {
