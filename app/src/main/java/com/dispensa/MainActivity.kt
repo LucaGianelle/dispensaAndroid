@@ -31,24 +31,29 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mFirebaseAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
-    private lateinit var result : ArrayList<Map<String,String>>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.load_app)
 
         database = Firebase.database.reference
         mFirebaseAuth = FirebaseAuth.getInstance()
 
-        if(Utility.exit){
-            finish()
-        }
+
 
 
     }
 
     override fun onStart() {
         super.onStart()
+
+        if(Utility.exit){
+            Utility.exit = false
+            finish()
+        }
 
         val mFirebaseUser : FirebaseUser? = mFirebaseAuth.currentUser
         if(mFirebaseUser != null){
@@ -79,8 +84,13 @@ class MainActivity : AppCompatActivity() {
 
             DbCommunication.setDailyMap()
 
-            val prv1 = Intent (this, HomeActivity::class.java)
-            startActivity(prv1)
+            if(Utility.exit){
+                Utility.exit = false
+                finish()
+            }else{
+                val prv1 = Intent (this, HomeActivity::class.java)
+                startActivity(prv1)
+            }
         }else{
 
             val prv2 = Intent (this, LoginActivity::class.java)

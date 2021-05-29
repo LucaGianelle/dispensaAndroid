@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -129,11 +130,14 @@ class HomeActivity : AppCompatActivity() {
 
 
  override fun onBackPressed (){
-     val dialog = ExitDialogFragment()
-    dialog.show(supportFragmentManager, "customDialog")
-    if(Utility.exit){
+     /*val dialog = ExitDialogFragment()
+    dialog.show(supportFragmentManager, "customDialog")*/
+    Utility.exit = true
+     Toast.makeText(this, "Premi un altra volta per uscire", Toast.LENGTH_SHORT).show()
+     if (Utility.exit){
         finish()
-    }
+     }
+
 }
 
 fun openMaps (activity: Activity, context: Context) {
