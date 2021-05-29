@@ -6,15 +6,17 @@ import android.view.Menu
 import android.view.View
 import android.widget.Button
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DatabaseReference
+import kotlin.concurrent.thread
 import kotlin.random.Random
 
 class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
 
-    private var exampleList:ArrayList<Aliment> = generateDummyList()
+    private var exampleList:ArrayList<Aliment> = ArrayList()
     private lateinit var displayList: ArrayList<Aliment>
     private val adapter = FoodAdapter(exampleList, this)
     lateinit var food_view : RecyclerView
@@ -23,9 +25,19 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
     //private lateinit var result : Map<String,String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dispensa)
 
+
+        thread (start = true){
+
+            Toast.makeText(this, "Personal Food storage is Loading...", Toast.LENGTH_SHORT).show()
+            exampleList = generateDummyList()
+
+            Thread.sleep(1500)
+        }
 
         displayList= generateDummyList()
         food_view = findViewById(R.id.recycler_view) as RecyclerView
