@@ -292,8 +292,8 @@ object DbCommunication {
         this.nomeAlimento = clickedAliment.nameAliment
     }
 
-    fun getNameAliment (): String {
-        return nomeAlimento
+    fun getClickedAliment (): Aliment {
+        return clickedAliment
     }
 
 
