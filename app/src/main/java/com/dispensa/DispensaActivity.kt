@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dispensa.adapter.FoodAdapter
 import com.dispensa.type.Aliment
 import com.dispensa.utils.DbCommunication
-import com.google.firebase.database.DatabaseReference
 import kotlin.random.Random
 
 class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
@@ -23,16 +22,10 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
     private val adapter = FoodAdapter(exampleList, this)
     lateinit var food_view : RecyclerView
 
-    private lateinit var database: DatabaseReference
-    //private lateinit var result : Map<String,String>
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dispensa)
-
-        Toast.makeText(this, "Personal Food storage is Loading...", Toast.LENGTH_SHORT).show()
 
         displayList= generateDummyList()
         food_view = findViewById(R.id.recycler_view) as RecyclerView
@@ -56,27 +49,13 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
         adapter.notifyItemChanged(position)
         DbCommunication.setClickedAliment(clickedItem)
 
-
         val addal = Intent (this, Prendi_alimentoActivity::class.java)
         startActivity(addal)
-
-        //popup per inserire gli alimenti nella dispensa
-        /*val dialog = PersonalAlimentDialogFragment()
-        dialog.show(supportFragmentManager, "customDialog")*/
-
-    }
-
-    fun removeItem(view: View) {
-        val index = Random.nextInt(8)
-
-        exampleList.removeAt(index)
-        adapter.notifyItemRemoved(index)
     }
 
     private fun generateDummyList(): ArrayList<Aliment> {
 
-        var list =  DbCommunication.createPersonaList()
-
+        val list =  DbCommunication.createPersonaList()
         return list
     }
 

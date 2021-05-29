@@ -29,9 +29,6 @@ class MainActivity : AppCompatActivity() {
         database = Firebase.database.reference
         mFirebaseAuth = FirebaseAuth.getInstance()
 
-
-
-
     }
 
     override fun onStart() {
@@ -55,9 +52,6 @@ class MainActivity : AppCompatActivity() {
 
                 val mappaProfilo = it.value as Map<String, String>
 
-                Log.i("firebase", "Got value ${it.value}")
-                Log.i("firebase","${mappaProfilo}")
-
                 val nameMap: String = mappaProfilo.get("name").toString()
                 val emailMap : String = mappaProfilo.get("email").toString()
                 val pwMap : String = mappaProfilo.get("password").toString()
@@ -66,8 +60,6 @@ class MainActivity : AppCompatActivity() {
                 val etaMap : String = mappaProfilo.get("eta").toString()
 
                 DbCommunication.createUser(nameMap,emailMap,pwMap,altezzaMap,pesoMap,etaMap)
-
-                println("Caricamento dati completeato 1 ")
 
             }.addOnFailureListener {
                 Log.e("firebase", "Error getting data", it)
@@ -81,21 +73,16 @@ class MainActivity : AppCompatActivity() {
 
                 if(exit1){
                 Utility.exit = false
-                //finish()
+
             }else{
                 val prv1 = Intent (this, HomeActivity::class.java)
                 startActivity(prv1)
             }
-
             }
 
-
         }else{
-
             val prv2 = Intent (this, LoginActivity::class.java)
             startActivity(prv2)
         }
     }
-
-
 }

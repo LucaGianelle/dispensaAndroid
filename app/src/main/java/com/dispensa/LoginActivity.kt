@@ -32,6 +32,10 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed (){
+        Toast.makeText(this, "Tasto disabilitato qui", Toast.LENGTH_SHORT).show()
+    }
+
     private fun doLogin() {
 
 
@@ -65,7 +69,6 @@ class LoginActivity : AppCompatActivity() {
 
                         Log.e("TAG", "ok")
                     } else {
-                        //errore, fa loggare con profilo non loggato se se è entrati prima, bloccare undo nella home
                         Log.e("TAG", "ok2")
                     }
                 }

@@ -46,19 +46,16 @@ class RegisterActivity : AppCompatActivity() {
 
         var valAlt =""
         pickerAltezza.setOnValueChangedListener { picker, oldVal, newVal ->
-            //Display the newly selected number to text view
             valAlt = "$newVal"
         }
 
         var valPeso=""
         pickerPeso.setOnValueChangedListener { picker, oldVal, newVal ->
-            //Display the newly selected number to text view
             valPeso = "$newVal"
         }
 
         var valEta =""
         pickerEta.setOnValueChangedListener { picker, oldVal, newVal ->
-            //Display the newly selected number to text view
             valEta = "$newVal"
         }
 
@@ -67,7 +64,6 @@ class RegisterActivity : AppCompatActivity() {
         database= FirebaseDatabase.getInstance()
         reference=database.getReference("User")
         buttonConf.setOnClickListener{
-            Log.d("TAG", "prova1")
             signUpUser(valAlt, valPeso, valEta)
         }
 
@@ -84,17 +80,11 @@ class RegisterActivity : AppCompatActivity() {
         val peso =  pickerPeso.value.toString()
         val eta =  pickerEta.value.toString()
 
-        Log.d("TAG", "prova2")
-
         if(name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()){
 
             val model= User(name, email , password, altezza, peso, eta)
             val utente = FirebaseAuth.getInstance().currentUser
-                        val id : String = utente.uid
-                        Log.e("TAG",id )
-
-
-            Log.e("TAG", id)
+            val id : String = utente.uid
 
             val dataIscrizione: String = LocalDate.now().toString()
             val extradata = DailyValues("0", "0", "0", "0", dataIscrizione)
@@ -104,7 +94,6 @@ class RegisterActivity : AppCompatActivity() {
             inputEmail.setText("")
             inputPassword.setText("")
 
-            Log.d("TAG", "prova3")
             reference.child(id).child("Valori_giornalieri").setValue(extradata)
         }else{
             Toast.makeText(applicationContext, "All field required",Toast.LENGTH_LONG).show()
@@ -113,7 +102,6 @@ class RegisterActivity : AppCompatActivity() {
 
 @RequiresApi(Build.VERSION_CODES.O)
 private fun signUpUser(valAlt: String, valPeso: String, valEta: String) {
-
 
 if (inputNome.text.toString().isEmpty()) {
     inputNome.error = "Inserire un nome"
@@ -133,19 +121,17 @@ if(!Patterns.EMAIL_ADDRESS.matcher(inputEmail.text.toString()).matches()) {
     return
 }
 
-
 if (inputPassword.text.toString().isEmpty()) {
     inputPassword.error = "Inserire una password"
     inputPassword.requestFocus()
     return
 }
-    var lunghezzaPassword : Int = inputPassword.text.toString().length
+    val lunghezzaPassword : Int = inputPassword.text.toString().length
     if (lunghezzaPassword <= 5 ) {
         inputPassword.error = "Inserire una password di almeno 6 caratteri"
         inputPassword.requestFocus()
         return
     }
-
 
     if (pickerAltezza.value.toString().isEmpty()) {
         Toast.makeText(baseContext, "Inserire l'altezza", Toast.LENGTH_SHORT).show()

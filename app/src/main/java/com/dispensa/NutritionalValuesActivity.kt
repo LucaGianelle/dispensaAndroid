@@ -23,11 +23,7 @@ class NutritionalValuesActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.nutritionalvalues)
-
-
         createPerc()
-
-        print("\n @°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°@°" + carboperc + " " + grassiperc + " " + proteperc + " " + kcalperc )
 
         textViewProgressCalorie.text = "${kcalperc}%"
         textViewProgressProteine.text= "${proteperc}%"
@@ -39,15 +35,9 @@ class NutritionalValuesActivity: AppCompatActivity() {
         progressBarCarboidrati.progress = carboperc
         progressBarProteine.progress = proteperc
         progressBarGrassi.progress = grassiperc
-
-
-
     }
 
     private fun createPerc(){
-
-        //a:b = c:d
-        //(b x c) / a = d
 
         val cho : Double? = mappaMaxValues.get("carboidrati")
         val lip : Double? = mappaMaxValues.get("grassi")
@@ -59,13 +49,9 @@ class NutritionalValuesActivity: AppCompatActivity() {
         val lip2: Double? = mappaDayliValues.get("grassi")
         val pro2 : Double? = mappaDayliValues.get("proteine")
 
-        print(" "+ kcal2 + " $$$$$$$$$$$$$$$$$$%%%%%%%%%%%%%%%%%%%%%$$$$$$$$$$$$$$$")
-
-
-       kcalperc = ((100 * kcal2!!) / maxKcal).toInt()
+        kcalperc = ((100 * kcal2!!) / maxKcal).toInt()
         carboperc = ((100 * cho2!!) / cho!!).toInt()
         grassiperc = ((100 * lip2!!) / lip!!).toInt()
         proteperc = ((100 * pro2!!) / pro!!).toInt()
-
     }
 }

@@ -46,8 +46,6 @@ class PersonaldataActivity : AppCompatActivity() {
             val back = Intent(this, LoginActivity::class.java)
             startActivity(back)
         }
-
-
     }
 
     private fun signOut() {

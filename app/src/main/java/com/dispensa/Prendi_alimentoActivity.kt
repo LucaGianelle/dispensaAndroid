@@ -27,7 +27,6 @@ class Prendi_alimentoActivity: AppCompatActivity() {
         textViewGras.text = "G: ${alimentClick.grassi}"
         textViewCarb.text = "C: ${alimentClick.carboidrati}"
 
-        //"${dataUser.eta} anni"
         val buttonsi = findViewById<Button>(R.id.buttonYes)
         val buttonno = findViewById<Button>(R.id.buttonNo)
 

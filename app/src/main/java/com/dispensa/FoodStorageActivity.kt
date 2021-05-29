@@ -31,63 +31,13 @@ import kotlin.random.Random
         food_view.adapter = adapter
         food_view.layoutManager = LinearLayoutManager(this)
         food_view.setHasFixedSize(true)
-
-
-        /*recycler_view.adapter = adapter
-        recycler_view.layoutManager = LinearLayoutManager(this)
-        recycler_view.setHasFixedSize(true)*/
-
-        //popup per inserire i cibi
-
-
-       /* insertItemBtn.setOnClickListener{
-            /*val window = PopupWindow(this)
-            val view = layoutInflater.inflate(R.layout.popup_insert_aliment, null)
-            window.contentView = view
-            val TextView = view.findViewById<TextView>(R.id.quantitaView)
-            val buttonYes = view.findViewById<Button>(R.id.buttonYes)
-            buttonYes.setOnClickListener {
-                window.dismiss()
-            }
-            window.showAsDropDown(insertItemBtn)*/
-        }*/
-    }
-
-    fun insertItem(view: View) {
-        exampleList = DbCommunication.getAliment()
-        /*val index = Random.nextInt(8)
-
-      val newItem = ExampleItem(
-
-            R.drawable.ic_android_black_24dp,
-            "New item at position $index",
-            "Line 2"
-        )
-
-
-        exampleList.add(index, newItem)
-        adapter.notifyItemInserted(index)*/
-    }
-
-
-    fun removeItem(view: View) {
-        val index = Random.nextInt(8)
-
-        exampleList.removeAt(index)
-        adapter.notifyItemRemoved(index)
     }
 
     override fun onItemClick(position: Int) {
 
-        //da togliere
-        Toast.makeText(this, "Item $position clicked", Toast.LENGTH_SHORT).show()
         val clickedItem = exampleList [position]
-        //clickedItem.text1 = "Clicked"
         adapter.notifyItemChanged(position)
         DbCommunication.setClickedAliment(clickedItem)
-
-
-        //popup per inserire gli alimenti nella dispensa
         val dialog = AlimentDialogFragment()
         dialog.show(supportFragmentManager, "customDialog")
     }
@@ -118,7 +68,6 @@ import kotlin.random.Random
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        print("?????????????????????????????????????????>>>>>>>entra11111<<<<<<<<<<<?????????????????????????????")
         menuInflater.inflate(R.menu.researchbar,menu)
         val searchItem = menu?.findItem(R.id.menu_search)
         if(searchItem != null){
@@ -130,7 +79,6 @@ import kotlin.random.Random
 
                 override fun onQueryTextChange(newText: String?): Boolean {
                     if(newText!!.isNotEmpty()){
-                        print("?????????????????????????????????????????>>>>>>>entra<<<<<<<<<<<?????????????????????????????")
                         exampleList.clear()
 
                         val search = newText.toLowerCase()
@@ -145,10 +93,6 @@ import kotlin.random.Random
                         exampleList.clear()
                         exampleList.addAll(displayList)
                         food_view.adapter?.notifyDataSetChanged()
-
-                       /* displayList.clear()
-                        displayList.addAll(exampleList)
-                        food_view.adapter?.notifyDataSetChanged()*/
                     }
 
                     return true

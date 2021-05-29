@@ -38,49 +38,18 @@ class HomeActivity : AppCompatActivity() {
         database = Firebase.database.reference
         auth = FirebaseAuth.getInstance()
 
-
         //=========================================================================================================================
-        //Prendo i dati del mio utente corrente
 
-       val idUtente : String = auth.currentUser.uid
+        val idUtente : String = auth.currentUser.uid
         DbCommunication.setId(idUtente)
 
-       /* per gli utenti
-        database.child("User").child(idUtente).get().addOnSuccessListener {
-
-            val mappaProfilo = it.value as Map<String, String>
-
-            Log.i("firebase", "Got value ${it.value}")
-            Log.i("firebase","${mappaProfilo}")
-
-            val nameMap: String = mappaProfilo.get("name").toString()
-            val emailMap : String = mappaProfilo.get("email").toString()
-            val pwMap : String = mappaProfilo.get("password").toString()
-            val altezzaMap : String = mappaProfilo.get("altezza").toString()
-            val pesoMap : String = mappaProfilo.get("peso").toString()
-            val etaMap : String = mappaProfilo.get("eta").toString()
-
-            DbCommunication.createUser(nameMap,emailMap,pwMap,altezzaMap,pesoMap,etaMap)
-
-        }.addOnFailureListener {
-            Log.e("firebase", "Error getting data", it)
-        }*/
-
-
-
-        //per il cibo
         DbCommunication.setFoodStorage()
-
         DbCommunication.setMyaliment()
 
 
         // reset data e valori
-        var cancellaDailyValues : Boolean = DbCommunication.confrontaData()
-        println (" %%%%%%%%%%%%%%%%%%%%%%%" +cancellaDailyValues)
+        val cancellaDailyValues : Boolean = DbCommunication.confrontaData()
         if (cancellaDailyValues) {
-
-            println(" cancella valori ")
-            cancellaDailyValues = false
             val dataCorrente = LocalDate.now().toString()
             database.child("User").child(idUtente).child("Valori_giornalieri").child("calDaily").setValue("0")
             database.child("User").child(idUtente).child("Valori_giornalieri").child("carboDaily").setValue("0")
@@ -127,17 +96,7 @@ class HomeActivity : AppCompatActivity() {
 
 
  override fun onBackPressed (){
-
      Toast.makeText(this, "Tasto disabilitato qui", Toast.LENGTH_SHORT).show()
-
-     /*val dialog = ExitDialogFragment()
-    dialog.show(supportFragmentManager, "customDialog")*/
-    /*Utility.sureExit()
-     Toast.makeText(this, "Premi un altra volta per uscire", Toast.LENGTH_SHORT).show()
-     if (Utility.exit){
-        finish()
-     }*/
-
 }
 
 fun openMaps (activity: Activity, context: Context) {
@@ -165,8 +124,6 @@ fun openMaps (activity: Activity, context: Context) {
         )
     }
 }
-
-
 
 }
 
