@@ -52,4 +52,9 @@ class PersonaldataActivity : AppCompatActivity() {
         myAuth.signOut()
     }
 
+    override fun onBackPressed (){
+        val prv1 = Intent (this, HomeActivity::class.java)
+        startActivity(prv1)
+    }
+
 }
