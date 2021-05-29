@@ -33,7 +33,6 @@ class AlimentDialogFragment : DialogFragment(){
                 dismiss()
             }
 
-            //Qui ci inseriamo l'invio della quantità e l'aggiunta alla dispensa persoanle
         }
 
         return rootView

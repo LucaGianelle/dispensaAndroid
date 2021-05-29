@@ -35,10 +35,6 @@ object DbCommunication {
         reference = Firebase.database.reference
     }
 
-    fun getDbInstance(){
-        reference = database.getReference()
-    }
-
     fun createUser(name:String, email:String, password: String, altezza: String, peso: String, eta: String){
 
         utenteCorrente = User(name, email, password, altezza, peso, eta)
@@ -97,32 +93,9 @@ object DbCommunication {
     private fun generateList(): ArrayList<Aliment> {
 
         val list = ArrayList<Aliment>()
-
-
-
         return list
     }
 
-
-    fun setNutritionalValues(inizio: Map<String, String>) {
-
-        val carboidratiUtente =  inizio.get("carboDaily")
-        if (carboidratiUtente != null) {
-            listaDailyValues.add(carboidratiUtente)
-        }
-        val proteineUtente = inizio.get("proteinDaily")
-        if (proteineUtente != null) {
-            listaDailyValues.add(proteineUtente)
-        }
-        val grassiUtente = inizio.get("grassiDaily")
-        if (grassiUtente != null) {
-            listaDailyValues.add(grassiUtente)
-        }
-        val calorieUtente = inizio.get("calDaily")
-        if (calorieUtente != null) {
-            listaDailyValues.add(calorieUtente)
-        }
-    }
 
     fun setDailyMap() {
 
@@ -133,9 +106,6 @@ object DbCommunication {
         var prote : Double = 0.0
         var gras : Double = 0.0
         var carbo : Double = 0.0
-
-
-
 
         prova.child("User").child(idUtente).child("Valori_giornalieri").get().addOnSuccessListener {
 
@@ -148,18 +118,12 @@ object DbCommunication {
                 dataDatabase = result.get("dataSalvata").toString()
 
                 dailyValuesMap =  mutableMapOf("calorie" to kcal,"carboidrati" to carbo, "grassi" to gras, "proteine" to prote)
-                println("pdlmdn")
                 Utility.bLoop = false
-
-                println("Caricamento dati completeato 2 ")
             }
 
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
         }
-
-
-
     }
 
     fun getNutritionalValues() : Map<String, Double> {
@@ -173,13 +137,8 @@ object DbCommunication {
 
         if (dataCorrente.equals(dataDatabase)) {
             eraseData = false
-            //azzerare i valori nel database e cambiare la data
         }
         return eraseData
-    }
-
-    fun calcoloMacroGiornalieri(){
-        //calcolare le calorie giornaliere dell'utente
     }
 
     fun inserimentoAlimentoPersonale (quantAl: String){
@@ -213,7 +172,6 @@ object DbCommunication {
             Log.e("firebase", "Error getting data", it)
         }
 
-        var temp = setMyaliment()
     }
 
     fun riduzioneAlimentoPersonale (quantAl: String){
@@ -239,8 +197,6 @@ object DbCommunication {
                     ).child("quantita").setValue(finalQt)
 
                 }else{
-                    /*messaggio per quantità errata rimossa
-                     Toast.makeText(this, "Non puoi togliere $finalQt grammi",Toast.LENGTH_SHORT).show()*/
                     reference.child("User").child(idUtente).child("Dispensa_personale").child(
                         nomeAlimento
                     ).child("quantita").setValue(qt)
@@ -303,10 +259,6 @@ object DbCommunication {
         idUtente = idUser
     }
 
-    fun getId (): String {
-        return idUtente
-    }
-
     fun setClickedAliment (aliment: Aliment){
 
         clickedAliment =  aliment
@@ -338,7 +290,7 @@ object DbCommunication {
                     val tempCarbo = listaCibi[y].carboidrati
                     val tempGras = listaCibi[y].grassi
 
-                    val tempAliment : Aliment = Aliment(tempName,tempCal,tempQuant,tempPro,tempCarbo,tempGras)
+                    val tempAliment = Aliment(tempName,tempCal,tempQuant,tempPro,tempCarbo,tempGras)
 
 
                     myAlimentList.add(tempAliment)
@@ -346,14 +298,11 @@ object DbCommunication {
                 }
             }
         }
-
-        println(myAlimentList)
         return myAlimentList
 
     }
 
-    fun setMyaliment(/*mappa : Map<String,String>*/) {
-
+    fun setMyaliment() {
 
         val prova : DatabaseReference = Firebase.database.reference
         prova.child("User").child(idUtente).child("Dispensa_personale").get().addOnSuccessListener {
@@ -362,8 +311,6 @@ object DbCommunication {
                 val result = it.value as Map<String, String>
                 miaDispensaMap = result
                 emptyStorage = false
-                println("__________________------------------ Ho caricato la dispensa personale")
-                println("__________________------------------ "+ emptyStorage)
 
             }else{
                 emptyStorage = true
@@ -373,8 +320,6 @@ object DbCommunication {
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
         }
-
-
 
     }
 }
