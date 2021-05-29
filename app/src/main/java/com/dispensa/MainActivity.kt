@@ -14,6 +14,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import androidx.core.os.HandlerCompat.postDelayed
 import com.dispensa.videoSearchingBar.SearchBar
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -26,6 +27,7 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,6 +52,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
+        Toast.makeText(this, " LOADING APP... ", Toast.LENGTH_LONG).show()
 
         if(Utility.exit){
             Utility.exit = false
@@ -86,17 +90,26 @@ class MainActivity : AppCompatActivity() {
             DbCommunication.setDailyMap()
 
 
-            if(exit1){
-                Utility.exit = false
-                finish()
-            }else{
-                val prv1 = Intent (this, HomeActivity::class.java)
-                startActivity(prv1)
+            thread(start = true){
+                logOK().postDelayed(Runnable {
+                    //anything you want to start after 3s
+                }, 3000)
             }
+
         }else{
 
             val prv2 = Intent (this, LoginActivity::class.java)
             startActivity(prv2)
+        }
+    }
+
+    fun logOK(){
+        if(exit1){
+            Utility.exit = false
+            finish()
+        }else{
+            val prv1 = Intent (this, HomeActivity::class.java)
+            startActivity(prv1)
         }
     }
 
