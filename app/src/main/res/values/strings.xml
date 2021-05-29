@@ -18,7 +18,7 @@
     <string name="login" translatable="true">Login</string>
     <string name="buttonAccesso" translatable="true">Login</string>
     <string name="buttonRegistrazione" translatable="true">Sign in</string>
-    <string name="noProfilo" translatable="true">IF YOU DON'T HAVE AN ACCOUNT</string>
+    <string name="noProfilo" translatable="true">IF YOU DON\'T HAVE AN ACCOUNT</string>
     <string name="buttonModifica" translatable="true">edit</string>
 
     <string name="query_location" translatable="true">https://www.google.com/maps/search/?api=1&amp;query=supermercati</string>
