@@ -99,5 +99,9 @@ object Utility {
         exit = true
     }
 
+    fun exitOk () : Boolean{
+        return exit
+    }
+
 
 }

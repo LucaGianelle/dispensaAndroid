@@ -132,7 +132,7 @@ class HomeActivity : AppCompatActivity() {
  override fun onBackPressed (){
      /*val dialog = ExitDialogFragment()
     dialog.show(supportFragmentManager, "customDialog")*/
-    Utility.exit = true
+    Utility.sureExit()
      Toast.makeText(this, "Premi un altra volta per uscire", Toast.LENGTH_SHORT).show()
      if (Utility.exit){
         finish()

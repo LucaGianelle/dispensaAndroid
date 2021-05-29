@@ -31,10 +31,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mFirebaseAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
+    private var exit1 : Boolean = Utility.exitOk()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
+        exit1 = Utility.exitOk()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.load_app)
@@ -84,7 +85,8 @@ class MainActivity : AppCompatActivity() {
 
             DbCommunication.setDailyMap()
 
-            if(Utility.exit){
+
+            if(exit1){
                 Utility.exit = false
                 finish()
             }else{
