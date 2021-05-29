@@ -50,7 +50,7 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
         DbCommunication.setClickedAliment(clickedItem)
 
 
-        val addal = Intent (this, DispensaActivity::class.java)
+        val addal = Intent (this, Prendi_alimentoActivity::class.java)
         startActivity(addal)
 
         //popup per inserire gli alimenti nella dispensa
