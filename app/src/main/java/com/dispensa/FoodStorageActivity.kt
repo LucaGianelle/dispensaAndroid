@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.concurrent.thread
 import kotlin.random.Random
 
   class FoodStorageActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
@@ -155,8 +156,12 @@ import kotlin.random.Random
     }
 
       override fun onBackPressed (){
-          val data = Intent (this, DispensaActivity::class.java)
-          startActivity(data)
+          thread (start = true){
+              DbCommunication.setMyaliment()
+                Thread.sleep(500L)
+              val data = Intent (this, DispensaActivity::class.java)
+              startActivity(data)
+          }
       }
 
 

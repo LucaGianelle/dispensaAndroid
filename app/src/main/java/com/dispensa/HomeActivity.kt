@@ -8,7 +8,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -69,18 +68,12 @@ class HomeActivity : AppCompatActivity() {
 
 
         //per il cibo
-        database = Firebase.database.reference
-
-        database.child("aliment").get().addOnSuccessListener {
-
-            result = it.value as ArrayList<Map<String,String>>
-            DbCommunication.createAliment(result)
-
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
+        DbCommunication.setFoodStorage()
 
         DbCommunication.setMyaliment()
+
+
+        // reset data e valori
         var cancellaDailyValues : Boolean = DbCommunication.confrontaData()
         println (" %%%%%%%%%%%%%%%%%%%%%%%" +cancellaDailyValues)
         if (cancellaDailyValues) {

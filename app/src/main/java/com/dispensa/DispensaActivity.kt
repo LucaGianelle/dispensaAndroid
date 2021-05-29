@@ -16,7 +16,7 @@ import kotlin.random.Random
 
 class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
 
-    private var exampleList:ArrayList<Aliment> = ArrayList()
+    private var exampleList:ArrayList<Aliment> = generateDummyList()
     private lateinit var displayList: ArrayList<Aliment>
     private val adapter = FoodAdapter(exampleList, this)
     lateinit var food_view : RecyclerView
@@ -30,14 +30,7 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dispensa)
 
-
-        thread (start = true){
-
-            Toast.makeText(this, "Personal Food storage is Loading...", Toast.LENGTH_SHORT).show()
-            exampleList = generateDummyList()
-
-            Thread.sleep(1500)
-        }
+        Toast.makeText(this, "Personal Food storage is Loading...", Toast.LENGTH_SHORT).show()
 
         displayList= generateDummyList()
         food_view = findViewById(R.id.recycler_view) as RecyclerView

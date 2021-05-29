@@ -36,14 +36,19 @@ class Prendi_alimentoActivity: AppCompatActivity() {
             val qt :String = quantitAliment.text.toString()
             if(qt != "")
             {
-                DbCommunication.riduzioneAlimentoPersonale(qt)
-                DbCommunication.addDailyValues(qt.toInt())
-                Toast.makeText(this, "Aliment cooked", Toast.LENGTH_SHORT).show()
+
                 thread (start = true){
-                    Thread.sleep(1000L)
+                    DbCommunication.riduzioneAlimentoPersonale(qt)
+                    DbCommunication.addDailyValues(qt.toInt())
+                    Thread.sleep(500L)
+                    DbCommunication.setMyaliment()
+                    Thread.sleep(500L)
+                    val s  = DbCommunication.miaDispensaMap.get("Pasta") as Map<String,String>
+                    println("%%%%%%%%%&&&&&&&&&&&&%%%%%%%%%%&&&&&&&&&" + s)
+                    val disp = Intent (this, DispensaActivity::class.java)
+                    startActivity(disp)
                 }
-                val disp = Intent (this, DispensaActivity::class.java)
-                startActivity(disp)
+
             }
         }
 

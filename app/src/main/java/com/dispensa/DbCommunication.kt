@@ -24,7 +24,7 @@ object DbCommunication {
     private lateinit var clickedAliment : Aliment
 
     private lateinit var dailyValuesMap : Map <String, Double>
-    private lateinit var miaDispensaMap: Map<String, String>
+    lateinit var miaDispensaMap: Map<String, String>
     var emptyStorage : Boolean = true
     var dataDatabase : String = ""
 
@@ -47,15 +47,25 @@ object DbCommunication {
         return utenteCorrente
     }
 
+    fun setFoodStorage(){
+        val database = Firebase.database.reference
+
+        database.child("aliment").get().addOnSuccessListener {
+
+           val result = it.value as ArrayList<Map<String,String>>
+            createAliment(result)
+
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+    }
+
      fun createAliment (allAliment: ArrayList<Map<String,String>>){
         val lunghezzaAliment = allAliment.size
-         print("&&&&&&&&&&&&&&&&&&&&&&&&&&     questa è il numero degli alimenti presi dal db " +lunghezzaAliment+ "\n")
-        var listaCibi = ArrayList<Aliment>()
 
         for(i in 0 until lunghezzaAliment){
 
             val tempMap = allAliment[i]
-            println("============================$tempMap===============================")
 
             val tempNameAliment = tempMap.get("nome").toString()
             val tempCalorieAliment = tempMap.get("calorie").toString()
@@ -308,10 +318,8 @@ object DbCommunication {
 
             for(y in 0 until size){
                 val temp = listaCibi[y].nameAliment
-                println("-------------------> " + temp+ " --------------------------- >" + myAliment)
                 if (temp.equals(myAliment.get("idAlimento"))) {
-                    println("-------------------> " + temp+ " --------------------------- >" + myAliment)
-                    //Aliment(var nameAliment: String, var calorie: String, var quantita: String, var proteine: String, var carboidrati: String, var grassi: String)
+
                     val tempName = listaCibi[y].nameAliment
                     val tempCal = listaCibi[y].calorie
                     val tempQuant = myAliment.get("quantita").toString()
@@ -321,7 +329,6 @@ object DbCommunication {
 
                     val tempAliment :Aliment = Aliment(tempName,tempCal,tempQuant,tempPro,tempCarbo,tempGras)
 
-                    println("=========================00000000000000000000000000000=====================" + tempAliment)
 
                     myAlimentList.add(tempAliment)
                     break
