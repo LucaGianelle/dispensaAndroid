@@ -1,4 +1,4 @@
-package com.dispensa
+package com.dispensa.adapter
 
 
 import android.view.LayoutInflater
@@ -6,13 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.dispensa.R
+import com.dispensa.type.Aliment
 import kotlinx.android.synthetic.main.row.view.*
 
 class FoodAdapter(private val exampleList: List<Aliment>, private val listener: OnItemClickListener) :
         RecyclerView.Adapter<FoodAdapter.ExampleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExampleViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.row,
+        val itemView = LayoutInflater.from(parent.context).inflate(
+            R.layout.row,
         parent, false)
 
         return ExampleViewHolder(itemView)

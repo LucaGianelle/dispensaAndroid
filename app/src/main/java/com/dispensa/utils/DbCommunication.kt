@@ -3,9 +3,9 @@ package com.dispensa.utils
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
-import com.dispensa.Aliment
-import com.dispensa.AlimentoPersonale
-import com.dispensa.User
+import com.dispensa.type.Aliment
+import com.dispensa.type.AlimentoPersonale
+import com.dispensa.type.User
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database

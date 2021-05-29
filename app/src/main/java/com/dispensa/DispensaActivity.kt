@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.dispensa.adapter.FoodAdapter
+import com.dispensa.type.Aliment
 import com.dispensa.utils.DbCommunication
 import com.google.firebase.database.DatabaseReference
 import kotlin.random.Random
