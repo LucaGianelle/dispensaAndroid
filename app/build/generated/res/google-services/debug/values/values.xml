@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">532142791896-0ign5o4vnctpludre3vkqlfvsm74nagf.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">532142791896</string>
+    <string name="google_api_key" translatable="false">AIzaSyDomGEJdS5V50PFRDvRubgV0FeJ3Z2pAtE</string>
+    <string name="google_app_id" translatable="false">1:532142791896:android:78e86a5165f11e107ecbad</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDomGEJdS5V50PFRDvRubgV0FeJ3Z2pAtE</string>
+    <string name="google_storage_bucket" translatable="false">dispensa-74d14.appspot.com</string>
+    <string name="project_id" translatable="false">dispensa-74d14</string>
+</resources>
