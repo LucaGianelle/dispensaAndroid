@@ -137,6 +137,8 @@ object DbCommunication {
                 dailyValuesMap =  mutableMapOf("calorie" to kcal,"carboidrati" to carbo, "grassi" to gras, "proteine" to prote)
                 println("pdlmdn")
                 Utility.bLoop = false
+
+                println("Caricamento dati completeato 2 ")
             }
 
         }.addOnFailureListener{
@@ -154,7 +156,7 @@ object DbCommunication {
     @RequiresApi(Build.VERSION_CODES.O)
     fun confrontaData(): Boolean {
         var eraseData: Boolean = true
-        val dataCorrente = LocalDate.now()
+        val dataCorrente = LocalDate.now().toString()
 
         if (dataCorrente.equals(this.dataDatabase)) {
             eraseData = false

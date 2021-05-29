@@ -81,9 +81,12 @@ class HomeActivity : AppCompatActivity() {
         }
 
         DbCommunication.setMyaliment()
-        val cancellaDailyValues : Boolean = DbCommunication.confrontaData()
+        var cancellaDailyValues : Boolean = DbCommunication.confrontaData()
         println (" %%%%%%%%%%%%%%%%%%%%%%%" +cancellaDailyValues)
-        if (!cancellaDailyValues) {
+        if (cancellaDailyValues) {
+
+            println(" cancella valori ")
+            cancellaDailyValues = false
             val dataCorrente = LocalDate.now().toString()
             database.child("User").child(idUtente).child("Valori_giornalieri").child("calDaily").setValue("0")
             database.child("User").child(idUtente).child("Valori_giornalieri").child("carboDaily").setValue("0")

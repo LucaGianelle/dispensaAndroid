@@ -33,11 +33,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mFirebaseAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
-    private var exit1 : Boolean = Utility.exitOk()
+    private var exit1 : Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        exit1 = Utility.exitOk()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.load_app)
@@ -53,7 +52,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        Toast.makeText(this, " LOADING APP... ", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, " LOADING APP... ", Toast.LENGTH_SHORT).show()
 
         if(Utility.exit){
             Utility.exit = false
@@ -83,6 +82,8 @@ class MainActivity : AppCompatActivity() {
 
                 DbCommunication.createUser(nameMap,emailMap,pwMap,altezzaMap,pesoMap,etaMap)
 
+                println("Caricamento dati completeato 1 ")
+
             }.addOnFailureListener {
                 Log.e("firebase", "Error getting data", it)
             }
@@ -91,10 +92,18 @@ class MainActivity : AppCompatActivity() {
 
 
             thread(start = true){
-                logOK().postDelayed(Runnable {
-                    //anything you want to start after 3s
-                }, 3000)
+                Thread.sleep(3000L)
+
+                if(exit1){
+                Utility.exit = false
+                //finish()
+            }else{
+                val prv1 = Intent (this, HomeActivity::class.java)
+                startActivity(prv1)
             }
+
+            }
+
 
         }else{
 
@@ -103,14 +112,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun logOK(){
-        if(exit1){
-            Utility.exit = false
-            finish()
-        }else{
-            val prv1 = Intent (this, HomeActivity::class.java)
-            startActivity(prv1)
-        }
-    }
 
 }
