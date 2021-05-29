@@ -10,6 +10,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.modify_profile.*
 import kotlinx.android.synthetic.main.modify_profile.buttonConferma
+import kotlin.concurrent.thread
 
 class ModifyProfile: AppCompatActivity() {
 
@@ -78,8 +79,12 @@ class ModifyProfile: AppCompatActivity() {
                 database.child("User").child(idUserCorrente).child("eta").setValue(temp)
             }
 
-            val data = Intent (this, HomeActivity::class.java)
-            startActivity(data)
+            thread(start = true){
+                DbCommunication.setCurrentUser()
+                Thread.sleep(1000L)
+                val data = Intent (this, PersonaldataActivity::class.java)
+                startActivity(data)
+            }
         }
     }
 }

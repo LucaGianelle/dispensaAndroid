@@ -6,6 +6,7 @@ import androidx.annotation.RequiresApi
 import com.dispensa.type.Aliment
 import com.dispensa.type.AlimentoPersonale
 import com.dispensa.type.User
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -33,6 +34,29 @@ object DbCommunication {
 
     fun getDbReference(){
         reference = Firebase.database.reference
+    }
+
+    fun setCurrentUser (){
+        val database = Firebase.database.reference
+        val mFirebaseAuth = FirebaseAuth.getInstance()
+        val idUtente : String = mFirebaseAuth.currentUser.uid
+        setId(idUtente)
+        database.child("User").child(idUtente).get().addOnSuccessListener {
+
+            val mappaProfilo = it.value as Map<String, String>
+
+            val nameMap: String = mappaProfilo.get("name").toString()
+            val emailMap : String = mappaProfilo.get("email").toString()
+            val pwMap : String = mappaProfilo.get("password").toString()
+            val altezzaMap : String = mappaProfilo.get("altezza").toString()
+            val pesoMap : String = mappaProfilo.get("peso").toString()
+            val etaMap : String = mappaProfilo.get("eta").toString()
+
+            createUser(nameMap,emailMap,pwMap,altezzaMap,pesoMap,etaMap)
+
+        }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+        }
     }
 
     fun createUser(name:String, email:String, password: String, altezza: String, peso: String, eta: String){

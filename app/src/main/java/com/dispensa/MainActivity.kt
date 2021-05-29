@@ -44,27 +44,7 @@ class MainActivity : AppCompatActivity() {
         val mFirebaseUser : FirebaseUser? = mFirebaseAuth.currentUser
         if(mFirebaseUser != null){
 
-            val idUtente : String = mFirebaseAuth.currentUser.uid
-            DbCommunication.setId(idUtente)
-
-            //per gli utenti
-            database.child("User").child(idUtente).get().addOnSuccessListener {
-
-                val mappaProfilo = it.value as Map<String, String>
-
-                val nameMap: String = mappaProfilo.get("name").toString()
-                val emailMap : String = mappaProfilo.get("email").toString()
-                val pwMap : String = mappaProfilo.get("password").toString()
-                val altezzaMap : String = mappaProfilo.get("altezza").toString()
-                val pesoMap : String = mappaProfilo.get("peso").toString()
-                val etaMap : String = mappaProfilo.get("eta").toString()
-
-                DbCommunication.createUser(nameMap,emailMap,pwMap,altezzaMap,pesoMap,etaMap)
-
-            }.addOnFailureListener {
-                Log.e("firebase", "Error getting data", it)
-            }
-
+            DbCommunication.setCurrentUser()
             DbCommunication.setDailyMap()
 
 
