@@ -133,13 +133,16 @@ class HomeActivity : AppCompatActivity() {
 
 
  override fun onBackPressed (){
+
+     Toast.makeText(this, "Tasto disabilitato qui", Toast.LENGTH_SHORT).show()
+
      /*val dialog = ExitDialogFragment()
     dialog.show(supportFragmentManager, "customDialog")*/
-    Utility.sureExit()
+    /*Utility.sureExit()
      Toast.makeText(this, "Premi un altra volta per uscire", Toast.LENGTH_SHORT).show()
      if (Utility.exit){
         finish()
-     }
+     }*/
 
 }
 
