@@ -11,11 +11,13 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.dispensa.type.DailyValues
 import com.dispensa.type.User
+import com.dispensa.utils.DbCommunication
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.register.*
 import java.time.LocalDate
+import kotlin.concurrent.thread
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -160,7 +162,13 @@ if (inputPassword.text.toString().isEmpty()) {
                     if (task.isSuccessful) {
 
                         sendData(valAlt, valPeso, valEta)
-                        startActivity(Intent(this, HomeActivity::class.java))
+                        thread (start = true){
+                            DbCommunication.setCurrentUser()
+                            Thread.sleep(1000)
+                            startActivity(Intent(this, HomeActivity::class.java))
+                        }
+
+
                         finish()
                     }
                 }
