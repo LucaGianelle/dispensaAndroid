@@ -1,5 +1,6 @@
 package com.dispensa
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -15,17 +16,19 @@ class Prendi_alimentoActivity: AppCompatActivity() {
 
     var alimentClick = DbCommunication.getClickedAliment()
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.prendi_alimento)
 
         textView.text = alimentClick.nameAliment
-        textViewQuant.text = alimentClick.quantita
-        textViewCal.text = alimentClick.calorie
-        textViewPro.text = alimentClick.proteine
-        textViewGras.text = alimentClick.grassi
-        textViewCarb.text = alimentClick.carboidrati
+        textViewQuant.text = "${alimentClick.quantita} Gr"
+        textViewCal.text = "${alimentClick.calorie} Kcal"
+        textViewPro.text = "P: ${alimentClick.proteine}"
+        textViewGras.text = "G: ${alimentClick.grassi}"
+        textViewCarb.text = "C: ${alimentClick.carboidrati}"
 
+        //"${dataUser.eta} anni"
         val buttonsi = findViewById<Button>(R.id.buttonYes)
         val buttonno = findViewById<Button>(R.id.buttonNo)
 
