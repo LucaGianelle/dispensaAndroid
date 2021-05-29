@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.dispensa.utils.DbCommunication
 import kotlin.concurrent.thread
 import kotlin.random.Random
 

@@ -3,6 +3,8 @@ package com.dispensa
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.dispensa.utils.DbCommunication
+import com.dispensa.utils.Utility
 import kotlinx.android.synthetic.main.nutritionalvalues.*
 
 class NutritionalValuesActivity: AppCompatActivity() {

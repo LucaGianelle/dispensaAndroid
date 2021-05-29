@@ -1,8 +1,11 @@
-package com.dispensa
+package com.dispensa.utils
 
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.dispensa.Aliment
+import com.dispensa.AlimentoPersonale
+import com.dispensa.User
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -80,7 +83,7 @@ object DbCommunication {
 
             val tempAliment = Aliment(tempNameAliment, tempCalorieAliment, tempQuantitaAliment, tempProteineAliment, tempCarboidratiAliment, tempGrassiAliment)
 
-            this.listaCibi.add(tempAliment)
+            listaCibi.add(tempAliment)
         }
     }
 
@@ -168,7 +171,7 @@ object DbCommunication {
         var eraseData: Boolean = true
         val dataCorrente = LocalDate.now().toString()
 
-        if (dataCorrente.equals(this.dataDatabase)) {
+        if (dataCorrente.equals(dataDatabase)) {
             eraseData = false
             //azzerare i valori nel database e cambiare la data
         }
@@ -193,12 +196,16 @@ object DbCommunication {
 
                 val finalQt = qt + quantAl.toInt()
 
-                    reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).child("quantita").setValue(finalQt)
+                    reference.child("User").child(idUtente).child("Dispensa_personale").child(
+                        nomeAlimento
+                    ).child("quantita").setValue(finalQt)
 
             }else{
 
                 val alimentoPersonale = AlimentoPersonale(nomeAlimento, quantAl)
-                reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).setValue(alimentoPersonale)
+                reference.child("User").child(idUtente).child("Dispensa_personale").child(
+                    nomeAlimento
+                ).setValue(alimentoPersonale)
 
             }
 
@@ -227,12 +234,16 @@ object DbCommunication {
 
                 if(finalQt >= 0){
 
-                    reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).child("quantita").setValue(finalQt)
+                    reference.child("User").child(idUtente).child("Dispensa_personale").child(
+                        nomeAlimento
+                    ).child("quantita").setValue(finalQt)
 
                 }else{
                     /*messaggio per quantità errata rimossa
                      Toast.makeText(this, "Non puoi togliere $finalQt grammi",Toast.LENGTH_SHORT).show()*/
-                    reference.child("User").child(idUtente).child("Dispensa_personale").child(nomeAlimento).child("quantita").setValue(qt)
+                    reference.child("User").child(idUtente).child("Dispensa_personale").child(
+                        nomeAlimento
+                    ).child("quantita").setValue(qt)
 
                 }
 
@@ -289,7 +300,7 @@ object DbCommunication {
     }
 
     fun setId (idUser: String){
-        this.idUtente = idUser
+        idUtente = idUser
     }
 
     fun getId (): String {
@@ -298,8 +309,8 @@ object DbCommunication {
 
     fun setClickedAliment (aliment: Aliment){
 
-        this.clickedAliment =  aliment
-        this.nomeAlimento = clickedAliment.nameAliment
+        clickedAliment =  aliment
+        nomeAlimento = clickedAliment.nameAliment
     }
 
     fun getClickedAliment (): Aliment {
@@ -327,7 +338,7 @@ object DbCommunication {
                     val tempCarbo = listaCibi[y].carboidrati
                     val tempGras = listaCibi[y].grassi
 
-                    val tempAliment :Aliment = Aliment(tempName,tempCal,tempQuant,tempPro,tempCarbo,tempGras)
+                    val tempAliment : Aliment = Aliment(tempName,tempCal,tempQuant,tempPro,tempCarbo,tempGras)
 
 
                     myAlimentList.add(tempAliment)
@@ -352,7 +363,7 @@ object DbCommunication {
                 miaDispensaMap = result
                 emptyStorage = false
                 println("__________________------------------ Ho caricato la dispensa personale")
-                println("__________________------------------ "+emptyStorage)
+                println("__________________------------------ "+ emptyStorage)
 
             }else{
                 emptyStorage = true

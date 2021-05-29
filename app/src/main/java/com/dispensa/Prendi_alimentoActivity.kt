@@ -4,9 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.popup_insert_aliment.*
+import com.dispensa.utils.DbCommunication
 import kotlinx.android.synthetic.main.prendi_alimento.*
 import kotlinx.android.synthetic.main.prendi_alimento.quantitAliment
 import kotlin.concurrent.thread

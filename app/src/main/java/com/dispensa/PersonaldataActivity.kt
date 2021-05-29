@@ -3,15 +3,14 @@ package com.dispensa
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.dispensa.utils.DbCommunication
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.personaldata.*
-import kotlinx.android.synthetic.main.register.*
 
 class PersonaldataActivity : AppCompatActivity() {
 

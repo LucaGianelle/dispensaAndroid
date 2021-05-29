@@ -1,4 +1,4 @@
-package com.dispensa
+package com.dispensa.utils
 
 import android.os.Build
 import androidx.annotation.RequiresApi

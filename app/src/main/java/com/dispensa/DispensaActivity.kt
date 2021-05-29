@@ -10,8 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.dispensa.utils.DbCommunication
 import com.google.firebase.database.DatabaseReference
-import kotlin.concurrent.thread
 import kotlin.random.Random
 
 class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {

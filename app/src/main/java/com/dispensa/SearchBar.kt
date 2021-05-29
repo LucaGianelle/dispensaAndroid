@@ -1,4 +1,4 @@
-package com.dispensa.videoSearchingBar
+package com.dispensa
 
 import android.annotation.SuppressLint
 import android.os.Bundle
