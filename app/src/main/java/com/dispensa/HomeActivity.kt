@@ -43,6 +43,7 @@ class HomeActivity : AppCompatActivity() {
         val idUtente : String = auth.currentUser.uid
         DbCommunication.setId(idUtente)
 
+        DbCommunication.setCurrentUser()
         DbCommunication.setFoodStorage()
         DbCommunication.setMyaliment()
 
