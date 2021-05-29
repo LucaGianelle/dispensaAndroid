@@ -50,9 +50,12 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
         DbCommunication.setClickedAliment(clickedItem)
 
 
+        val addal = Intent (this, DispensaActivity::class.java)
+        startActivity(addal)
+
         //popup per inserire gli alimenti nella dispensa
-        val dialog = PersonalAlimentDialogFragment()
-        dialog.show(supportFragmentManager, "customDialog")
+        /*val dialog = PersonalAlimentDialogFragment()
+        dialog.show(supportFragmentManager, "customDialog")*/
 
     }
 
