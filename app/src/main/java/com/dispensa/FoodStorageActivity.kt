@@ -156,11 +156,18 @@ import kotlin.random.Random
     }
 
       override fun onBackPressed (){
-          thread (start = true){
-              DbCommunication.setMyaliment()
-                Thread.sleep(500L)
-              val data = Intent (this, DispensaActivity::class.java)
-              startActivity(data)
+
+          if(DbCommunication.emptyStorage){
+              val home = Intent (this, HomeActivity::class.java)
+              startActivity(home)
+          }else{
+
+              thread (start = true){
+                  DbCommunication.setMyaliment()
+                  Thread.sleep(500L)
+                  val data = Intent (this, DispensaActivity::class.java)
+                  startActivity(data)
+              }
           }
       }
 
