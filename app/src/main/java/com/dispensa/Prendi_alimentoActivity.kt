@@ -43,8 +43,6 @@ class Prendi_alimentoActivity: AppCompatActivity() {
                     Thread.sleep(500L)
                     DbCommunication.setMyaliment()
                     Thread.sleep(500L)
-                    val s  = DbCommunication.miaDispensaMap.get("Pasta") as Map<String,String>
-                    println("%%%%%%%%%&&&&&&&&&&&&%%%%%%%%%%&&&&&&&&&" + s)
                     val disp = Intent (this, DispensaActivity::class.java)
                     startActivity(disp)
                 }
