@@ -85,6 +85,7 @@ object DbCommunication {
 
      fun createAliment (allAliment: ArrayList<Map<String,String>>){
         val lunghezzaAliment = allAliment.size
+        var temp: ArrayList<Aliment> = ArrayList()
 
         for(i in 0 until lunghezzaAliment){
 
@@ -103,12 +104,13 @@ object DbCommunication {
 
             val tempAliment = Aliment(tempNameAliment, tempCalorieAliment, tempQuantitaAliment, tempProteineAliment, tempCarboidratiAliment, tempGrassiAliment)
 
-            listaCibi.add(tempAliment)
+            temp.add(tempAliment)
         }
+
+         listaCibi = temp
     }
 
     fun getAliment() : ArrayList<Aliment> {
-        listaCibi
         return listaCibi
     }
 
