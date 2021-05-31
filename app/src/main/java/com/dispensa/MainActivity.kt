@@ -20,7 +20,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private var exit1 : Boolean = false
 
-
+    /**
+     * Activity di default dell'app, viene visualizzata all'avvio. Si occupa di inizializzare il collegamento con Firebase
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -31,6 +33,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Ogni volta che viene lanciata l'activity, questa controlla se si è già autenticati
+     * In caso positivo reindirizza alla activity della Home, in caso contrario invece reindirizza all'activity di login
+     */
     override fun onStart() {
         super.onStart()
 

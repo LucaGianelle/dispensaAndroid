@@ -102,6 +102,10 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Questa funzione si occupa della registrazione vera e propria. L'utente deve riempire tutti i campi con dei valori validi, altrimenti viene notificato l'errore
+     * La mail, per esempio, non solo deve essere presente, ma deve essere inserita con il formato corretto. La password deve contenere almeno sei caratteri
+     */
 @RequiresApi(Build.VERSION_CODES.O)
 private fun signUpUser(valAlt: String, valPeso: String, valEta: String) {
 

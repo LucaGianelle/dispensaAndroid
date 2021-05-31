@@ -34,10 +34,17 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Questa funzione impedisce di uscire dalla schermata di login, evitando che l'utente possa tornare alla schermata iniziale di caricamento
+     */
     override fun onBackPressed (){
         Toast.makeText(this, "Tasto disabilitato qui", Toast.LENGTH_SHORT).show()
     }
 
+    /**
+     * Questa funzione si occupa del login vero e proprio. L'utente deve riempire tutti i campi con dei valori validi, altrimenti viene notificato l'errore
+     * La mail, per esempio, non solo deve essere presente, ma deve essere inserita con il formato corretto
+     */
     private fun doLogin() {
 
 

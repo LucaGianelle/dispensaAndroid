@@ -38,7 +38,6 @@ class HomeActivity : AppCompatActivity() {
         database = Firebase.database.reference
         auth = FirebaseAuth.getInstance()
 
-        //=========================================================================================================================
 
         val idUtente : String = auth.currentUser.uid
         DbCommunication.setId(idUtente)
@@ -47,7 +46,9 @@ class HomeActivity : AppCompatActivity() {
         DbCommunication.setMyaliment()
 
 
-        // reset data e valori
+        /**
+         * Questa parte di codice si occupa di resettarea 0 i valori nutrizionali se e quando viene richiamata (ciò accade solo se è passato almeno un giorno dall'ultimo avvio)
+         */
         val cancellaDailyValues : Boolean = DbCommunication.confrontaData()
         if (cancellaDailyValues) {
             val dataCorrente = LocalDate.now().toString()
@@ -60,13 +61,16 @@ class HomeActivity : AppCompatActivity() {
 
         DbCommunication.setDailyMap()
 
-        //=========================================================================================================================
 
 
         val datib = findViewById<Button>(R.id.buttonDatiPersonali)
         val valnb = findViewById<Button>(R.id.buttonValoriNutrizionali)
         val foodStorageB = findViewById<Button>(R.id.buttonDispensa)
 
+        /**
+         * Se la dispensa è vuota, l'utente viene inviato alla schermata del FoodStorage dalla quale è possibile aggiungere i cibi alla propria dispensa
+         * In caso contrario, viene invianto alla schermata della dispensa vera e propria
+         */
         foodStorageB.setOnClickListener {
             if(DbCommunication.emptyStorage){
                 val data = Intent (this, FoodStorageActivity::class.java)
@@ -94,12 +98,17 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Questa funzione impedisce di uscire dalla schermata della home, evitando che l'utente possa tornare alla schermata iniziale di caricamento
+     */
+    override fun onBackPressed (){
+        Toast.makeText(this, "Tasto disabilitato qui", Toast.LENGTH_SHORT).show()
+    }
 
- override fun onBackPressed (){
-     Toast.makeText(this, "Tasto disabilitato qui", Toast.LENGTH_SHORT).show()
-}
-
-fun openMaps (activity: Activity, context: Context) {
+    /**
+     * Funzione che si occupa di aprire il widget di google maps per visualizzare la mappa della zona in cui è localizzato l'utente
+     */
+    fun openMaps (activity: Activity, context: Context) {
     val REQUEST_POSITION_PERMISSION_ID = 1
     lateinit var fusedLocationClient: FusedLocationProviderClient
 
