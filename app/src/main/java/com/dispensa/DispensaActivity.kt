@@ -22,6 +22,10 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
     private val adapter = FoodAdapter(exampleList, this)
     lateinit var food_view : RecyclerView
 
+    /**
+     * Inizializzazione della lista e generazione della lista fittizia. Qui sono contenuti la lista ed i bottoni con i quali interagirà l'utente
+     * Se il'utente clicca sul bottone di aggiunta cibo, verrà reindirizzato alla schermata dove si possono selezionare tutti i cibi disponibili per aggiungerli alla dispensa (FoodStorageActivity)
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -43,6 +47,9 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
         }
     }
 
+    /**
+     * Funzione che, quando si clicca su un cibo, mostra la possibilità di rimuoverlo dalla dispensa selezionando anche la quantità
+     */
     override fun onItemClick(position: Int) {
 
         val clickedItem = exampleList [position]
@@ -53,12 +60,18 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
         startActivity(addal)
     }
 
+    /**
+     * Funzione che si occupa di generare ed inizializzare una lista fittizia di oggetti, che verrà successivamente riempita con i cibi scelti dall'utente
+     */
     private fun generateDummyList(): ArrayList<Aliment> {
 
         val list =  DbCommunication.createPersonaList()
         return list
     }
 
+    /**
+     * Funzione che permette il funzionamento della barra di ricerca, permettendo all'utente di cercare con più facilità i cibi semplicemente inserendo il nome nella barra
+     */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
         menuInflater.inflate(R.menu.researchbar,menu)
@@ -96,6 +109,10 @@ class DispensaActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
 
         return super.onCreateOptionsMenu(menu)
     }
+
+    /**
+     * Funzione che rimanda alla schermata di Home se si preme il tasto "indietro" dello smartphone
+     */
     override fun onBackPressed (){
         val data = Intent (this, HomeActivity::class.java)
         startActivity(data)

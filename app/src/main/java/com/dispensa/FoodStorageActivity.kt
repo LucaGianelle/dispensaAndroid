@@ -21,6 +21,9 @@ import kotlin.random.Random
       private val adapter = FoodAdapter(exampleList, this)
       lateinit var food_view : RecyclerView
 
+      /**
+       * Inizializzazione della lista e generazione della lista fittizia. Qui sono contenuti la lista ed i bottoni con i quali interagirà l'utente
+       */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.food_storage)
@@ -33,6 +36,9 @@ import kotlin.random.Random
         food_view.setHasFixedSize(true)
     }
 
+      /**
+       * Funzione che, quando si clicca su un cibo, mostra la possibilità di aggiungerlo dalla dispensa selezionando anche la quantità
+       */
     override fun onItemClick(position: Int) {
 
         val clickedItem = exampleList [position]
@@ -42,6 +48,9 @@ import kotlin.random.Random
         dialog.show(supportFragmentManager, "customDialog")
     }
 
+      /**
+       * Funzione che si occupa di generare ed inizializzare una lista fittizia di oggetti, che verrà successivamente riempita con i cibi veri e propri
+       */
     private fun generateDummyList(): ArrayList<Aliment> {
 
         val list = ArrayList<Aliment>()
@@ -70,7 +79,9 @@ import kotlin.random.Random
         return list
     }
 
-
+      /**
+       * Funzione che permette il funzionamento della barra di ricerca, permettendo all'utente di cercare con più facilità i cibi semplicemente inserendo il nome nella barra
+       */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.researchbar,menu)
         val searchItem = menu?.findItem(R.id.menu_search)
@@ -107,6 +118,10 @@ import kotlin.random.Random
         return super.onCreateOptionsMenu(menu)
     }
 
+      /**
+       * Funzione che rimanda alla schermata di Home se si preme il tasto "indietro" dello smartphone se si è arrivati dalla schermata di Home poiché la dispensa era vuota
+       * Se si è arrivati dalla dipensa invece, il tasto riporta alla dispensa
+       */
       override fun onBackPressed (){
 
           if(DbCommunication.emptyStorage){
