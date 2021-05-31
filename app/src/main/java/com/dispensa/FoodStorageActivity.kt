@@ -16,10 +16,10 @@ import kotlin.concurrent.thread
 import kotlin.random.Random
 
   class FoodStorageActivity : AppCompatActivity(), FoodAdapter.OnItemClickListener {
-    private var exampleList = generateDummyList()
+      private var exampleList:  ArrayList<Aliment> = generateDummyList()
       private lateinit var displayList: ArrayList<Aliment>
-    private val adapter = FoodAdapter(exampleList, this)
-    lateinit var food_view : RecyclerView
+      private val adapter = FoodAdapter(exampleList, this)
+      lateinit var food_view : RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +45,11 @@ import kotlin.random.Random
     private fun generateDummyList(): ArrayList<Aliment> {
 
         val list = ArrayList<Aliment>()
-        val templist = DbCommunication.getAliment()
+        var templist: ArrayList<Aliment> = ArrayList()
+        templist.clear()
+        templist = DbCommunication.getAliment()
+        println(""+templist)
+        println(""+templist.size)
         val size = templist.size
 
         for (i in 0 until size) {
@@ -60,7 +64,7 @@ import kotlin.random.Random
 
 
             val item = Aliment(tnameAliment, tcalAliment, tquantAliment, tproteinAliment, tcarboAliment, tgrassiAliment)
-            list += item
+            list.add(item)
         }
 
         return list
