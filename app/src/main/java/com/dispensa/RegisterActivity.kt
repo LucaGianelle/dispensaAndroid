@@ -28,6 +28,10 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     @RequiresApi(Build.VERSION_CODES.O)
+
+    /**
+     * L'activity visualizza un picker per peso e altezza per gli utenti non registrati, che successivamente verranno inviati assieme agli altri dati
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register)
@@ -72,7 +76,9 @@ class RegisterActivity : AppCompatActivity() {
 
 
 }
-
+    /**
+     * Questa funzione si occupa di inviare i dati inseriti a Firebase per inserirli nel database degli utenti
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun sendData(valAlt: String, valPeso: String, valEta: String){
         val name = inputNome.text.toString().trim()
@@ -105,6 +111,7 @@ class RegisterActivity : AppCompatActivity() {
     /**
      * Questa funzione si occupa della registrazione vera e propria. L'utente deve riempire tutti i campi con dei valori validi, altrimenti viene notificato l'errore
      * La mail, per esempio, non solo deve essere presente, ma deve essere inserita con il formato corretto. La password deve contenere almeno sei caratteri
+     * Se tutto funziona viene inviata una mail di conferma
      */
 @RequiresApi(Build.VERSION_CODES.O)
 private fun signUpUser(valAlt: String, valPeso: String, valEta: String) {
